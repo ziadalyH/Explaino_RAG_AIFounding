@@ -20,8 +20,12 @@ def mock_config():
     config.opensearch_username = None
     config.opensearch_password = None
     config.opensearch_use_ssl = False
+    config.opensearch_verify_certs = False
     config.opensearch_index_name = "test-index"
+    config.opensearch_pdf_index = "test-pdf-index"
+    config.opensearch_video_index = "test-video-index"
     config.embedding_dimension = 1536
+    config.embedding_provider = "local"
     return config
 
 
@@ -104,7 +108,7 @@ def test_create_index_if_not_exists_new_index(mock_config, mock_logger):
         builder = VectorIndexBuilder(mock_config, mock_logger)
         
         # Create index
-        builder.create_index_if_not_exists()
+        builder.create_index_if_not_exists("test-index", "video")
         
         # Verify index creation was called
         mock_client.indices.exists.assert_called_with(index="test-index")
@@ -124,7 +128,7 @@ def test_create_index_if_not_exists_existing_index(mock_config, mock_logger):
         builder = VectorIndexBuilder(mock_config, mock_logger)
         
         # Try to create index
-        builder.create_index_if_not_exists()
+        builder.create_index_if_not_exists("test-index", "video")
         
         # Verify index creation was NOT called
         mock_client.indices.exists.assert_called_with(index="test-index")
@@ -164,10 +168,10 @@ def test_index_documents(mock_config, mock_logger):
         ]
         
         # Index documents
-        builder.index_documents(documents)
+        builder.index_documents(documents, "test-index")
         
         # Verify bulk was called
-        mock_helpers.bulk.assert_called_once()
+        mock_helpers.bulk.assert_called()
         mock_client.indices.refresh.assert_called_once_with(index="test-index")
 
 
@@ -184,7 +188,7 @@ def test_build_index(mock_config, mock_logger, sample_transcript_chunks, sample_
         mock_opensearch.return_value = mock_client
         
         # Mock bulk helper
-        mock_helpers.bulk.return_value = (4, [])
+        mock_helpers.bulk.return_value = (2, [])
         
         # Create VectorIndexBuilder
         builder = VectorIndexBuilder(mock_config, mock_logger)
@@ -193,20 +197,20 @@ def test_build_index(mock_config, mock_logger, sample_transcript_chunks, sample_
         mock_embedding_engine = Mock(spec=EmbeddingEngine)
         mock_embedding_engine.embed_batch.side_effect = [
             np.array([[0.1] * 1536, [0.2] * 1536], dtype=np.float32),  # transcript embeddings
-            np.array([[0.3] * 1536, [0.4] * 1536], dtype=np.float32)   # pdf embeddings
+            np.array([[0.3] * 1536, [0.4] * 1536], dtype=np.float32)   # pdf content embeddings
         ]
         
         # Build index
         builder.build_index(sample_transcript_chunks, sample_pdf_chunks, mock_embedding_engine)
         
-        # Verify index was created
-        mock_client.indices.create.assert_called_once()
+        # Verify indices were created (one for video, one for pdf)
+        assert mock_client.indices.create.call_count == 2
         
         # Verify embeddings were generated
         assert mock_embedding_engine.embed_batch.call_count == 2
         
-        # Verify documents were indexed
-        mock_helpers.bulk.assert_called_once()
+        # Verify documents were indexed (called twice, once for videos, once for pdfs)
+        assert mock_helpers.bulk.call_count >= 2
 
 
 def test_index_documents_empty_list(mock_config, mock_logger):
@@ -221,7 +225,7 @@ def test_index_documents_empty_list(mock_config, mock_logger):
         builder = VectorIndexBuilder(mock_config, mock_logger)
         
         # Index empty list (should not raise error)
-        builder.index_documents([])
+        builder.index_documents([], "test-index")
         
         # Verify refresh was not called
         mock_client.indices.refresh.assert_not_called()

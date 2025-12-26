@@ -67,8 +67,10 @@ class TestTokenTimestampLookup:
     
     def test_chunking_preserves_token_timestamps(self, sample_transcript):
         """Test that chunking preserves token ID and timestamp relationships."""
+        import logging
         config = Config.from_env()
-        chunking_module = ChunkingModule(config, None)
+        logger = logging.getLogger("test")
+        chunking_module = ChunkingModule(config, logger)
         
         # Create chunks from transcript
         chunks = chunking_module.chunk_transcript(sample_transcript)
@@ -149,8 +151,10 @@ class TestTokenTimestampLookup:
     
     def test_chunk_token_coverage(self, sample_transcript):
         """Test that chunks cover all tokens without gaps."""
+        import logging
         config = Config.from_env()
-        chunking_module = ChunkingModule(config, None)
+        logger = logging.getLogger("test")
+        chunking_module = ChunkingModule(config, logger)
         
         chunks = chunking_module.chunk_transcript(sample_transcript)
         

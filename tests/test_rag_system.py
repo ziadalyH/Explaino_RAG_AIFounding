@@ -18,10 +18,14 @@ def mock_config():
     config.opensearch_username = None
     config.opensearch_password = None
     config.opensearch_use_ssl = False
+    config.opensearch_verify_certs = False
     config.opensearch_index_name = "test-index"
+    config.opensearch_pdf_index = "test-pdf-index"
+    config.opensearch_video_index = "test-video-index"
     config.openai_api_key = "test-key"
     config.embedding_model = "text-embedding-3-small"
     config.embedding_dimension = 1536
+    config.embedding_provider = "local"
     config.llm_model = "gpt-4o-mini"
     config.llm_temperature = 0.3
     config.llm_max_tokens = 500
@@ -29,6 +33,9 @@ def mock_config():
     config.max_results = 5
     config.chunk_size = 100
     config.chunk_overlap = 20
+    config.chunking_strategy = "sliding_window"
+    config.max_chunk_window = 30
+    config.min_pdf_paragraphs_per_page = 4
     config.log_level = "INFO"
     return config
 
@@ -75,7 +82,8 @@ def test_check_index_exists_when_index_missing(mock_config):
         result = rag_system.check_index_exists()
         
         assert result is False
-        mock_opensearch_client.indices.exists.assert_called_once()
+        # Should be called twice (once for pdf index, once for video index)
+        assert mock_opensearch_client.indices.exists.call_count == 2
 
 
 def test_check_index_exists_when_index_empty(mock_config):
@@ -96,7 +104,8 @@ def test_check_index_exists_when_index_empty(mock_config):
         result = rag_system.check_index_exists()
         
         assert result is False
-        mock_opensearch_client.count.assert_called_once()
+        # Should be called twice (once for pdf index, once for video index)
+        assert mock_opensearch_client.count.call_count == 2
 
 
 def test_check_index_exists_when_index_has_documents(mock_config):
@@ -168,28 +177,33 @@ def test_answer_question_returns_no_answer_when_no_results(mock_config):
 
 
 def test_build_index_skips_when_index_exists(mock_config):
-    """Test that build_index skips building when index already exists."""
+    """Test that build_index processes when index exists but has no new files."""
     with patch('src.rag_system.VectorIndexBuilder') as mock_builder, \
          patch('src.rag_system.EmbeddingEngine'):
         
         mock_opensearch_client = MagicMock()
         mock_opensearch_client.indices.exists.return_value = True
         mock_opensearch_client.count.return_value = {'count': 100}
+        mock_opensearch_client.search.return_value = {
+            'hits': {
+                'hits': []
+            }
+        }
         mock_builder.return_value.opensearch_client = mock_opensearch_client
         
         # Initialize RAGSystem
         rag_system = RAGSystem(mock_config)
         
-        # Mock ingesters to track if they're called
+        # Mock ingesters to return empty lists (no new files)
         rag_system.transcript_ingester.ingest_directory = Mock(return_value=[])
         rag_system.pdf_ingester.ingest_directory = Mock(return_value=[])
         
-        # Build index (should skip)
+        # Build index (should process but find no new files)
         rag_system.build_index(force_rebuild=False)
         
-        # Verify ingesters were not called
-        rag_system.transcript_ingester.ingest_directory.assert_not_called()
-        rag_system.pdf_ingester.ingest_directory.assert_not_called()
+        # Verify ingesters were called (to check for new files)
+        rag_system.transcript_ingester.ingest_directory.assert_called_once()
+        rag_system.pdf_ingester.ingest_directory.assert_called_once()
 
 
 def test_build_index_rebuilds_when_forced(mock_config):

@@ -552,27 +552,161 @@ Both tiers use pure k-NN vector similarity search for consistent scoring (0.0 to
 - **Model Size**: 420MB (MPNet)
 - **Memory Usage**: ~2GB (with model loaded)
 
-## 🤝 Contributing
+## 📁 Project Structure
 
-Contributions welcome! Please:
+```
+Explaino_RAG_AIFounding/
+├── data/                           # Sample data for testing
+│   ├── pdfs/                       # PDF documents (6 files)
+│   │   ├── database_systems_textbook.pdf
+│   │   ├── machine_learning_fundamentals.pdf
+│   │   ├── python_programming_guide.pdf
+│   │   ├── cloud_infrastructure_guide.pdf
+│   │   ├── modern_web_development.pdf
+│   │   └── Principles-of-Data-Science-WEB.pdf
+│   ├── transcripts/                # Video transcripts (8 files)
+│   │   ├── database_fundamentals.json
+│   │   ├── machine_learning_intro.json
+│   │   ├── python_programming_basics.json
+│   │   ├── cloud_computing_overview.json
+│   │   ├── web_development_trends.json
+│   │   ├── deep_learning_tutorial_15min.json
+│   │   ├── data_science_tutorial_20min.json
+│   │   └── python_advanced_tutorial_30min.json
+│   └── knowledge_summary.json      # Auto-generated knowledge summary
+│
+├── src/                            # Source code
+│   ├── __main__.py                 # CLI entry point
+│   ├── api.py                      # FastAPI REST API
+│   ├── cli.py                      # CLI command handlers
+│   ├── config.py                   # Configuration management
+│   ├── models.py                   # Data models (Pydantic)
+│   ├── rag_system.py               # Main RAG orchestrator
+│   │
+│   ├── ingestion/                  # Data ingestion modules
+│   │   ├── transcript_ingester.py  # Video transcript parser
+│   │   └── pdf_ingester.py         # PDF document parser
+│   │
+│   ├── processing/                 # Data processing modules
+│   │   ├── chunking.py             # Text chunking strategies
+│   │   ├── embedding.py            # Embedding generation
+│   │   └── indexing.py             # OpenSearch indexing
+│   │
+│   └── retrieval/                  # Retrieval modules
+│       ├── query_processor.py      # Query embedding
+│       ├── retrieval_engine.py     # Vector search
+│       └── response_generator.py   # LLM response generation
+│
+├── tests/                          # Test suite (41 tests)
+│   ├── test_chunking.py
+│   ├── test_indexing.py
+│   ├── test_models.py
+│   ├── test_rag_system.py
+│   └── test_token_timestamp.py
+│
+├── .env.example                    # Environment variables template
+├── docker-compose.yml              # Docker orchestration
+├── Dockerfile                      # Container definition
+├── entrypoint.sh                   # Container startup script
+├── requirements.txt                # Python dependencies
+├── pytest.ini                      # Test configuration
+└── README.md                       # This file
+```
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+## 🔄 Indexing Pipeline
 
-## 📄 License
+When you add files to the `data/` directory, here's what happens:
 
-[Add your license here]
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    1. FILE DETECTION                            │
+│  System scans data/pdfs/ and data/transcripts/ directories     │
+│  Identifies new/modified files not yet indexed                  │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    2. INGESTION                                 │
+│  ┌──────────────────────┐      ┌──────────────────────┐        │
+│  │  PDF Ingestion       │      │  Video Ingestion     │        │
+│  │  • Parse PDF text    │      │  • Parse JSON        │        │
+│  │  • Extract pages     │      │  • Extract tokens    │        │
+│  │  • Detect paragraphs │      │  • Map timestamps    │        │
+│  │  • Extract titles    │      │  • Validate format   │        │
+│  └──────────────────────┘      └──────────────────────┘        │
+└────────────────────┬────────────────────┬───────────────────────┘
+                     │                    │
+                     ▼                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    3. CHUNKING                                  │
+│  ┌──────────────────────┐      ┌──────────────────────┐        │
+│  │  PDF Chunks          │      │  Video Chunks        │        │
+│  │  • Paragraph-level   │      │  • Sentence-based    │        │
+│  │  • 512 tokens target │      │  • 30-50 words       │        │
+│  │  • 128 token overlap │      │  • Adaptive sizing   │        │
+│  │  • Title extraction  │      │  • Token ID ranges   │        │
+│  └──────────────────────┘      └──────────────────────┘        │
+└────────────────────┬────────────────────┬───────────────────────┘
+                     │                    │
+                     ▼                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    4. EMBEDDING GENERATION                      │
+│  Uses: sentence-transformers/all-mpnet-base-v2 (768-dim)       │
+│  ┌──────────────────────┐      ┌──────────────────────┐        │
+│  │  PDF Embeddings      │      │  Video Embeddings    │        │
+│  │  • Content embedding │      │  • Text embedding    │        │
+│  │  • Title embedding   │      │  • Single vector     │        │
+│  │  • Dual vectors      │      │  • ~90 emb/sec       │        │
+│  └──────────────────────┘      └──────────────────────┘        │
+└────────────────────┬────────────────────┬───────────────────────┘
+                     │                    │
+                     ▼                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    5. INDEXING                                  │
+│  ┌──────────────────────┐      ┌──────────────────────┐        │
+│  │  rag-pdf-index       │      │  rag-video-index     │        │
+│  │  • k-NN enabled      │      │  • k-NN enabled      │        │
+│  │  • HNSW algorithm    │      │  • HNSW algorithm    │        │
+│  │  • Cosine similarity │      │  • Cosine similarity │        │
+│  │  • Page metadata     │      │  • Timestamp ranges  │        │
+│  └──────────────────────┘      └──────────────────────┘        │
+└────────────────────┬────────────────────┬───────────────────────┘
+                     │                    │
+                     ▼                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    6. READY FOR SEARCH                          │
+│  System can now answer questions using indexed content          │
+│  • Video-first retrieval (Tier 1)                              │
+│  • PDF fallback retrieval (Tier 2)                             │
+│  • GPT-4o-mini response generation                             │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-## 🙋 Support
+### Adding New Files
 
-For issues or questions:
+To add your own content:
 
-- Open an issue on GitHub
-- Check existing issues for solutions
-- Review troubleshooting section above
+1. **Add PDFs**: Place PDF files in `data/pdfs/`
+2. **Add Videos**: Place transcript JSON files in `data/transcripts/`
+3. **Reindex**: Run `docker-compose exec rag-backend-cli python main.py index`
+4. **Query**: System automatically includes new content
 
----
+**Video Transcript Format:**
 
-**Note**: This system requires an OpenAI API key for response generation. Embedding generation uses local models (no API costs).
+```json
+{
+  "video_id": "unique_video_id",
+  "pdf_reference": "related_document.pdf",
+  "video_transcripts": [
+    { "id": 1, "timestamp": 0.0, "word": "Hello" },
+    { "id": 2, "timestamp": 0.5, "word": "world" }
+  ]
+}
+```
+
+**Indexing Time Estimates:**
+
+- Small files (< 10 pages): ~5-10 seconds
+- Medium files (10-50 pages): ~20-30 seconds
+- Large files (> 50 pages): ~1-2 minutes
+- Full sample dataset (6 PDFs + 8 videos): ~2-3 minutes

@@ -1,0 +1,11256 @@
+{
+  "video_id": "deep_learning_tutorial_2024",
+  "pdf_reference": "deep_learning_fundamentals.pdf",
+  "video_transcripts": [
+    {
+      "id": 1,
+      "timestamp": 0.0,
+      "word": "Welcome"
+    },
+    {
+      "id": 2,
+      "timestamp": 0.3,
+      "word": "to"
+    },
+    {
+      "id": 3,
+      "timestamp": 0.7,
+      "word": "this"
+    },
+    {
+      "id": 4,
+      "timestamp": 1.1,
+      "word": "comprehensive"
+    },
+    {
+      "id": 5,
+      "timestamp": 1.4,
+      "word": "tutorial"
+    },
+    {
+      "id": 6,
+      "timestamp": 1.8,
+      "word": "on"
+    },
+    {
+      "id": 7,
+      "timestamp": 2.2,
+      "word": "deep"
+    },
+    {
+      "id": 8,
+      "timestamp": 2.6,
+      "word": "learning"
+    },
+    {
+      "id": 9,
+      "timestamp": 3.0,
+      "word": "and"
+    },
+    {
+      "id": 10,
+      "timestamp": 3.4,
+      "word": "neural"
+    },
+    {
+      "id": 11,
+      "timestamp": 3.8,
+      "word": "networks"
+    },
+    {
+      "id": 12,
+      "timestamp": 5.0,
+      "word": "Deep"
+    },
+    {
+      "id": 13,
+      "timestamp": 5.3,
+      "word": "learning"
+    },
+    {
+      "id": 14,
+      "timestamp": 5.7,
+      "word": "is"
+    },
+    {
+      "id": 15,
+      "timestamp": 6.2,
+      "word": "a"
+    },
+    {
+      "id": 16,
+      "timestamp": 6.6,
+      "word": "subset"
+    },
+    {
+      "id": 17,
+      "timestamp": 7.0,
+      "word": "of"
+    },
+    {
+      "id": 18,
+      "timestamp": 7.4,
+      "word": "machine"
+    },
+    {
+      "id": 19,
+      "timestamp": 7.7,
+      "word": "learning"
+    },
+    {
+      "id": 20,
+      "timestamp": 8.2,
+      "word": "that"
+    },
+    {
+      "id": 21,
+      "timestamp": 8.5,
+      "word": "uses"
+    },
+    {
+      "id": 22,
+      "timestamp": 8.8,
+      "word": "artificial"
+    },
+    {
+      "id": 23,
+      "timestamp": 9.2,
+      "word": "neural"
+    },
+    {
+      "id": 24,
+      "timestamp": 9.5,
+      "word": "networks"
+    },
+    {
+      "id": 25,
+      "timestamp": 10.0,
+      "word": "with"
+    },
+    {
+      "id": 26,
+      "timestamp": 10.3,
+      "word": "multiple"
+    },
+    {
+      "id": 27,
+      "timestamp": 10.7,
+      "word": "layers"
+    },
+    {
+      "id": 28,
+      "timestamp": 11.9,
+      "word": "These"
+    },
+    {
+      "id": 29,
+      "timestamp": 12.3,
+      "word": "networks"
+    },
+    {
+      "id": 30,
+      "timestamp": 12.7,
+      "word": "are"
+    },
+    {
+      "id": 31,
+      "timestamp": 13.1,
+      "word": "inspired"
+    },
+    {
+      "id": 32,
+      "timestamp": 13.5,
+      "word": "by"
+    },
+    {
+      "id": 33,
+      "timestamp": 13.9,
+      "word": "the"
+    },
+    {
+      "id": 34,
+      "timestamp": 14.3,
+      "word": "structure"
+    },
+    {
+      "id": 35,
+      "timestamp": 14.7,
+      "word": "and"
+    },
+    {
+      "id": 36,
+      "timestamp": 15.0,
+      "word": "function"
+    },
+    {
+      "id": 37,
+      "timestamp": 15.3,
+      "word": "of"
+    },
+    {
+      "id": 38,
+      "timestamp": 15.7,
+      "word": "the"
+    },
+    {
+      "id": 39,
+      "timestamp": 16.0,
+      "word": "human"
+    },
+    {
+      "id": 40,
+      "timestamp": 16.5,
+      "word": "brain"
+    },
+    {
+      "id": 41,
+      "timestamp": 17.6,
+      "word": "The"
+    },
+    {
+      "id": 42,
+      "timestamp": 18.0,
+      "word": "fundamental"
+    },
+    {
+      "id": 43,
+      "timestamp": 18.3,
+      "word": "building"
+    },
+    {
+      "id": 44,
+      "timestamp": 18.7,
+      "word": "block"
+    },
+    {
+      "id": 45,
+      "timestamp": 19.1,
+      "word": "of"
+    },
+    {
+      "id": 46,
+      "timestamp": 19.5,
+      "word": "a"
+    },
+    {
+      "id": 47,
+      "timestamp": 20.0,
+      "word": "neural"
+    },
+    {
+      "id": 48,
+      "timestamp": 20.4,
+      "word": "network"
+    },
+    {
+      "id": 49,
+      "timestamp": 20.7,
+      "word": "is"
+    },
+    {
+      "id": 50,
+      "timestamp": 21.2,
+      "word": "the"
+    },
+    {
+      "id": 51,
+      "timestamp": 21.6,
+      "word": "artificial"
+    },
+    {
+      "id": 52,
+      "timestamp": 22.1,
+      "word": "neuron"
+    },
+    {
+      "id": 53,
+      "timestamp": 22.5,
+      "word": "or"
+    },
+    {
+      "id": 54,
+      "timestamp": 23.0,
+      "word": "perceptron"
+    },
+    {
+      "id": 55,
+      "timestamp": 24.2,
+      "word": "Each"
+    },
+    {
+      "id": 56,
+      "timestamp": 24.5,
+      "word": "neuron"
+    },
+    {
+      "id": 57,
+      "timestamp": 25.0,
+      "word": "receives"
+    },
+    {
+      "id": 58,
+      "timestamp": 25.3,
+      "word": "inputs"
+    },
+    {
+      "id": 59,
+      "timestamp": 25.8,
+      "word": "multiplies"
+    },
+    {
+      "id": 60,
+      "timestamp": 26.1,
+      "word": "them"
+    },
+    {
+      "id": 61,
+      "timestamp": 26.5,
+      "word": "by"
+    },
+    {
+      "id": 62,
+      "timestamp": 26.9,
+      "word": "weights"
+    },
+    {
+      "id": 63,
+      "timestamp": 27.3,
+      "word": "and"
+    },
+    {
+      "id": 64,
+      "timestamp": 27.7,
+      "word": "passes"
+    },
+    {
+      "id": 65,
+      "timestamp": 28.1,
+      "word": "them"
+    },
+    {
+      "id": 66,
+      "timestamp": 28.6,
+      "word": "through"
+    },
+    {
+      "id": 67,
+      "timestamp": 29.0,
+      "word": "an"
+    },
+    {
+      "id": 68,
+      "timestamp": 29.4,
+      "word": "activation"
+    },
+    {
+      "id": 69,
+      "timestamp": 29.8,
+      "word": "function"
+    },
+    {
+      "id": 70,
+      "timestamp": 30.9,
+      "word": "Common"
+    },
+    {
+      "id": 71,
+      "timestamp": 31.3,
+      "word": "activation"
+    },
+    {
+      "id": 72,
+      "timestamp": 31.7,
+      "word": "functions"
+    },
+    {
+      "id": 73,
+      "timestamp": 32.2,
+      "word": "include"
+    },
+    {
+      "id": 74,
+      "timestamp": 32.7,
+      "word": "sigmoid"
+    },
+    {
+      "id": 75,
+      "timestamp": 33.1,
+      "word": "tanh"
+    },
+    {
+      "id": 76,
+      "timestamp": 33.5,
+      "word": "and"
+    },
+    {
+      "id": 77,
+      "timestamp": 33.9,
+      "word": "the"
+    },
+    {
+      "id": 78,
+      "timestamp": 34.3,
+      "word": "rectified"
+    },
+    {
+      "id": 79,
+      "timestamp": 34.6,
+      "word": "linear"
+    },
+    {
+      "id": 80,
+      "timestamp": 35.0,
+      "word": "unit"
+    },
+    {
+      "id": 81,
+      "timestamp": 35.3,
+      "word": "or"
+    },
+    {
+      "id": 82,
+      "timestamp": 35.7,
+      "word": "ReLU"
+    },
+    {
+      "id": 83,
+      "timestamp": 36.9,
+      "word": "ReLU"
+    },
+    {
+      "id": 84,
+      "timestamp": 37.3,
+      "word": "has"
+    },
+    {
+      "id": 85,
+      "timestamp": 37.8,
+      "word": "become"
+    },
+    {
+      "id": 86,
+      "timestamp": 38.1,
+      "word": "the"
+    },
+    {
+      "id": 87,
+      "timestamp": 38.5,
+      "word": "most"
+    },
+    {
+      "id": 88,
+      "timestamp": 38.9,
+      "word": "popular"
+    },
+    {
+      "id": 89,
+      "timestamp": 39.3,
+      "word": "activation"
+    },
+    {
+      "id": 90,
+      "timestamp": 39.7,
+      "word": "function"
+    },
+    {
+      "id": 91,
+      "timestamp": 40.1,
+      "word": "because"
+    },
+    {
+      "id": 92,
+      "timestamp": 40.6,
+      "word": "it"
+    },
+    {
+      "id": 93,
+      "timestamp": 40.9,
+      "word": "helps"
+    },
+    {
+      "id": 94,
+      "timestamp": 41.3,
+      "word": "solve"
+    },
+    {
+      "id": 95,
+      "timestamp": 41.7,
+      "word": "the"
+    },
+    {
+      "id": 96,
+      "timestamp": 42.2,
+      "word": "vanishing"
+    },
+    {
+      "id": 97,
+      "timestamp": 42.7,
+      "word": "gradient"
+    },
+    {
+      "id": 98,
+      "timestamp": 43.1,
+      "word": "problem"
+    },
+    {
+      "id": 99,
+      "timestamp": 44.1,
+      "word": "A"
+    },
+    {
+      "id": 100,
+      "timestamp": 44.5,
+      "word": "neural"
+    },
+    {
+      "id": 101,
+      "timestamp": 45.0,
+      "word": "network"
+    },
+    {
+      "id": 102,
+      "timestamp": 45.3,
+      "word": "consists"
+    },
+    {
+      "id": 103,
+      "timestamp": 45.8,
+      "word": "of"
+    },
+    {
+      "id": 104,
+      "timestamp": 46.2,
+      "word": "an"
+    },
+    {
+      "id": 105,
+      "timestamp": 46.7,
+      "word": "input"
+    },
+    {
+      "id": 106,
+      "timestamp": 47.0,
+      "word": "layer"
+    },
+    {
+      "id": 107,
+      "timestamp": 47.4,
+      "word": "one"
+    },
+    {
+      "id": 108,
+      "timestamp": 47.8,
+      "word": "or"
+    },
+    {
+      "id": 109,
+      "timestamp": 48.1,
+      "word": "more"
+    },
+    {
+      "id": 110,
+      "timestamp": 48.6,
+      "word": "hidden"
+    },
+    {
+      "id": 111,
+      "timestamp": 49.0,
+      "word": "layers"
+    },
+    {
+      "id": 112,
+      "timestamp": 49.4,
+      "word": "and"
+    },
+    {
+      "id": 113,
+      "timestamp": 49.7,
+      "word": "an"
+    },
+    {
+      "id": 114,
+      "timestamp": 50.1,
+      "word": "output"
+    },
+    {
+      "id": 115,
+      "timestamp": 50.4,
+      "word": "layer"
+    },
+    {
+      "id": 116,
+      "timestamp": 51.4,
+      "word": "The"
+    },
+    {
+      "id": 117,
+      "timestamp": 51.7,
+      "word": "process"
+    },
+    {
+      "id": 118,
+      "timestamp": 52.2,
+      "word": "of"
+    },
+    {
+      "id": 119,
+      "timestamp": 52.7,
+      "word": "training"
+    },
+    {
+      "id": 120,
+      "timestamp": 53.0,
+      "word": "a"
+    },
+    {
+      "id": 121,
+      "timestamp": 53.3,
+      "word": "neural"
+    },
+    {
+      "id": 122,
+      "timestamp": 53.7,
+      "word": "network"
+    },
+    {
+      "id": 123,
+      "timestamp": 54.1,
+      "word": "involves"
+    },
+    {
+      "id": 124,
+      "timestamp": 54.6,
+      "word": "forward"
+    },
+    {
+      "id": 125,
+      "timestamp": 55.0,
+      "word": "propagation"
+    },
+    {
+      "id": 126,
+      "timestamp": 55.3,
+      "word": "and"
+    },
+    {
+      "id": 127,
+      "timestamp": 55.7,
+      "word": "backpropagation"
+    },
+    {
+      "id": 128,
+      "timestamp": 57.0,
+      "word": "During"
+    },
+    {
+      "id": 129,
+      "timestamp": 57.4,
+      "word": "forward"
+    },
+    {
+      "id": 130,
+      "timestamp": 57.8,
+      "word": "propagation"
+    },
+    {
+      "id": 131,
+      "timestamp": 58.1,
+      "word": "data"
+    },
+    {
+      "id": 132,
+      "timestamp": 58.4,
+      "word": "flows"
+    },
+    {
+      "id": 133,
+      "timestamp": 58.9,
+      "word": "through"
+    },
+    {
+      "id": 134,
+      "timestamp": 59.3,
+      "word": "the"
+    },
+    {
+      "id": 135,
+      "timestamp": 59.7,
+      "word": "network"
+    },
+    {
+      "id": 136,
+      "timestamp": 60.1,
+      "word": "from"
+    },
+    {
+      "id": 137,
+      "timestamp": 60.5,
+      "word": "input"
+    },
+    {
+      "id": 138,
+      "timestamp": 60.9,
+      "word": "to"
+    },
+    {
+      "id": 139,
+      "timestamp": 61.2,
+      "word": "output"
+    },
+    {
+      "id": 140,
+      "timestamp": 62.3,
+      "word": "The"
+    },
+    {
+      "id": 141,
+      "timestamp": 62.6,
+      "word": "network"
+    },
+    {
+      "id": 142,
+      "timestamp": 63.0,
+      "word": "makes"
+    },
+    {
+      "id": 143,
+      "timestamp": 63.4,
+      "word": "predictions"
+    },
+    {
+      "id": 144,
+      "timestamp": 63.7,
+      "word": "and"
+    },
+    {
+      "id": 145,
+      "timestamp": 64.1,
+      "word": "we"
+    },
+    {
+      "id": 146,
+      "timestamp": 64.5,
+      "word": "calculate"
+    },
+    {
+      "id": 147,
+      "timestamp": 64.8,
+      "word": "the"
+    },
+    {
+      "id": 148,
+      "timestamp": 65.3,
+      "word": "loss"
+    },
+    {
+      "id": 149,
+      "timestamp": 65.7,
+      "word": "or"
+    },
+    {
+      "id": 150,
+      "timestamp": 66.1,
+      "word": "error"
+    },
+    {
+      "id": 151,
+      "timestamp": 66.6,
+      "word": "using"
+    },
+    {
+      "id": 152,
+      "timestamp": 66.9,
+      "word": "a"
+    },
+    {
+      "id": 153,
+      "timestamp": 67.2,
+      "word": "loss"
+    },
+    {
+      "id": 154,
+      "timestamp": 67.7,
+      "word": "function"
+    },
+    {
+      "id": 155,
+      "timestamp": 68.7,
+      "word": "Common"
+    },
+    {
+      "id": 156,
+      "timestamp": 69.0,
+      "word": "loss"
+    },
+    {
+      "id": 157,
+      "timestamp": 69.3,
+      "word": "functions"
+    },
+    {
+      "id": 158,
+      "timestamp": 69.6,
+      "word": "include"
+    },
+    {
+      "id": 159,
+      "timestamp": 70.0,
+      "word": "mean"
+    },
+    {
+      "id": 160,
+      "timestamp": 70.4,
+      "word": "squared"
+    },
+    {
+      "id": 161,
+      "timestamp": 70.8,
+      "word": "error"
+    },
+    {
+      "id": 162,
+      "timestamp": 71.2,
+      "word": "for"
+    },
+    {
+      "id": 163,
+      "timestamp": 71.6,
+      "word": "regression"
+    },
+    {
+      "id": 164,
+      "timestamp": 72.1,
+      "word": "and"
+    },
+    {
+      "id": 165,
+      "timestamp": 72.5,
+      "word": "cross"
+    },
+    {
+      "id": 166,
+      "timestamp": 73.0,
+      "word": "entropy"
+    },
+    {
+      "id": 167,
+      "timestamp": 73.3,
+      "word": "for"
+    },
+    {
+      "id": 168,
+      "timestamp": 73.8,
+      "word": "classification"
+    },
+    {
+      "id": 169,
+      "timestamp": 75.0,
+      "word": "Backpropagation"
+    },
+    {
+      "id": 170,
+      "timestamp": 75.3,
+      "word": "is"
+    },
+    {
+      "id": 171,
+      "timestamp": 75.6,
+      "word": "the"
+    },
+    {
+      "id": 172,
+      "timestamp": 76.1,
+      "word": "algorithm"
+    },
+    {
+      "id": 173,
+      "timestamp": 76.5,
+      "word": "used"
+    },
+    {
+      "id": 174,
+      "timestamp": 76.9,
+      "word": "to"
+    },
+    {
+      "id": 175,
+      "timestamp": 77.3,
+      "word": "calculate"
+    },
+    {
+      "id": 176,
+      "timestamp": 77.7,
+      "word": "gradients"
+    },
+    {
+      "id": 177,
+      "timestamp": 78.1,
+      "word": "and"
+    },
+    {
+      "id": 178,
+      "timestamp": 78.5,
+      "word": "update"
+    },
+    {
+      "id": 179,
+      "timestamp": 78.9,
+      "word": "the"
+    },
+    {
+      "id": 180,
+      "timestamp": 79.2,
+      "word": "network"
+    },
+    {
+      "id": 181,
+      "timestamp": 79.6,
+      "word": "weights"
+    },
+    {
+      "id": 182,
+      "timestamp": 80.8,
+      "word": "It"
+    },
+    {
+      "id": 183,
+      "timestamp": 81.2,
+      "word": "uses"
+    },
+    {
+      "id": 184,
+      "timestamp": 81.5,
+      "word": "the"
+    },
+    {
+      "id": 185,
+      "timestamp": 82.0,
+      "word": "chain"
+    },
+    {
+      "id": 186,
+      "timestamp": 82.5,
+      "word": "rule"
+    },
+    {
+      "id": 187,
+      "timestamp": 82.9,
+      "word": "from"
+    },
+    {
+      "id": 188,
+      "timestamp": 83.4,
+      "word": "calculus"
+    },
+    {
+      "id": 189,
+      "timestamp": 83.7,
+      "word": "to"
+    },
+    {
+      "id": 190,
+      "timestamp": 84.1,
+      "word": "compute"
+    },
+    {
+      "id": 191,
+      "timestamp": 84.4,
+      "word": "how"
+    },
+    {
+      "id": 192,
+      "timestamp": 84.9,
+      "word": "each"
+    },
+    {
+      "id": 193,
+      "timestamp": 85.3,
+      "word": "weight"
+    },
+    {
+      "id": 194,
+      "timestamp": 85.6,
+      "word": "contributed"
+    },
+    {
+      "id": 195,
+      "timestamp": 86.0,
+      "word": "to"
+    },
+    {
+      "id": 196,
+      "timestamp": 86.3,
+      "word": "the"
+    },
+    {
+      "id": 197,
+      "timestamp": 86.8,
+      "word": "error"
+    },
+    {
+      "id": 198,
+      "timestamp": 87.8,
+      "word": "Gradient"
+    },
+    {
+      "id": 199,
+      "timestamp": 88.3,
+      "word": "descent"
+    },
+    {
+      "id": 200,
+      "timestamp": 88.7,
+      "word": "is"
+    },
+    {
+      "id": 201,
+      "timestamp": 89.2,
+      "word": "the"
+    },
+    {
+      "id": 202,
+      "timestamp": 89.5,
+      "word": "optimization"
+    },
+    {
+      "id": 203,
+      "timestamp": 89.9,
+      "word": "algorithm"
+    },
+    {
+      "id": 204,
+      "timestamp": 90.3,
+      "word": "that"
+    },
+    {
+      "id": 205,
+      "timestamp": 90.8,
+      "word": "adjusts"
+    },
+    {
+      "id": 206,
+      "timestamp": 91.2,
+      "word": "weights"
+    },
+    {
+      "id": 207,
+      "timestamp": 91.5,
+      "word": "to"
+    },
+    {
+      "id": 208,
+      "timestamp": 91.8,
+      "word": "minimize"
+    },
+    {
+      "id": 209,
+      "timestamp": 92.2,
+      "word": "the"
+    },
+    {
+      "id": 210,
+      "timestamp": 92.6,
+      "word": "loss"
+    },
+    {
+      "id": 211,
+      "timestamp": 94.0,
+      "word": "There"
+    },
+    {
+      "id": 212,
+      "timestamp": 94.4,
+      "word": "are"
+    },
+    {
+      "id": 213,
+      "timestamp": 94.9,
+      "word": "several"
+    },
+    {
+      "id": 214,
+      "timestamp": 95.3,
+      "word": "variants"
+    },
+    {
+      "id": 215,
+      "timestamp": 95.8,
+      "word": "of"
+    },
+    {
+      "id": 216,
+      "timestamp": 96.1,
+      "word": "gradient"
+    },
+    {
+      "id": 217,
+      "timestamp": 96.5,
+      "word": "descent"
+    },
+    {
+      "id": 218,
+      "timestamp": 96.8,
+      "word": "including"
+    },
+    {
+      "id": 219,
+      "timestamp": 97.3,
+      "word": "batch"
+    },
+    {
+      "id": 220,
+      "timestamp": 97.7,
+      "word": "stochastic"
+    },
+    {
+      "id": 221,
+      "timestamp": 98.0,
+      "word": "and"
+    },
+    {
+      "id": 222,
+      "timestamp": 98.5,
+      "word": "mini"
+    },
+    {
+      "id": 223,
+      "timestamp": 98.9,
+      "word": "batch"
+    },
+    {
+      "id": 224,
+      "timestamp": 100.2,
+      "word": "Mini"
+    },
+    {
+      "id": 225,
+      "timestamp": 100.6,
+      "word": "batch"
+    },
+    {
+      "id": 226,
+      "timestamp": 101.1,
+      "word": "gradient"
+    },
+    {
+      "id": 227,
+      "timestamp": 101.5,
+      "word": "descent"
+    },
+    {
+      "id": 228,
+      "timestamp": 101.8,
+      "word": "is"
+    },
+    {
+      "id": 229,
+      "timestamp": 102.2,
+      "word": "most"
+    },
+    {
+      "id": 230,
+      "timestamp": 102.7,
+      "word": "commonly"
+    },
+    {
+      "id": 231,
+      "timestamp": 103.0,
+      "word": "used"
+    },
+    {
+      "id": 232,
+      "timestamp": 103.5,
+      "word": "as"
+    },
+    {
+      "id": 233,
+      "timestamp": 103.8,
+      "word": "it"
+    },
+    {
+      "id": 234,
+      "timestamp": 104.3,
+      "word": "balances"
+    },
+    {
+      "id": 235,
+      "timestamp": 104.6,
+      "word": "speed"
+    },
+    {
+      "id": 236,
+      "timestamp": 105.0,
+      "word": "and"
+    },
+    {
+      "id": 237,
+      "timestamp": 105.4,
+      "word": "stability"
+    },
+    {
+      "id": 238,
+      "timestamp": 106.7,
+      "word": "Learning"
+    },
+    {
+      "id": 239,
+      "timestamp": 107.1,
+      "word": "rate"
+    },
+    {
+      "id": 240,
+      "timestamp": 107.5,
+      "word": "is"
+    },
+    {
+      "id": 241,
+      "timestamp": 107.9,
+      "word": "a"
+    },
+    {
+      "id": 242,
+      "timestamp": 108.2,
+      "word": "crucial"
+    },
+    {
+      "id": 243,
+      "timestamp": 108.6,
+      "word": "hyperparameter"
+    },
+    {
+      "id": 244,
+      "timestamp": 109.0,
+      "word": "that"
+    },
+    {
+      "id": 245,
+      "timestamp": 109.4,
+      "word": "controls"
+    },
+    {
+      "id": 246,
+      "timestamp": 109.9,
+      "word": "how"
+    },
+    {
+      "id": 247,
+      "timestamp": 110.3,
+      "word": "much"
+    },
+    {
+      "id": 248,
+      "timestamp": 110.8,
+      "word": "we"
+    },
+    {
+      "id": 249,
+      "timestamp": 111.2,
+      "word": "adjust"
+    },
+    {
+      "id": 250,
+      "timestamp": 111.6,
+      "word": "weights"
+    },
+    {
+      "id": 251,
+      "timestamp": 111.9,
+      "word": "during"
+    },
+    {
+      "id": 252,
+      "timestamp": 112.2,
+      "word": "training"
+    },
+    {
+      "id": 253,
+      "timestamp": 113.4,
+      "word": "If"
+    },
+    {
+      "id": 254,
+      "timestamp": 113.7,
+      "word": "the"
+    },
+    {
+      "id": 255,
+      "timestamp": 114.2,
+      "word": "learning"
+    },
+    {
+      "id": 256,
+      "timestamp": 114.6,
+      "word": "rate"
+    },
+    {
+      "id": 257,
+      "timestamp": 115.1,
+      "word": "is"
+    },
+    {
+      "id": 258,
+      "timestamp": 115.5,
+      "word": "too"
+    },
+    {
+      "id": 259,
+      "timestamp": 116.0,
+      "word": "high"
+    },
+    {
+      "id": 260,
+      "timestamp": 116.4,
+      "word": "the"
+    },
+    {
+      "id": 261,
+      "timestamp": 116.9,
+      "word": "model"
+    },
+    {
+      "id": 262,
+      "timestamp": 117.3,
+      "word": "may"
+    },
+    {
+      "id": 263,
+      "timestamp": 117.6,
+      "word": "overshoot"
+    },
+    {
+      "id": 264,
+      "timestamp": 118.0,
+      "word": "the"
+    },
+    {
+      "id": 265,
+      "timestamp": 118.5,
+      "word": "optimal"
+    },
+    {
+      "id": 266,
+      "timestamp": 118.8,
+      "word": "solution"
+    },
+    {
+      "id": 267,
+      "timestamp": 119.9,
+      "word": "If"
+    },
+    {
+      "id": 268,
+      "timestamp": 120.2,
+      "word": "it"
+    },
+    {
+      "id": 269,
+      "timestamp": 120.5,
+      "word": "is"
+    },
+    {
+      "id": 270,
+      "timestamp": 121.0,
+      "word": "too"
+    },
+    {
+      "id": 271,
+      "timestamp": 121.4,
+      "word": "low"
+    },
+    {
+      "id": 272,
+      "timestamp": 121.7,
+      "word": "training"
+    },
+    {
+      "id": 273,
+      "timestamp": 122.2,
+      "word": "will"
+    },
+    {
+      "id": 274,
+      "timestamp": 122.6,
+      "word": "be"
+    },
+    {
+      "id": 275,
+      "timestamp": 123.0,
+      "word": "very"
+    },
+    {
+      "id": 276,
+      "timestamp": 123.5,
+      "word": "slow"
+    },
+    {
+      "id": 277,
+      "timestamp": 124.0,
+      "word": "and"
+    },
+    {
+      "id": 278,
+      "timestamp": 124.4,
+      "word": "may"
+    },
+    {
+      "id": 279,
+      "timestamp": 124.9,
+      "word": "get"
+    },
+    {
+      "id": 280,
+      "timestamp": 125.3,
+      "word": "stuck"
+    },
+    {
+      "id": 281,
+      "timestamp": 125.7,
+      "word": "in"
+    },
+    {
+      "id": 282,
+      "timestamp": 126.0,
+      "word": "local"
+    },
+    {
+      "id": 283,
+      "timestamp": 126.4,
+      "word": "minima"
+    },
+    {
+      "id": 284,
+      "timestamp": 127.4,
+      "word": "Convolutional"
+    },
+    {
+      "id": 285,
+      "timestamp": 127.9,
+      "word": "neural"
+    },
+    {
+      "id": 286,
+      "timestamp": 128.4,
+      "word": "networks"
+    },
+    {
+      "id": 287,
+      "timestamp": 128.8,
+      "word": "or"
+    },
+    {
+      "id": 288,
+      "timestamp": 129.3,
+      "word": "CNNs"
+    },
+    {
+      "id": 289,
+      "timestamp": 129.7,
+      "word": "are"
+    },
+    {
+      "id": 290,
+      "timestamp": 130.0,
+      "word": "specialized"
+    },
+    {
+      "id": 291,
+      "timestamp": 130.3,
+      "word": "for"
+    },
+    {
+      "id": 292,
+      "timestamp": 130.7,
+      "word": "processing"
+    },
+    {
+      "id": 293,
+      "timestamp": 131.2,
+      "word": "grid"
+    },
+    {
+      "id": 294,
+      "timestamp": 131.6,
+      "word": "like"
+    },
+    {
+      "id": 295,
+      "timestamp": 132.0,
+      "word": "data"
+    },
+    {
+      "id": 296,
+      "timestamp": 132.5,
+      "word": "such"
+    },
+    {
+      "id": 297,
+      "timestamp": 133.0,
+      "word": "as"
+    },
+    {
+      "id": 298,
+      "timestamp": 133.3,
+      "word": "images"
+    },
+    {
+      "id": 299,
+      "timestamp": 134.6,
+      "word": "CNNs"
+    },
+    {
+      "id": 300,
+      "timestamp": 135.0,
+      "word": "use"
+    },
+    {
+      "id": 301,
+      "timestamp": 135.5,
+      "word": "convolutional"
+    },
+    {
+      "id": 302,
+      "timestamp": 136.0,
+      "word": "layers"
+    },
+    {
+      "id": 303,
+      "timestamp": 136.4,
+      "word": "that"
+    },
+    {
+      "id": 304,
+      "timestamp": 136.8,
+      "word": "apply"
+    },
+    {
+      "id": 305,
+      "timestamp": 137.2,
+      "word": "filters"
+    },
+    {
+      "id": 306,
+      "timestamp": 137.6,
+      "word": "to"
+    },
+    {
+      "id": 307,
+      "timestamp": 138.1,
+      "word": "detect"
+    },
+    {
+      "id": 308,
+      "timestamp": 138.5,
+      "word": "features"
+    },
+    {
+      "id": 309,
+      "timestamp": 138.8,
+      "word": "like"
+    },
+    {
+      "id": 310,
+      "timestamp": 139.1,
+      "word": "edges"
+    },
+    {
+      "id": 311,
+      "timestamp": 139.5,
+      "word": "and"
+    },
+    {
+      "id": 312,
+      "timestamp": 139.9,
+      "word": "textures"
+    },
+    {
+      "id": 313,
+      "timestamp": 141.0,
+      "word": "Pooling"
+    },
+    {
+      "id": 314,
+      "timestamp": 141.3,
+      "word": "layers"
+    },
+    {
+      "id": 315,
+      "timestamp": 141.6,
+      "word": "reduce"
+    },
+    {
+      "id": 316,
+      "timestamp": 142.0,
+      "word": "the"
+    },
+    {
+      "id": 317,
+      "timestamp": 142.3,
+      "word": "spatial"
+    },
+    {
+      "id": 318,
+      "timestamp": 142.7,
+      "word": "dimensions"
+    },
+    {
+      "id": 319,
+      "timestamp": 143.0,
+      "word": "while"
+    },
+    {
+      "id": 320,
+      "timestamp": 143.4,
+      "word": "preserving"
+    },
+    {
+      "id": 321,
+      "timestamp": 143.8,
+      "word": "important"
+    },
+    {
+      "id": 322,
+      "timestamp": 144.2,
+      "word": "features"
+    },
+    {
+      "id": 323,
+      "timestamp": 145.2,
+      "word": "This"
+    },
+    {
+      "id": 324,
+      "timestamp": 145.6,
+      "word": "makes"
+    },
+    {
+      "id": 325,
+      "timestamp": 146.1,
+      "word": "CNNs"
+    },
+    {
+      "id": 326,
+      "timestamp": 146.5,
+      "word": "translation"
+    },
+    {
+      "id": 327,
+      "timestamp": 146.9,
+      "word": "invariant"
+    },
+    {
+      "id": 328,
+      "timestamp": 147.3,
+      "word": "meaning"
+    },
+    {
+      "id": 329,
+      "timestamp": 147.6,
+      "word": "they"
+    },
+    {
+      "id": 330,
+      "timestamp": 148.1,
+      "word": "can"
+    },
+    {
+      "id": 331,
+      "timestamp": 148.6,
+      "word": "recognize"
+    },
+    {
+      "id": 332,
+      "timestamp": 149.0,
+      "word": "objects"
+    },
+    {
+      "id": 333,
+      "timestamp": 149.4,
+      "word": "regardless"
+    },
+    {
+      "id": 334,
+      "timestamp": 149.7,
+      "word": "of"
+    },
+    {
+      "id": 335,
+      "timestamp": 150.2,
+      "word": "position"
+    },
+    {
+      "id": 336,
+      "timestamp": 151.3,
+      "word": "Recurrent"
+    },
+    {
+      "id": 337,
+      "timestamp": 151.7,
+      "word": "neural"
+    },
+    {
+      "id": 338,
+      "timestamp": 152.2,
+      "word": "networks"
+    },
+    {
+      "id": 339,
+      "timestamp": 152.5,
+      "word": "or"
+    },
+    {
+      "id": 340,
+      "timestamp": 152.9,
+      "word": "RNNs"
+    },
+    {
+      "id": 341,
+      "timestamp": 153.3,
+      "word": "are"
+    },
+    {
+      "id": 342,
+      "timestamp": 153.8,
+      "word": "designed"
+    },
+    {
+      "id": 343,
+      "timestamp": 154.1,
+      "word": "for"
+    },
+    {
+      "id": 344,
+      "timestamp": 154.5,
+      "word": "sequential"
+    },
+    {
+      "id": 345,
+      "timestamp": 154.9,
+      "word": "data"
+    },
+    {
+      "id": 346,
+      "timestamp": 155.3,
+      "word": "like"
+    },
+    {
+      "id": 347,
+      "timestamp": 155.7,
+      "word": "text"
+    },
+    {
+      "id": 348,
+      "timestamp": 156.2,
+      "word": "and"
+    },
+    {
+      "id": 349,
+      "timestamp": 156.7,
+      "word": "time"
+    },
+    {
+      "id": 350,
+      "timestamp": 157.0,
+      "word": "series"
+    },
+    {
+      "id": 351,
+      "timestamp": 158.4,
+      "word": "RNNs"
+    },
+    {
+      "id": 352,
+      "timestamp": 158.7,
+      "word": "have"
+    },
+    {
+      "id": 353,
+      "timestamp": 159.0,
+      "word": "loops"
+    },
+    {
+      "id": 354,
+      "timestamp": 159.4,
+      "word": "that"
+    },
+    {
+      "id": 355,
+      "timestamp": 159.8,
+      "word": "allow"
+    },
+    {
+      "id": 356,
+      "timestamp": 160.3,
+      "word": "information"
+    },
+    {
+      "id": 357,
+      "timestamp": 160.6,
+      "word": "to"
+    },
+    {
+      "id": 358,
+      "timestamp": 161.0,
+      "word": "persist"
+    },
+    {
+      "id": 359,
+      "timestamp": 161.4,
+      "word": "across"
+    },
+    {
+      "id": 360,
+      "timestamp": 161.8,
+      "word": "time"
+    },
+    {
+      "id": 361,
+      "timestamp": 162.3,
+      "word": "steps"
+    },
+    {
+      "id": 362,
+      "timestamp": 163.7,
+      "word": "However"
+    },
+    {
+      "id": 363,
+      "timestamp": 164.1,
+      "word": "traditional"
+    },
+    {
+      "id": 364,
+      "timestamp": 164.5,
+      "word": "RNNs"
+    },
+    {
+      "id": 365,
+      "timestamp": 165.0,
+      "word": "suffer"
+    },
+    {
+      "id": 366,
+      "timestamp": 165.4,
+      "word": "from"
+    },
+    {
+      "id": 367,
+      "timestamp": 165.9,
+      "word": "vanishing"
+    },
+    {
+      "id": 368,
+      "timestamp": 166.3,
+      "word": "and"
+    },
+    {
+      "id": 369,
+      "timestamp": 166.8,
+      "word": "exploding"
+    },
+    {
+      "id": 370,
+      "timestamp": 167.2,
+      "word": "gradient"
+    },
+    {
+      "id": 371,
+      "timestamp": 167.5,
+      "word": "problems"
+    },
+    {
+      "id": 372,
+      "timestamp": 168.8,
+      "word": "Long"
+    },
+    {
+      "id": 373,
+      "timestamp": 169.1,
+      "word": "short"
+    },
+    {
+      "id": 374,
+      "timestamp": 169.6,
+      "word": "term"
+    },
+    {
+      "id": 375,
+      "timestamp": 170.1,
+      "word": "memory"
+    },
+    {
+      "id": 376,
+      "timestamp": 170.5,
+      "word": "or"
+    },
+    {
+      "id": 377,
+      "timestamp": 170.9,
+      "word": "LSTM"
+    },
+    {
+      "id": 378,
+      "timestamp": 171.4,
+      "word": "networks"
+    },
+    {
+      "id": 379,
+      "timestamp": 171.7,
+      "word": "solve"
+    },
+    {
+      "id": 380,
+      "timestamp": 172.1,
+      "word": "this"
+    },
+    {
+      "id": 381,
+      "timestamp": 172.4,
+      "word": "with"
+    },
+    {
+      "id": 382,
+      "timestamp": 172.9,
+      "word": "special"
+    },
+    {
+      "id": 383,
+      "timestamp": 173.3,
+      "word": "gating"
+    },
+    {
+      "id": 384,
+      "timestamp": 173.7,
+      "word": "mechanisms"
+    },
+    {
+      "id": 385,
+      "timestamp": 174.8,
+      "word": "LSTMs"
+    },
+    {
+      "id": 386,
+      "timestamp": 175.3,
+      "word": "have"
+    },
+    {
+      "id": 387,
+      "timestamp": 175.7,
+      "word": "forget"
+    },
+    {
+      "id": 388,
+      "timestamp": 176.1,
+      "word": "gates"
+    },
+    {
+      "id": 389,
+      "timestamp": 176.5,
+      "word": "input"
+    },
+    {
+      "id": 390,
+      "timestamp": 176.8,
+      "word": "gates"
+    },
+    {
+      "id": 391,
+      "timestamp": 177.3,
+      "word": "and"
+    },
+    {
+      "id": 392,
+      "timestamp": 177.6,
+      "word": "output"
+    },
+    {
+      "id": 393,
+      "timestamp": 178.0,
+      "word": "gates"
+    },
+    {
+      "id": 394,
+      "timestamp": 178.4,
+      "word": "that"
+    },
+    {
+      "id": 395,
+      "timestamp": 178.8,
+      "word": "control"
+    },
+    {
+      "id": 396,
+      "timestamp": 179.2,
+      "word": "information"
+    },
+    {
+      "id": 397,
+      "timestamp": 179.6,
+      "word": "flow"
+    },
+    {
+      "id": 398,
+      "timestamp": 180.6,
+      "word": "Transformers"
+    },
+    {
+      "id": 399,
+      "timestamp": 181.1,
+      "word": "are"
+    },
+    {
+      "id": 400,
+      "timestamp": 181.5,
+      "word": "a"
+    },
+    {
+      "id": 401,
+      "timestamp": 182.0,
+      "word": "newer"
+    },
+    {
+      "id": 402,
+      "timestamp": 182.4,
+      "word": "architecture"
+    },
+    {
+      "id": 403,
+      "timestamp": 182.8,
+      "word": "that"
+    },
+    {
+      "id": 404,
+      "timestamp": 183.3,
+      "word": "has"
+    },
+    {
+      "id": 405,
+      "timestamp": 183.7,
+      "word": "revolutionized"
+    },
+    {
+      "id": 406,
+      "timestamp": 184.0,
+      "word": "natural"
+    },
+    {
+      "id": 407,
+      "timestamp": 184.4,
+      "word": "language"
+    },
+    {
+      "id": 408,
+      "timestamp": 184.7,
+      "word": "processing"
+    },
+    {
+      "id": 409,
+      "timestamp": 185.7,
+      "word": "They"
+    },
+    {
+      "id": 410,
+      "timestamp": 186.0,
+      "word": "use"
+    },
+    {
+      "id": 411,
+      "timestamp": 186.4,
+      "word": "self"
+    },
+    {
+      "id": 412,
+      "timestamp": 186.8,
+      "word": "attention"
+    },
+    {
+      "id": 413,
+      "timestamp": 187.2,
+      "word": "mechanisms"
+    },
+    {
+      "id": 414,
+      "timestamp": 187.7,
+      "word": "to"
+    },
+    {
+      "id": 415,
+      "timestamp": 188.2,
+      "word": "process"
+    },
+    {
+      "id": 416,
+      "timestamp": 188.5,
+      "word": "entire"
+    },
+    {
+      "id": 417,
+      "timestamp": 188.9,
+      "word": "sequences"
+    },
+    {
+      "id": 418,
+      "timestamp": 189.3,
+      "word": "in"
+    },
+    {
+      "id": 419,
+      "timestamp": 189.6,
+      "word": "parallel"
+    },
+    {
+      "id": 420,
+      "timestamp": 190.6,
+      "word": "This"
+    },
+    {
+      "id": 421,
+      "timestamp": 190.9,
+      "word": "makes"
+    },
+    {
+      "id": 422,
+      "timestamp": 191.3,
+      "word": "them"
+    },
+    {
+      "id": 423,
+      "timestamp": 191.8,
+      "word": "much"
+    },
+    {
+      "id": 424,
+      "timestamp": 192.1,
+      "word": "faster"
+    },
+    {
+      "id": 425,
+      "timestamp": 192.6,
+      "word": "to"
+    },
+    {
+      "id": 426,
+      "timestamp": 193.0,
+      "word": "train"
+    },
+    {
+      "id": 427,
+      "timestamp": 193.3,
+      "word": "than"
+    },
+    {
+      "id": 428,
+      "timestamp": 193.7,
+      "word": "RNNs"
+    },
+    {
+      "id": 429,
+      "timestamp": 194.0,
+      "word": "while"
+    },
+    {
+      "id": 430,
+      "timestamp": 194.3,
+      "word": "achieving"
+    },
+    {
+      "id": 431,
+      "timestamp": 194.6,
+      "word": "better"
+    },
+    {
+      "id": 432,
+      "timestamp": 195.1,
+      "word": "performance"
+    },
+    {
+      "id": 433,
+      "timestamp": 196.5,
+      "word": "BERT"
+    },
+    {
+      "id": 434,
+      "timestamp": 196.8,
+      "word": "GPT"
+    },
+    {
+      "id": 435,
+      "timestamp": 197.3,
+      "word": "and"
+    },
+    {
+      "id": 436,
+      "timestamp": 197.6,
+      "word": "other"
+    },
+    {
+      "id": 437,
+      "timestamp": 198.0,
+      "word": "transformer"
+    },
+    {
+      "id": 438,
+      "timestamp": 198.4,
+      "word": "models"
+    },
+    {
+      "id": 439,
+      "timestamp": 198.9,
+      "word": "have"
+    },
+    {
+      "id": 440,
+      "timestamp": 199.3,
+      "word": "achieved"
+    },
+    {
+      "id": 441,
+      "timestamp": 199.6,
+      "word": "state"
+    },
+    {
+      "id": 442,
+      "timestamp": 200.1,
+      "word": "of"
+    },
+    {
+      "id": 443,
+      "timestamp": 200.4,
+      "word": "the"
+    },
+    {
+      "id": 444,
+      "timestamp": 200.7,
+      "word": "art"
+    },
+    {
+      "id": 445,
+      "timestamp": 201.2,
+      "word": "results"
+    },
+    {
+      "id": 446,
+      "timestamp": 201.6,
+      "word": "on"
+    },
+    {
+      "id": 447,
+      "timestamp": 202.0,
+      "word": "many"
+    },
+    {
+      "id": 448,
+      "timestamp": 202.5,
+      "word": "tasks"
+    },
+    {
+      "id": 449,
+      "timestamp": 203.5,
+      "word": "Regularization"
+    },
+    {
+      "id": 450,
+      "timestamp": 204.0,
+      "word": "techniques"
+    },
+    {
+      "id": 451,
+      "timestamp": 204.4,
+      "word": "help"
+    },
+    {
+      "id": 452,
+      "timestamp": 204.8,
+      "word": "prevent"
+    },
+    {
+      "id": 453,
+      "timestamp": 205.1,
+      "word": "overfitting"
+    },
+    {
+      "id": 454,
+      "timestamp": 205.5,
+      "word": "when"
+    },
+    {
+      "id": 455,
+      "timestamp": 206.0,
+      "word": "training"
+    },
+    {
+      "id": 456,
+      "timestamp": 206.5,
+      "word": "deep"
+    },
+    {
+      "id": 457,
+      "timestamp": 206.8,
+      "word": "neural"
+    },
+    {
+      "id": 458,
+      "timestamp": 207.1,
+      "word": "networks"
+    },
+    {
+      "id": 459,
+      "timestamp": 208.2,
+      "word": "Dropout"
+    },
+    {
+      "id": 460,
+      "timestamp": 208.6,
+      "word": "randomly"
+    },
+    {
+      "id": 461,
+      "timestamp": 209.0,
+      "word": "deactivates"
+    },
+    {
+      "id": 462,
+      "timestamp": 209.4,
+      "word": "neurons"
+    },
+    {
+      "id": 463,
+      "timestamp": 209.9,
+      "word": "during"
+    },
+    {
+      "id": 464,
+      "timestamp": 210.3,
+      "word": "training"
+    },
+    {
+      "id": 465,
+      "timestamp": 210.8,
+      "word": "forcing"
+    },
+    {
+      "id": 466,
+      "timestamp": 211.1,
+      "word": "the"
+    },
+    {
+      "id": 467,
+      "timestamp": 211.6,
+      "word": "network"
+    },
+    {
+      "id": 468,
+      "timestamp": 212.0,
+      "word": "to"
+    },
+    {
+      "id": 469,
+      "timestamp": 212.5,
+      "word": "learn"
+    },
+    {
+      "id": 470,
+      "timestamp": 212.9,
+      "word": "robust"
+    },
+    {
+      "id": 471,
+      "timestamp": 213.2,
+      "word": "features"
+    },
+    {
+      "id": 472,
+      "timestamp": 214.4,
+      "word": "Batch"
+    },
+    {
+      "id": 473,
+      "timestamp": 214.8,
+      "word": "normalization"
+    },
+    {
+      "id": 474,
+      "timestamp": 215.3,
+      "word": "normalizes"
+    },
+    {
+      "id": 475,
+      "timestamp": 215.7,
+      "word": "inputs"
+    },
+    {
+      "id": 476,
+      "timestamp": 216.0,
+      "word": "to"
+    },
+    {
+      "id": 477,
+      "timestamp": 216.4,
+      "word": "each"
+    },
+    {
+      "id": 478,
+      "timestamp": 216.7,
+      "word": "layer"
+    },
+    {
+      "id": 479,
+      "timestamp": 217.1,
+      "word": "improving"
+    },
+    {
+      "id": 480,
+      "timestamp": 217.5,
+      "word": "training"
+    },
+    {
+      "id": 481,
+      "timestamp": 217.9,
+      "word": "stability"
+    },
+    {
+      "id": 482,
+      "timestamp": 218.2,
+      "word": "and"
+    },
+    {
+      "id": 483,
+      "timestamp": 218.6,
+      "word": "speed"
+    },
+    {
+      "id": 484,
+      "timestamp": 219.8,
+      "word": "Data"
+    },
+    {
+      "id": 485,
+      "timestamp": 220.2,
+      "word": "augmentation"
+    },
+    {
+      "id": 486,
+      "timestamp": 220.7,
+      "word": "artificially"
+    },
+    {
+      "id": 487,
+      "timestamp": 221.1,
+      "word": "increases"
+    },
+    {
+      "id": 488,
+      "timestamp": 221.4,
+      "word": "training"
+    },
+    {
+      "id": 489,
+      "timestamp": 221.9,
+      "word": "data"
+    },
+    {
+      "id": 490,
+      "timestamp": 222.4,
+      "word": "by"
+    },
+    {
+      "id": 491,
+      "timestamp": 222.8,
+      "word": "applying"
+    },
+    {
+      "id": 492,
+      "timestamp": 223.2,
+      "word": "transformations"
+    },
+    {
+      "id": 493,
+      "timestamp": 223.6,
+      "word": "like"
+    },
+    {
+      "id": 494,
+      "timestamp": 224.1,
+      "word": "rotation"
+    },
+    {
+      "id": 495,
+      "timestamp": 224.5,
+      "word": "and"
+    },
+    {
+      "id": 496,
+      "timestamp": 224.9,
+      "word": "flipping"
+    },
+    {
+      "id": 497,
+      "timestamp": 225.8,
+      "word": "Transfer"
+    },
+    {
+      "id": 498,
+      "timestamp": 226.2,
+      "word": "learning"
+    },
+    {
+      "id": 499,
+      "timestamp": 226.6,
+      "word": "allows"
+    },
+    {
+      "id": 500,
+      "timestamp": 227.1,
+      "word": "us"
+    },
+    {
+      "id": 501,
+      "timestamp": 227.5,
+      "word": "to"
+    },
+    {
+      "id": 502,
+      "timestamp": 227.9,
+      "word": "use"
+    },
+    {
+      "id": 503,
+      "timestamp": 228.3,
+      "word": "pre"
+    },
+    {
+      "id": 504,
+      "timestamp": 228.7,
+      "word": "trained"
+    },
+    {
+      "id": 505,
+      "timestamp": 229.1,
+      "word": "models"
+    },
+    {
+      "id": 506,
+      "timestamp": 229.6,
+      "word": "as"
+    },
+    {
+      "id": 507,
+      "timestamp": 230.0,
+      "word": "starting"
+    },
+    {
+      "id": 508,
+      "timestamp": 230.4,
+      "word": "points"
+    },
+    {
+      "id": 509,
+      "timestamp": 230.8,
+      "word": "for"
+    },
+    {
+      "id": 510,
+      "timestamp": 231.2,
+      "word": "new"
+    },
+    {
+      "id": 511,
+      "timestamp": 231.6,
+      "word": "tasks"
+    },
+    {
+      "id": 512,
+      "timestamp": 232.7,
+      "word": "This"
+    },
+    {
+      "id": 513,
+      "timestamp": 233.1,
+      "word": "is"
+    },
+    {
+      "id": 514,
+      "timestamp": 233.4,
+      "word": "especially"
+    },
+    {
+      "id": 515,
+      "timestamp": 233.8,
+      "word": "useful"
+    },
+    {
+      "id": 516,
+      "timestamp": 234.3,
+      "word": "when"
+    },
+    {
+      "id": 517,
+      "timestamp": 234.6,
+      "word": "we"
+    },
+    {
+      "id": 518,
+      "timestamp": 235.0,
+      "word": "have"
+    },
+    {
+      "id": 519,
+      "timestamp": 235.4,
+      "word": "limited"
+    },
+    {
+      "id": 520,
+      "timestamp": 235.9,
+      "word": "training"
+    },
+    {
+      "id": 521,
+      "timestamp": 236.4,
+      "word": "data"
+    },
+    {
+      "id": 522,
+      "timestamp": 236.8,
+      "word": "for"
+    },
+    {
+      "id": 523,
+      "timestamp": 237.3,
+      "word": "our"
+    },
+    {
+      "id": 524,
+      "timestamp": 237.8,
+      "word": "specific"
+    },
+    {
+      "id": 525,
+      "timestamp": 238.1,
+      "word": "problem"
+    },
+    {
+      "id": 526,
+      "timestamp": 239.1,
+      "word": "Fine"
+    },
+    {
+      "id": 527,
+      "timestamp": 239.6,
+      "word": "tuning"
+    },
+    {
+      "id": 528,
+      "timestamp": 240.0,
+      "word": "involves"
+    },
+    {
+      "id": 529,
+      "timestamp": 240.4,
+      "word": "training"
+    },
+    {
+      "id": 530,
+      "timestamp": 240.7,
+      "word": "just"
+    },
+    {
+      "id": 531,
+      "timestamp": 241.1,
+      "word": "the"
+    },
+    {
+      "id": 532,
+      "timestamp": 241.5,
+      "word": "last"
+    },
+    {
+      "id": 533,
+      "timestamp": 241.9,
+      "word": "few"
+    },
+    {
+      "id": 534,
+      "timestamp": 242.2,
+      "word": "layers"
+    },
+    {
+      "id": 535,
+      "timestamp": 242.6,
+      "word": "while"
+    },
+    {
+      "id": 536,
+      "timestamp": 243.0,
+      "word": "keeping"
+    },
+    {
+      "id": 537,
+      "timestamp": 243.4,
+      "word": "earlier"
+    },
+    {
+      "id": 538,
+      "timestamp": 243.8,
+      "word": "layers"
+    },
+    {
+      "id": 539,
+      "timestamp": 244.1,
+      "word": "frozen"
+    },
+    {
+      "id": 540,
+      "timestamp": 245.1,
+      "word": "Deep"
+    },
+    {
+      "id": 541,
+      "timestamp": 245.5,
+      "word": "learning"
+    },
+    {
+      "id": 542,
+      "timestamp": 246.0,
+      "word": "frameworks"
+    },
+    {
+      "id": 543,
+      "timestamp": 246.3,
+      "word": "like"
+    },
+    {
+      "id": 544,
+      "timestamp": 246.8,
+      "word": "TensorFlow"
+    },
+    {
+      "id": 545,
+      "timestamp": 247.1,
+      "word": "and"
+    },
+    {
+      "id": 546,
+      "timestamp": 247.6,
+      "word": "PyTorch"
+    },
+    {
+      "id": 547,
+      "timestamp": 247.9,
+      "word": "make"
+    },
+    {
+      "id": 548,
+      "timestamp": 248.3,
+      "word": "it"
+    },
+    {
+      "id": 549,
+      "timestamp": 248.8,
+      "word": "easy"
+    },
+    {
+      "id": 550,
+      "timestamp": 249.1,
+      "word": "to"
+    },
+    {
+      "id": 551,
+      "timestamp": 249.5,
+      "word": "build"
+    },
+    {
+      "id": 552,
+      "timestamp": 250.0,
+      "word": "and"
+    },
+    {
+      "id": 553,
+      "timestamp": 250.5,
+      "word": "train"
+    },
+    {
+      "id": 554,
+      "timestamp": 250.8,
+      "word": "models"
+    },
+    {
+      "id": 555,
+      "timestamp": 252.1,
+      "word": "These"
+    },
+    {
+      "id": 556,
+      "timestamp": 252.4,
+      "word": "frameworks"
+    },
+    {
+      "id": 557,
+      "timestamp": 252.9,
+      "word": "provide"
+    },
+    {
+      "id": 558,
+      "timestamp": 253.3,
+      "word": "automatic"
+    },
+    {
+      "id": 559,
+      "timestamp": 253.6,
+      "word": "differentiation"
+    },
+    {
+      "id": 560,
+      "timestamp": 254.0,
+      "word": "GPU"
+    },
+    {
+      "id": 561,
+      "timestamp": 254.5,
+      "word": "acceleration"
+    },
+    {
+      "id": 562,
+      "timestamp": 254.9,
+      "word": "and"
+    },
+    {
+      "id": 563,
+      "timestamp": 255.3,
+      "word": "pre"
+    },
+    {
+      "id": 564,
+      "timestamp": 255.6,
+      "word": "built"
+    },
+    {
+      "id": 565,
+      "timestamp": 256.1,
+      "word": "layers"
+    },
+    {
+      "id": 566,
+      "timestamp": 257.4,
+      "word": "Choosing"
+    },
+    {
+      "id": 567,
+      "timestamp": 257.9,
+      "word": "the"
+    },
+    {
+      "id": 568,
+      "timestamp": 258.4,
+      "word": "right"
+    },
+    {
+      "id": 569,
+      "timestamp": 258.8,
+      "word": "architecture"
+    },
+    {
+      "id": 570,
+      "timestamp": 259.3,
+      "word": "depends"
+    },
+    {
+      "id": 571,
+      "timestamp": 259.7,
+      "word": "on"
+    },
+    {
+      "id": 572,
+      "timestamp": 260.1,
+      "word": "your"
+    },
+    {
+      "id": 573,
+      "timestamp": 260.5,
+      "word": "data"
+    },
+    {
+      "id": 574,
+      "timestamp": 261.0,
+      "word": "type"
+    },
+    {
+      "id": 575,
+      "timestamp": 261.4,
+      "word": "and"
+    },
+    {
+      "id": 576,
+      "timestamp": 261.8,
+      "word": "problem"
+    },
+    {
+      "id": 577,
+      "timestamp": 262.2,
+      "word": "requirements"
+    },
+    {
+      "id": 578,
+      "timestamp": 263.2,
+      "word": "For"
+    },
+    {
+      "id": 579,
+      "timestamp": 263.6,
+      "word": "image"
+    },
+    {
+      "id": 580,
+      "timestamp": 264.1,
+      "word": "classification"
+    },
+    {
+      "id": 581,
+      "timestamp": 264.5,
+      "word": "CNNs"
+    },
+    {
+      "id": 582,
+      "timestamp": 264.8,
+      "word": "are"
+    },
+    {
+      "id": 583,
+      "timestamp": 265.2,
+      "word": "the"
+    },
+    {
+      "id": 584,
+      "timestamp": 265.5,
+      "word": "standard"
+    },
+    {
+      "id": 585,
+      "timestamp": 265.9,
+      "word": "choice"
+    },
+    {
+      "id": 586,
+      "timestamp": 266.3,
+      "word": "with"
+    },
+    {
+      "id": 587,
+      "timestamp": 266.7,
+      "word": "architectures"
+    },
+    {
+      "id": 588,
+      "timestamp": 267.2,
+      "word": "like"
+    },
+    {
+      "id": 589,
+      "timestamp": 267.5,
+      "word": "ResNet"
+    },
+    {
+      "id": 590,
+      "timestamp": 267.9,
+      "word": "and"
+    },
+    {
+      "id": 591,
+      "timestamp": 268.2,
+      "word": "EfficientNet"
+    },
+    {
+      "id": 592,
+      "timestamp": 269.2,
+      "word": "For"
+    },
+    {
+      "id": 593,
+      "timestamp": 269.6,
+      "word": "natural"
+    },
+    {
+      "id": 594,
+      "timestamp": 270.0,
+      "word": "language"
+    },
+    {
+      "id": 595,
+      "timestamp": 270.5,
+      "word": "processing"
+    },
+    {
+      "id": 596,
+      "timestamp": 270.8,
+      "word": "transformers"
+    },
+    {
+      "id": 597,
+      "timestamp": 271.3,
+      "word": "like"
+    },
+    {
+      "id": 598,
+      "timestamp": 271.8,
+      "word": "BERT"
+    },
+    {
+      "id": 599,
+      "timestamp": 272.2,
+      "word": "and"
+    },
+    {
+      "id": 600,
+      "timestamp": 272.7,
+      "word": "GPT"
+    },
+    {
+      "id": 601,
+      "timestamp": 273.1,
+      "word": "are"
+    },
+    {
+      "id": 602,
+      "timestamp": 273.4,
+      "word": "most"
+    },
+    {
+      "id": 603,
+      "timestamp": 273.9,
+      "word": "effective"
+    },
+    {
+      "id": 604,
+      "timestamp": 274.9,
+      "word": "For"
+    },
+    {
+      "id": 605,
+      "timestamp": 275.3,
+      "word": "time"
+    },
+    {
+      "id": 606,
+      "timestamp": 275.8,
+      "word": "series"
+    },
+    {
+      "id": 607,
+      "timestamp": 276.3,
+      "word": "forecasting"
+    },
+    {
+      "id": 608,
+      "timestamp": 276.7,
+      "word": "RNNs"
+    },
+    {
+      "id": 609,
+      "timestamp": 277.2,
+      "word": "LSTMs"
+    },
+    {
+      "id": 610,
+      "timestamp": 277.6,
+      "word": "or"
+    },
+    {
+      "id": 611,
+      "timestamp": 278.1,
+      "word": "temporal"
+    },
+    {
+      "id": 612,
+      "timestamp": 278.6,
+      "word": "convolutional"
+    },
+    {
+      "id": 613,
+      "timestamp": 279.0,
+      "word": "networks"
+    },
+    {
+      "id": 614,
+      "timestamp": 279.4,
+      "word": "work"
+    },
+    {
+      "id": 615,
+      "timestamp": 279.8,
+      "word": "well"
+    },
+    {
+      "id": 616,
+      "timestamp": 281.1,
+      "word": "Hyperparameter"
+    },
+    {
+      "id": 617,
+      "timestamp": 281.5,
+      "word": "tuning"
+    },
+    {
+      "id": 618,
+      "timestamp": 282.0,
+      "word": "is"
+    },
+    {
+      "id": 619,
+      "timestamp": 282.5,
+      "word": "essential"
+    },
+    {
+      "id": 620,
+      "timestamp": 282.8,
+      "word": "for"
+    },
+    {
+      "id": 621,
+      "timestamp": 283.2,
+      "word": "achieving"
+    },
+    {
+      "id": 622,
+      "timestamp": 283.5,
+      "word": "good"
+    },
+    {
+      "id": 623,
+      "timestamp": 284.0,
+      "word": "performance"
+    },
+    {
+      "id": 624,
+      "timestamp": 284.5,
+      "word": "with"
+    },
+    {
+      "id": 625,
+      "timestamp": 284.9,
+      "word": "deep"
+    },
+    {
+      "id": 626,
+      "timestamp": 285.3,
+      "word": "learning"
+    },
+    {
+      "id": 627,
+      "timestamp": 285.6,
+      "word": "models"
+    },
+    {
+      "id": 628,
+      "timestamp": 286.9,
+      "word": "Important"
+    },
+    {
+      "id": 629,
+      "timestamp": 287.4,
+      "word": "hyperparameters"
+    },
+    {
+      "id": 630,
+      "timestamp": 287.7,
+      "word": "include"
+    },
+    {
+      "id": 631,
+      "timestamp": 288.1,
+      "word": "learning"
+    },
+    {
+      "id": 632,
+      "timestamp": 288.6,
+      "word": "rate"
+    },
+    {
+      "id": 633,
+      "timestamp": 289.0,
+      "word": "batch"
+    },
+    {
+      "id": 634,
+      "timestamp": 289.3,
+      "word": "size"
+    },
+    {
+      "id": 635,
+      "timestamp": 289.6,
+      "word": "number"
+    },
+    {
+      "id": 636,
+      "timestamp": 290.1,
+      "word": "of"
+    },
+    {
+      "id": 637,
+      "timestamp": 290.5,
+      "word": "layers"
+    },
+    {
+      "id": 638,
+      "timestamp": 290.9,
+      "word": "and"
+    },
+    {
+      "id": 639,
+      "timestamp": 291.4,
+      "word": "neurons"
+    },
+    {
+      "id": 640,
+      "timestamp": 292.8,
+      "word": "Grid"
+    },
+    {
+      "id": 641,
+      "timestamp": 293.2,
+      "word": "search"
+    },
+    {
+      "id": 642,
+      "timestamp": 293.7,
+      "word": "random"
+    },
+    {
+      "id": 643,
+      "timestamp": 294.1,
+      "word": "search"
+    },
+    {
+      "id": 644,
+      "timestamp": 294.4,
+      "word": "and"
+    },
+    {
+      "id": 645,
+      "timestamp": 294.7,
+      "word": "Bayesian"
+    },
+    {
+      "id": 646,
+      "timestamp": 295.0,
+      "word": "optimization"
+    },
+    {
+      "id": 647,
+      "timestamp": 295.5,
+      "word": "are"
+    },
+    {
+      "id": 648,
+      "timestamp": 295.9,
+      "word": "common"
+    },
+    {
+      "id": 649,
+      "timestamp": 296.3,
+      "word": "tuning"
+    },
+    {
+      "id": 650,
+      "timestamp": 296.7,
+      "word": "strategies"
+    },
+    {
+      "id": 651,
+      "timestamp": 297.6,
+      "word": "Cross"
+    },
+    {
+      "id": 652,
+      "timestamp": 298.1,
+      "word": "validation"
+    },
+    {
+      "id": 653,
+      "timestamp": 298.5,
+      "word": "helps"
+    },
+    {
+      "id": 654,
+      "timestamp": 299.0,
+      "word": "ensure"
+    },
+    {
+      "id": 655,
+      "timestamp": 299.5,
+      "word": "your"
+    },
+    {
+      "id": 656,
+      "timestamp": 299.8,
+      "word": "model"
+    },
+    {
+      "id": 657,
+      "timestamp": 300.1,
+      "word": "generalizes"
+    },
+    {
+      "id": 658,
+      "timestamp": 300.6,
+      "word": "well"
+    },
+    {
+      "id": 659,
+      "timestamp": 301.1,
+      "word": "to"
+    },
+    {
+      "id": 660,
+      "timestamp": 301.4,
+      "word": "unseen"
+    },
+    {
+      "id": 661,
+      "timestamp": 301.8,
+      "word": "data"
+    },
+    {
+      "id": 662,
+      "timestamp": 302.8,
+      "word": "Monitoring"
+    },
+    {
+      "id": 663,
+      "timestamp": 303.3,
+      "word": "training"
+    },
+    {
+      "id": 664,
+      "timestamp": 303.7,
+      "word": "and"
+    },
+    {
+      "id": 665,
+      "timestamp": 304.2,
+      "word": "validation"
+    },
+    {
+      "id": 666,
+      "timestamp": 304.6,
+      "word": "loss"
+    },
+    {
+      "id": 667,
+      "timestamp": 305.0,
+      "word": "helps"
+    },
+    {
+      "id": 668,
+      "timestamp": 305.5,
+      "word": "detect"
+    },
+    {
+      "id": 669,
+      "timestamp": 306.0,
+      "word": "overfitting"
+    },
+    {
+      "id": 670,
+      "timestamp": 306.4,
+      "word": "early"
+    },
+    {
+      "id": 671,
+      "timestamp": 307.3,
+      "word": "If"
+    },
+    {
+      "id": 672,
+      "timestamp": 307.7,
+      "word": "validation"
+    },
+    {
+      "id": 673,
+      "timestamp": 308.0,
+      "word": "loss"
+    },
+    {
+      "id": 674,
+      "timestamp": 308.3,
+      "word": "increases"
+    },
+    {
+      "id": 675,
+      "timestamp": 308.7,
+      "word": "while"
+    },
+    {
+      "id": 676,
+      "timestamp": 309.2,
+      "word": "training"
+    },
+    {
+      "id": 677,
+      "timestamp": 309.7,
+      "word": "loss"
+    },
+    {
+      "id": 678,
+      "timestamp": 310.2,
+      "word": "decreases"
+    },
+    {
+      "id": 679,
+      "timestamp": 310.5,
+      "word": "you"
+    },
+    {
+      "id": 680,
+      "timestamp": 310.8,
+      "word": "are"
+    },
+    {
+      "id": 681,
+      "timestamp": 311.3,
+      "word": "overfitting"
+    },
+    {
+      "id": 682,
+      "timestamp": 312.4,
+      "word": "Early"
+    },
+    {
+      "id": 683,
+      "timestamp": 312.8,
+      "word": "stopping"
+    },
+    {
+      "id": 684,
+      "timestamp": 313.2,
+      "word": "halts"
+    },
+    {
+      "id": 685,
+      "timestamp": 313.6,
+      "word": "training"
+    },
+    {
+      "id": 686,
+      "timestamp": 314.0,
+      "word": "when"
+    },
+    {
+      "id": 687,
+      "timestamp": 314.5,
+      "word": "validation"
+    },
+    {
+      "id": 688,
+      "timestamp": 314.8,
+      "word": "performance"
+    },
+    {
+      "id": 689,
+      "timestamp": 315.2,
+      "word": "stops"
+    },
+    {
+      "id": 690,
+      "timestamp": 315.6,
+      "word": "improving"
+    },
+    {
+      "id": 691,
+      "timestamp": 316.9,
+      "word": "Model"
+    },
+    {
+      "id": 692,
+      "timestamp": 317.4,
+      "word": "checkpointing"
+    },
+    {
+      "id": 693,
+      "timestamp": 317.8,
+      "word": "saves"
+    },
+    {
+      "id": 694,
+      "timestamp": 318.2,
+      "word": "the"
+    },
+    {
+      "id": 695,
+      "timestamp": 318.6,
+      "word": "best"
+    },
+    {
+      "id": 696,
+      "timestamp": 319.0,
+      "word": "model"
+    },
+    {
+      "id": 697,
+      "timestamp": 319.3,
+      "word": "weights"
+    },
+    {
+      "id": 698,
+      "timestamp": 319.8,
+      "word": "during"
+    },
+    {
+      "id": 699,
+      "timestamp": 320.2,
+      "word": "training"
+    },
+    {
+      "id": 700,
+      "timestamp": 321.4,
+      "word": "Ensemble"
+    },
+    {
+      "id": 701,
+      "timestamp": 321.9,
+      "word": "methods"
+    },
+    {
+      "id": 702,
+      "timestamp": 322.3,
+      "word": "combine"
+    },
+    {
+      "id": 703,
+      "timestamp": 322.8,
+      "word": "multiple"
+    },
+    {
+      "id": 704,
+      "timestamp": 323.2,
+      "word": "models"
+    },
+    {
+      "id": 705,
+      "timestamp": 323.5,
+      "word": "to"
+    },
+    {
+      "id": 706,
+      "timestamp": 324.0,
+      "word": "improve"
+    },
+    {
+      "id": 707,
+      "timestamp": 324.3,
+      "word": "prediction"
+    },
+    {
+      "id": 708,
+      "timestamp": 324.7,
+      "word": "accuracy"
+    },
+    {
+      "id": 709,
+      "timestamp": 325.1,
+      "word": "and"
+    },
+    {
+      "id": 710,
+      "timestamp": 325.5,
+      "word": "robustness"
+    },
+    {
+      "id": 711,
+      "timestamp": 326.7,
+      "word": "Deep"
+    },
+    {
+      "id": 712,
+      "timestamp": 327.0,
+      "word": "learning"
+    },
+    {
+      "id": 713,
+      "timestamp": 327.5,
+      "word": "has"
+    },
+    {
+      "id": 714,
+      "timestamp": 327.9,
+      "word": "achieved"
+    },
+    {
+      "id": 715,
+      "timestamp": 328.4,
+      "word": "remarkable"
+    },
+    {
+      "id": 716,
+      "timestamp": 328.9,
+      "word": "success"
+    },
+    {
+      "id": 717,
+      "timestamp": 329.3,
+      "word": "in"
+    },
+    {
+      "id": 718,
+      "timestamp": 329.6,
+      "word": "computer"
+    },
+    {
+      "id": 719,
+      "timestamp": 330.0,
+      "word": "vision"
+    },
+    {
+      "id": 720,
+      "timestamp": 330.3,
+      "word": "speech"
+    },
+    {
+      "id": 721,
+      "timestamp": 330.6,
+      "word": "recognition"
+    },
+    {
+      "id": 722,
+      "timestamp": 331.1,
+      "word": "and"
+    },
+    {
+      "id": 723,
+      "timestamp": 331.4,
+      "word": "game"
+    },
+    {
+      "id": 724,
+      "timestamp": 331.9,
+      "word": "playing"
+    },
+    {
+      "id": 725,
+      "timestamp": 333.1,
+      "word": "However"
+    },
+    {
+      "id": 726,
+      "timestamp": 333.6,
+      "word": "it"
+    },
+    {
+      "id": 727,
+      "timestamp": 333.9,
+      "word": "requires"
+    },
+    {
+      "id": 728,
+      "timestamp": 334.2,
+      "word": "large"
+    },
+    {
+      "id": 729,
+      "timestamp": 334.7,
+      "word": "amounts"
+    },
+    {
+      "id": 730,
+      "timestamp": 335.1,
+      "word": "of"
+    },
+    {
+      "id": 731,
+      "timestamp": 335.6,
+      "word": "data"
+    },
+    {
+      "id": 732,
+      "timestamp": 335.9,
+      "word": "and"
+    },
+    {
+      "id": 733,
+      "timestamp": 336.3,
+      "word": "computational"
+    },
+    {
+      "id": 734,
+      "timestamp": 336.7,
+      "word": "resources"
+    },
+    {
+      "id": 735,
+      "timestamp": 337.8,
+      "word": "Interpretability"
+    },
+    {
+      "id": 736,
+      "timestamp": 338.1,
+      "word": "remains"
+    },
+    {
+      "id": 737,
+      "timestamp": 338.6,
+      "word": "a"
+    },
+    {
+      "id": 738,
+      "timestamp": 339.0,
+      "word": "challenge"
+    },
+    {
+      "id": 739,
+      "timestamp": 339.5,
+      "word": "as"
+    },
+    {
+      "id": 740,
+      "timestamp": 339.8,
+      "word": "deep"
+    },
+    {
+      "id": 741,
+      "timestamp": 340.1,
+      "word": "networks"
+    },
+    {
+      "id": 742,
+      "timestamp": 340.6,
+      "word": "are"
+    },
+    {
+      "id": 743,
+      "timestamp": 341.0,
+      "word": "often"
+    },
+    {
+      "id": 744,
+      "timestamp": 341.4,
+      "word": "seen"
+    },
+    {
+      "id": 745,
+      "timestamp": 341.8,
+      "word": "as"
+    },
+    {
+      "id": 746,
+      "timestamp": 342.2,
+      "word": "black"
+    },
+    {
+      "id": 747,
+      "timestamp": 342.6,
+      "word": "boxes"
+    },
+    {
+      "id": 748,
+      "timestamp": 343.7,
+      "word": "Techniques"
+    },
+    {
+      "id": 749,
+      "timestamp": 344.1,
+      "word": "like"
+    },
+    {
+      "id": 750,
+      "timestamp": 344.5,
+      "word": "attention"
+    },
+    {
+      "id": 751,
+      "timestamp": 344.9,
+      "word": "visualization"
+    },
+    {
+      "id": 752,
+      "timestamp": 345.2,
+      "word": "and"
+    },
+    {
+      "id": 753,
+      "timestamp": 345.7,
+      "word": "saliency"
+    },
+    {
+      "id": 754,
+      "timestamp": 346.0,
+      "word": "maps"
+    },
+    {
+      "id": 755,
+      "timestamp": 346.4,
+      "word": "help"
+    },
+    {
+      "id": 756,
+      "timestamp": 346.8,
+      "word": "understand"
+    },
+    {
+      "id": 757,
+      "timestamp": 347.3,
+      "word": "model"
+    },
+    {
+      "id": 758,
+      "timestamp": 347.7,
+      "word": "decisions"
+    },
+    {
+      "id": 759,
+      "timestamp": 348.6,
+      "word": "Ethical"
+    },
+    {
+      "id": 760,
+      "timestamp": 349.0,
+      "word": "considerations"
+    },
+    {
+      "id": 761,
+      "timestamp": 349.3,
+      "word": "include"
+    },
+    {
+      "id": 762,
+      "timestamp": 349.6,
+      "word": "bias"
+    },
+    {
+      "id": 763,
+      "timestamp": 350.1,
+      "word": "in"
+    },
+    {
+      "id": 764,
+      "timestamp": 350.5,
+      "word": "training"
+    },
+    {
+      "id": 765,
+      "timestamp": 350.8,
+      "word": "data"
+    },
+    {
+      "id": 766,
+      "timestamp": 351.1,
+      "word": "privacy"
+    },
+    {
+      "id": 767,
+      "timestamp": 351.5,
+      "word": "concerns"
+    },
+    {
+      "id": 768,
+      "timestamp": 351.9,
+      "word": "and"
+    },
+    {
+      "id": 769,
+      "timestamp": 352.3,
+      "word": "potential"
+    },
+    {
+      "id": 770,
+      "timestamp": 352.8,
+      "word": "misuse"
+    },
+    {
+      "id": 771,
+      "timestamp": 354.0,
+      "word": "As"
+    },
+    {
+      "id": 772,
+      "timestamp": 354.5,
+      "word": "you"
+    },
+    {
+      "id": 773,
+      "timestamp": 354.8,
+      "word": "continue"
+    },
+    {
+      "id": 774,
+      "timestamp": 355.1,
+      "word": "learning"
+    },
+    {
+      "id": 775,
+      "timestamp": 355.4,
+      "word": "focus"
+    },
+    {
+      "id": 776,
+      "timestamp": 355.8,
+      "word": "on"
+    },
+    {
+      "id": 777,
+      "timestamp": 356.2,
+      "word": "implementing"
+    },
+    {
+      "id": 778,
+      "timestamp": 356.5,
+      "word": "models"
+    },
+    {
+      "id": 779,
+      "timestamp": 357.0,
+      "word": "and"
+    },
+    {
+      "id": 780,
+      "timestamp": 357.5,
+      "word": "experimenting"
+    },
+    {
+      "id": 781,
+      "timestamp": 357.9,
+      "word": "with"
+    },
+    {
+      "id": 782,
+      "timestamp": 358.4,
+      "word": "real"
+    },
+    {
+      "id": 783,
+      "timestamp": 358.7,
+      "word": "datasets"
+    },
+    {
+      "id": 784,
+      "timestamp": 359.7,
+      "word": "Start"
+    },
+    {
+      "id": 785,
+      "timestamp": 360.0,
+      "word": "with"
+    },
+    {
+      "id": 786,
+      "timestamp": 360.3,
+      "word": "simple"
+    },
+    {
+      "id": 787,
+      "timestamp": 360.7,
+      "word": "problems"
+    },
+    {
+      "id": 788,
+      "timestamp": 361.2,
+      "word": "and"
+    },
+    {
+      "id": 789,
+      "timestamp": 361.6,
+      "word": "gradually"
+    },
+    {
+      "id": 790,
+      "timestamp": 361.9,
+      "word": "increase"
+    },
+    {
+      "id": 791,
+      "timestamp": 362.2,
+      "word": "complexity"
+    },
+    {
+      "id": 792,
+      "timestamp": 362.7,
+      "word": "as"
+    },
+    {
+      "id": 793,
+      "timestamp": 363.2,
+      "word": "you"
+    },
+    {
+      "id": 794,
+      "timestamp": 363.6,
+      "word": "gain"
+    },
+    {
+      "id": 795,
+      "timestamp": 364.0,
+      "word": "experience"
+    },
+    {
+      "id": 796,
+      "timestamp": 364.8,
+      "word": "Thank"
+    },
+    {
+      "id": 797,
+      "timestamp": 365.3,
+      "word": "you"
+    },
+    {
+      "id": 798,
+      "timestamp": 365.7,
+      "word": "for"
+    },
+    {
+      "id": 799,
+      "timestamp": 366.1,
+      "word": "watching"
+    },
+    {
+      "id": 800,
+      "timestamp": 366.4,
+      "word": "this"
+    },
+    {
+      "id": 801,
+      "timestamp": 366.8,
+      "word": "tutorial"
+    },
+    {
+      "id": 802,
+      "timestamp": 367.2,
+      "word": "on"
+    },
+    {
+      "id": 803,
+      "timestamp": 367.5,
+      "word": "deep"
+    },
+    {
+      "id": 804,
+      "timestamp": 367.9,
+      "word": "learning"
+    },
+    {
+      "id": 805,
+      "timestamp": 368.2,
+      "word": "fundamentals"
+    },
+    {
+      "id": 806,
+      "timestamp": 369.5,
+      "word": "Welcome"
+    },
+    {
+      "id": 807,
+      "timestamp": 369.9,
+      "word": "to"
+    },
+    {
+      "id": 808,
+      "timestamp": 370.3,
+      "word": "this"
+    },
+    {
+      "id": 809,
+      "timestamp": 370.7,
+      "word": "comprehensive"
+    },
+    {
+      "id": 810,
+      "timestamp": 371.2,
+      "word": "tutorial"
+    },
+    {
+      "id": 811,
+      "timestamp": 371.6,
+      "word": "on"
+    },
+    {
+      "id": 812,
+      "timestamp": 372.1,
+      "word": "deep"
+    },
+    {
+      "id": 813,
+      "timestamp": 372.5,
+      "word": "learning"
+    },
+    {
+      "id": 814,
+      "timestamp": 372.8,
+      "word": "and"
+    },
+    {
+      "id": 815,
+      "timestamp": 373.1,
+      "word": "neural"
+    },
+    {
+      "id": 816,
+      "timestamp": 373.5,
+      "word": "networks"
+    },
+    {
+      "id": 817,
+      "timestamp": 375.0,
+      "word": "Deep"
+    },
+    {
+      "id": 818,
+      "timestamp": 375.3,
+      "word": "learning"
+    },
+    {
+      "id": 819,
+      "timestamp": 375.7,
+      "word": "is"
+    },
+    {
+      "id": 820,
+      "timestamp": 376.0,
+      "word": "a"
+    },
+    {
+      "id": 821,
+      "timestamp": 376.4,
+      "word": "subset"
+    },
+    {
+      "id": 822,
+      "timestamp": 376.7,
+      "word": "of"
+    },
+    {
+      "id": 823,
+      "timestamp": 377.2,
+      "word": "machine"
+    },
+    {
+      "id": 824,
+      "timestamp": 377.6,
+      "word": "learning"
+    },
+    {
+      "id": 825,
+      "timestamp": 378.1,
+      "word": "that"
+    },
+    {
+      "id": 826,
+      "timestamp": 378.5,
+      "word": "uses"
+    },
+    {
+      "id": 827,
+      "timestamp": 378.9,
+      "word": "artificial"
+    },
+    {
+      "id": 828,
+      "timestamp": 379.4,
+      "word": "neural"
+    },
+    {
+      "id": 829,
+      "timestamp": 379.8,
+      "word": "networks"
+    },
+    {
+      "id": 830,
+      "timestamp": 380.2,
+      "word": "with"
+    },
+    {
+      "id": 831,
+      "timestamp": 380.6,
+      "word": "multiple"
+    },
+    {
+      "id": 832,
+      "timestamp": 381.0,
+      "word": "layers"
+    },
+    {
+      "id": 833,
+      "timestamp": 381.9,
+      "word": "These"
+    },
+    {
+      "id": 834,
+      "timestamp": 382.4,
+      "word": "networks"
+    },
+    {
+      "id": 835,
+      "timestamp": 382.8,
+      "word": "are"
+    },
+    {
+      "id": 836,
+      "timestamp": 383.2,
+      "word": "inspired"
+    },
+    {
+      "id": 837,
+      "timestamp": 383.7,
+      "word": "by"
+    },
+    {
+      "id": 838,
+      "timestamp": 384.1,
+      "word": "the"
+    },
+    {
+      "id": 839,
+      "timestamp": 384.5,
+      "word": "structure"
+    },
+    {
+      "id": 840,
+      "timestamp": 384.9,
+      "word": "and"
+    },
+    {
+      "id": 841,
+      "timestamp": 385.2,
+      "word": "function"
+    },
+    {
+      "id": 842,
+      "timestamp": 385.6,
+      "word": "of"
+    },
+    {
+      "id": 843,
+      "timestamp": 386.0,
+      "word": "the"
+    },
+    {
+      "id": 844,
+      "timestamp": 386.5,
+      "word": "human"
+    },
+    {
+      "id": 845,
+      "timestamp": 386.9,
+      "word": "brain"
+    },
+    {
+      "id": 846,
+      "timestamp": 388.0,
+      "word": "The"
+    },
+    {
+      "id": 847,
+      "timestamp": 388.4,
+      "word": "fundamental"
+    },
+    {
+      "id": 848,
+      "timestamp": 388.9,
+      "word": "building"
+    },
+    {
+      "id": 849,
+      "timestamp": 389.3,
+      "word": "block"
+    },
+    {
+      "id": 850,
+      "timestamp": 389.8,
+      "word": "of"
+    },
+    {
+      "id": 851,
+      "timestamp": 390.1,
+      "word": "a"
+    },
+    {
+      "id": 852,
+      "timestamp": 390.6,
+      "word": "neural"
+    },
+    {
+      "id": 853,
+      "timestamp": 391.0,
+      "word": "network"
+    },
+    {
+      "id": 854,
+      "timestamp": 391.4,
+      "word": "is"
+    },
+    {
+      "id": 855,
+      "timestamp": 391.7,
+      "word": "the"
+    },
+    {
+      "id": 856,
+      "timestamp": 392.1,
+      "word": "artificial"
+    },
+    {
+      "id": 857,
+      "timestamp": 392.6,
+      "word": "neuron"
+    },
+    {
+      "id": 858,
+      "timestamp": 392.9,
+      "word": "or"
+    },
+    {
+      "id": 859,
+      "timestamp": 393.3,
+      "word": "perceptron"
+    },
+    {
+      "id": 860,
+      "timestamp": 394.7,
+      "word": "Each"
+    },
+    {
+      "id": 861,
+      "timestamp": 395.2,
+      "word": "neuron"
+    },
+    {
+      "id": 862,
+      "timestamp": 395.5,
+      "word": "receives"
+    },
+    {
+      "id": 863,
+      "timestamp": 395.9,
+      "word": "inputs"
+    },
+    {
+      "id": 864,
+      "timestamp": 396.3,
+      "word": "multiplies"
+    },
+    {
+      "id": 865,
+      "timestamp": 396.7,
+      "word": "them"
+    },
+    {
+      "id": 866,
+      "timestamp": 397.1,
+      "word": "by"
+    },
+    {
+      "id": 867,
+      "timestamp": 397.5,
+      "word": "weights"
+    },
+    {
+      "id": 868,
+      "timestamp": 397.8,
+      "word": "and"
+    },
+    {
+      "id": 869,
+      "timestamp": 398.2,
+      "word": "passes"
+    },
+    {
+      "id": 870,
+      "timestamp": 398.6,
+      "word": "them"
+    },
+    {
+      "id": 871,
+      "timestamp": 399.0,
+      "word": "through"
+    },
+    {
+      "id": 872,
+      "timestamp": 399.4,
+      "word": "an"
+    },
+    {
+      "id": 873,
+      "timestamp": 399.9,
+      "word": "activation"
+    },
+    {
+      "id": 874,
+      "timestamp": 400.3,
+      "word": "function"
+    },
+    {
+      "id": 875,
+      "timestamp": 401.2,
+      "word": "Common"
+    },
+    {
+      "id": 876,
+      "timestamp": 401.5,
+      "word": "activation"
+    },
+    {
+      "id": 877,
+      "timestamp": 402.0,
+      "word": "functions"
+    },
+    {
+      "id": 878,
+      "timestamp": 402.4,
+      "word": "include"
+    },
+    {
+      "id": 879,
+      "timestamp": 402.9,
+      "word": "sigmoid"
+    },
+    {
+      "id": 880,
+      "timestamp": 403.2,
+      "word": "tanh"
+    },
+    {
+      "id": 881,
+      "timestamp": 403.5,
+      "word": "and"
+    },
+    {
+      "id": 882,
+      "timestamp": 404.0,
+      "word": "the"
+    },
+    {
+      "id": 883,
+      "timestamp": 404.3,
+      "word": "rectified"
+    },
+    {
+      "id": 884,
+      "timestamp": 404.7,
+      "word": "linear"
+    },
+    {
+      "id": 885,
+      "timestamp": 405.1,
+      "word": "unit"
+    },
+    {
+      "id": 886,
+      "timestamp": 405.4,
+      "word": "or"
+    },
+    {
+      "id": 887,
+      "timestamp": 405.9,
+      "word": "ReLU"
+    },
+    {
+      "id": 888,
+      "timestamp": 407.0,
+      "word": "ReLU"
+    },
+    {
+      "id": 889,
+      "timestamp": 407.4,
+      "word": "has"
+    },
+    {
+      "id": 890,
+      "timestamp": 407.9,
+      "word": "become"
+    },
+    {
+      "id": 891,
+      "timestamp": 408.2,
+      "word": "the"
+    },
+    {
+      "id": 892,
+      "timestamp": 408.7,
+      "word": "most"
+    },
+    {
+      "id": 893,
+      "timestamp": 409.0,
+      "word": "popular"
+    },
+    {
+      "id": 894,
+      "timestamp": 409.4,
+      "word": "activation"
+    },
+    {
+      "id": 895,
+      "timestamp": 409.7,
+      "word": "function"
+    },
+    {
+      "id": 896,
+      "timestamp": 410.2,
+      "word": "because"
+    },
+    {
+      "id": 897,
+      "timestamp": 410.6,
+      "word": "it"
+    },
+    {
+      "id": 898,
+      "timestamp": 410.9,
+      "word": "helps"
+    },
+    {
+      "id": 899,
+      "timestamp": 411.3,
+      "word": "solve"
+    },
+    {
+      "id": 900,
+      "timestamp": 411.7,
+      "word": "the"
+    },
+    {
+      "id": 901,
+      "timestamp": 412.2,
+      "word": "vanishing"
+    },
+    {
+      "id": 902,
+      "timestamp": 412.6,
+      "word": "gradient"
+    },
+    {
+      "id": 903,
+      "timestamp": 413.1,
+      "word": "problem"
+    },
+    {
+      "id": 904,
+      "timestamp": 414.4,
+      "word": "A"
+    },
+    {
+      "id": 905,
+      "timestamp": 414.7,
+      "word": "neural"
+    },
+    {
+      "id": 906,
+      "timestamp": 415.1,
+      "word": "network"
+    },
+    {
+      "id": 907,
+      "timestamp": 415.6,
+      "word": "consists"
+    },
+    {
+      "id": 908,
+      "timestamp": 416.0,
+      "word": "of"
+    },
+    {
+      "id": 909,
+      "timestamp": 416.5,
+      "word": "an"
+    },
+    {
+      "id": 910,
+      "timestamp": 417.0,
+      "word": "input"
+    },
+    {
+      "id": 911,
+      "timestamp": 417.3,
+      "word": "layer"
+    },
+    {
+      "id": 912,
+      "timestamp": 417.8,
+      "word": "one"
+    },
+    {
+      "id": 913,
+      "timestamp": 418.1,
+      "word": "or"
+    },
+    {
+      "id": 914,
+      "timestamp": 418.4,
+      "word": "more"
+    },
+    {
+      "id": 915,
+      "timestamp": 418.7,
+      "word": "hidden"
+    },
+    {
+      "id": 916,
+      "timestamp": 419.1,
+      "word": "layers"
+    },
+    {
+      "id": 917,
+      "timestamp": 419.6,
+      "word": "and"
+    },
+    {
+      "id": 918,
+      "timestamp": 420.0,
+      "word": "an"
+    },
+    {
+      "id": 919,
+      "timestamp": 420.5,
+      "word": "output"
+    },
+    {
+      "id": 920,
+      "timestamp": 420.9,
+      "word": "layer"
+    },
+    {
+      "id": 921,
+      "timestamp": 422.2,
+      "word": "The"
+    },
+    {
+      "id": 922,
+      "timestamp": 422.6,
+      "word": "process"
+    },
+    {
+      "id": 923,
+      "timestamp": 423.0,
+      "word": "of"
+    },
+    {
+      "id": 924,
+      "timestamp": 423.3,
+      "word": "training"
+    },
+    {
+      "id": 925,
+      "timestamp": 423.7,
+      "word": "a"
+    },
+    {
+      "id": 926,
+      "timestamp": 424.1,
+      "word": "neural"
+    },
+    {
+      "id": 927,
+      "timestamp": 424.5,
+      "word": "network"
+    },
+    {
+      "id": 928,
+      "timestamp": 424.8,
+      "word": "involves"
+    },
+    {
+      "id": 929,
+      "timestamp": 425.2,
+      "word": "forward"
+    },
+    {
+      "id": 930,
+      "timestamp": 425.6,
+      "word": "propagation"
+    },
+    {
+      "id": 931,
+      "timestamp": 426.0,
+      "word": "and"
+    },
+    {
+      "id": 932,
+      "timestamp": 426.3,
+      "word": "backpropagation"
+    },
+    {
+      "id": 933,
+      "timestamp": 427.3,
+      "word": "During"
+    },
+    {
+      "id": 934,
+      "timestamp": 427.7,
+      "word": "forward"
+    },
+    {
+      "id": 935,
+      "timestamp": 428.2,
+      "word": "propagation"
+    },
+    {
+      "id": 936,
+      "timestamp": 428.5,
+      "word": "data"
+    },
+    {
+      "id": 937,
+      "timestamp": 428.9,
+      "word": "flows"
+    },
+    {
+      "id": 938,
+      "timestamp": 429.3,
+      "word": "through"
+    },
+    {
+      "id": 939,
+      "timestamp": 429.7,
+      "word": "the"
+    },
+    {
+      "id": 940,
+      "timestamp": 430.2,
+      "word": "network"
+    },
+    {
+      "id": 941,
+      "timestamp": 430.6,
+      "word": "from"
+    },
+    {
+      "id": 942,
+      "timestamp": 431.1,
+      "word": "input"
+    },
+    {
+      "id": 943,
+      "timestamp": 431.5,
+      "word": "to"
+    },
+    {
+      "id": 944,
+      "timestamp": 431.9,
+      "word": "output"
+    },
+    {
+      "id": 945,
+      "timestamp": 433.2,
+      "word": "The"
+    },
+    {
+      "id": 946,
+      "timestamp": 433.6,
+      "word": "network"
+    },
+    {
+      "id": 947,
+      "timestamp": 434.0,
+      "word": "makes"
+    },
+    {
+      "id": 948,
+      "timestamp": 434.4,
+      "word": "predictions"
+    },
+    {
+      "id": 949,
+      "timestamp": 434.8,
+      "word": "and"
+    },
+    {
+      "id": 950,
+      "timestamp": 435.2,
+      "word": "we"
+    },
+    {
+      "id": 951,
+      "timestamp": 435.7,
+      "word": "calculate"
+    },
+    {
+      "id": 952,
+      "timestamp": 436.0,
+      "word": "the"
+    },
+    {
+      "id": 953,
+      "timestamp": 436.4,
+      "word": "loss"
+    },
+    {
+      "id": 954,
+      "timestamp": 436.8,
+      "word": "or"
+    },
+    {
+      "id": 955,
+      "timestamp": 437.3,
+      "word": "error"
+    },
+    {
+      "id": 956,
+      "timestamp": 437.8,
+      "word": "using"
+    },
+    {
+      "id": 957,
+      "timestamp": 438.1,
+      "word": "a"
+    },
+    {
+      "id": 958,
+      "timestamp": 438.4,
+      "word": "loss"
+    },
+    {
+      "id": 959,
+      "timestamp": 438.8,
+      "word": "function"
+    },
+    {
+      "id": 960,
+      "timestamp": 439.8,
+      "word": "Common"
+    },
+    {
+      "id": 961,
+      "timestamp": 440.3,
+      "word": "loss"
+    },
+    {
+      "id": 962,
+      "timestamp": 440.8,
+      "word": "functions"
+    },
+    {
+      "id": 963,
+      "timestamp": 441.2,
+      "word": "include"
+    },
+    {
+      "id": 964,
+      "timestamp": 441.6,
+      "word": "mean"
+    },
+    {
+      "id": 965,
+      "timestamp": 441.9,
+      "word": "squared"
+    },
+    {
+      "id": 966,
+      "timestamp": 442.4,
+      "word": "error"
+    },
+    {
+      "id": 967,
+      "timestamp": 442.7,
+      "word": "for"
+    },
+    {
+      "id": 968,
+      "timestamp": 443.1,
+      "word": "regression"
+    },
+    {
+      "id": 969,
+      "timestamp": 443.6,
+      "word": "and"
+    },
+    {
+      "id": 970,
+      "timestamp": 444.0,
+      "word": "cross"
+    },
+    {
+      "id": 971,
+      "timestamp": 444.3,
+      "word": "entropy"
+    },
+    {
+      "id": 972,
+      "timestamp": 444.8,
+      "word": "for"
+    },
+    {
+      "id": 973,
+      "timestamp": 445.2,
+      "word": "classification"
+    },
+    {
+      "id": 974,
+      "timestamp": 446.1,
+      "word": "Backpropagation"
+    },
+    {
+      "id": 975,
+      "timestamp": 446.4,
+      "word": "is"
+    },
+    {
+      "id": 976,
+      "timestamp": 446.9,
+      "word": "the"
+    },
+    {
+      "id": 977,
+      "timestamp": 447.3,
+      "word": "algorithm"
+    },
+    {
+      "id": 978,
+      "timestamp": 447.7,
+      "word": "used"
+    },
+    {
+      "id": 979,
+      "timestamp": 448.0,
+      "word": "to"
+    },
+    {
+      "id": 980,
+      "timestamp": 448.4,
+      "word": "calculate"
+    },
+    {
+      "id": 981,
+      "timestamp": 448.7,
+      "word": "gradients"
+    },
+    {
+      "id": 982,
+      "timestamp": 449.1,
+      "word": "and"
+    },
+    {
+      "id": 983,
+      "timestamp": 449.4,
+      "word": "update"
+    },
+    {
+      "id": 984,
+      "timestamp": 449.9,
+      "word": "the"
+    },
+    {
+      "id": 985,
+      "timestamp": 450.2,
+      "word": "network"
+    },
+    {
+      "id": 986,
+      "timestamp": 450.7,
+      "word": "weights"
+    },
+    {
+      "id": 987,
+      "timestamp": 451.6,
+      "word": "It"
+    },
+    {
+      "id": 988,
+      "timestamp": 452.0,
+      "word": "uses"
+    },
+    {
+      "id": 989,
+      "timestamp": 452.5,
+      "word": "the"
+    },
+    {
+      "id": 990,
+      "timestamp": 452.9,
+      "word": "chain"
+    },
+    {
+      "id": 991,
+      "timestamp": 453.3,
+      "word": "rule"
+    },
+    {
+      "id": 992,
+      "timestamp": 453.6,
+      "word": "from"
+    },
+    {
+      "id": 993,
+      "timestamp": 454.0,
+      "word": "calculus"
+    },
+    {
+      "id": 994,
+      "timestamp": 454.3,
+      "word": "to"
+    },
+    {
+      "id": 995,
+      "timestamp": 454.7,
+      "word": "compute"
+    },
+    {
+      "id": 996,
+      "timestamp": 455.1,
+      "word": "how"
+    },
+    {
+      "id": 997,
+      "timestamp": 455.4,
+      "word": "each"
+    },
+    {
+      "id": 998,
+      "timestamp": 455.8,
+      "word": "weight"
+    },
+    {
+      "id": 999,
+      "timestamp": 456.2,
+      "word": "contributed"
+    },
+    {
+      "id": 1000,
+      "timestamp": 456.6,
+      "word": "to"
+    },
+    {
+      "id": 1001,
+      "timestamp": 457.0,
+      "word": "the"
+    },
+    {
+      "id": 1002,
+      "timestamp": 457.3,
+      "word": "error"
+    },
+    {
+      "id": 1003,
+      "timestamp": 458.7,
+      "word": "Gradient"
+    },
+    {
+      "id": 1004,
+      "timestamp": 459.0,
+      "word": "descent"
+    },
+    {
+      "id": 1005,
+      "timestamp": 459.5,
+      "word": "is"
+    },
+    {
+      "id": 1006,
+      "timestamp": 460.0,
+      "word": "the"
+    },
+    {
+      "id": 1007,
+      "timestamp": 460.3,
+      "word": "optimization"
+    },
+    {
+      "id": 1008,
+      "timestamp": 460.7,
+      "word": "algorithm"
+    },
+    {
+      "id": 1009,
+      "timestamp": 461.1,
+      "word": "that"
+    },
+    {
+      "id": 1010,
+      "timestamp": 461.5,
+      "word": "adjusts"
+    },
+    {
+      "id": 1011,
+      "timestamp": 462.0,
+      "word": "weights"
+    },
+    {
+      "id": 1012,
+      "timestamp": 462.4,
+      "word": "to"
+    },
+    {
+      "id": 1013,
+      "timestamp": 462.7,
+      "word": "minimize"
+    },
+    {
+      "id": 1014,
+      "timestamp": 463.1,
+      "word": "the"
+    },
+    {
+      "id": 1015,
+      "timestamp": 463.4,
+      "word": "loss"
+    },
+    {
+      "id": 1016,
+      "timestamp": 464.5,
+      "word": "There"
+    },
+    {
+      "id": 1017,
+      "timestamp": 464.8,
+      "word": "are"
+    },
+    {
+      "id": 1018,
+      "timestamp": 465.3,
+      "word": "several"
+    },
+    {
+      "id": 1019,
+      "timestamp": 465.6,
+      "word": "variants"
+    },
+    {
+      "id": 1020,
+      "timestamp": 465.9,
+      "word": "of"
+    },
+    {
+      "id": 1021,
+      "timestamp": 466.4,
+      "word": "gradient"
+    },
+    {
+      "id": 1022,
+      "timestamp": 466.8,
+      "word": "descent"
+    },
+    {
+      "id": 1023,
+      "timestamp": 467.3,
+      "word": "including"
+    },
+    {
+      "id": 1024,
+      "timestamp": 467.7,
+      "word": "batch"
+    },
+    {
+      "id": 1025,
+      "timestamp": 468.2,
+      "word": "stochastic"
+    },
+    {
+      "id": 1026,
+      "timestamp": 468.5,
+      "word": "and"
+    },
+    {
+      "id": 1027,
+      "timestamp": 469.0,
+      "word": "mini"
+    },
+    {
+      "id": 1028,
+      "timestamp": 469.3,
+      "word": "batch"
+    },
+    {
+      "id": 1029,
+      "timestamp": 470.7,
+      "word": "Mini"
+    },
+    {
+      "id": 1030,
+      "timestamp": 471.1,
+      "word": "batch"
+    },
+    {
+      "id": 1031,
+      "timestamp": 471.6,
+      "word": "gradient"
+    },
+    {
+      "id": 1032,
+      "timestamp": 472.0,
+      "word": "descent"
+    },
+    {
+      "id": 1033,
+      "timestamp": 472.3,
+      "word": "is"
+    },
+    {
+      "id": 1034,
+      "timestamp": 472.8,
+      "word": "most"
+    },
+    {
+      "id": 1035,
+      "timestamp": 473.2,
+      "word": "commonly"
+    },
+    {
+      "id": 1036,
+      "timestamp": 473.7,
+      "word": "used"
+    },
+    {
+      "id": 1037,
+      "timestamp": 474.0,
+      "word": "as"
+    },
+    {
+      "id": 1038,
+      "timestamp": 474.4,
+      "word": "it"
+    },
+    {
+      "id": 1039,
+      "timestamp": 474.9,
+      "word": "balances"
+    },
+    {
+      "id": 1040,
+      "timestamp": 475.4,
+      "word": "speed"
+    },
+    {
+      "id": 1041,
+      "timestamp": 475.7,
+      "word": "and"
+    },
+    {
+      "id": 1042,
+      "timestamp": 476.0,
+      "word": "stability"
+    },
+    {
+      "id": 1043,
+      "timestamp": 476.9,
+      "word": "Learning"
+    },
+    {
+      "id": 1044,
+      "timestamp": 477.4,
+      "word": "rate"
+    },
+    {
+      "id": 1045,
+      "timestamp": 477.8,
+      "word": "is"
+    },
+    {
+      "id": 1046,
+      "timestamp": 478.3,
+      "word": "a"
+    },
+    {
+      "id": 1047,
+      "timestamp": 478.6,
+      "word": "crucial"
+    },
+    {
+      "id": 1048,
+      "timestamp": 479.1,
+      "word": "hyperparameter"
+    },
+    {
+      "id": 1049,
+      "timestamp": 479.5,
+      "word": "that"
+    },
+    {
+      "id": 1050,
+      "timestamp": 479.8,
+      "word": "controls"
+    },
+    {
+      "id": 1051,
+      "timestamp": 480.2,
+      "word": "how"
+    },
+    {
+      "id": 1052,
+      "timestamp": 480.6,
+      "word": "much"
+    },
+    {
+      "id": 1053,
+      "timestamp": 481.0,
+      "word": "we"
+    },
+    {
+      "id": 1054,
+      "timestamp": 481.3,
+      "word": "adjust"
+    },
+    {
+      "id": 1055,
+      "timestamp": 481.7,
+      "word": "weights"
+    },
+    {
+      "id": 1056,
+      "timestamp": 482.1,
+      "word": "during"
+    },
+    {
+      "id": 1057,
+      "timestamp": 482.5,
+      "word": "training"
+    },
+    {
+      "id": 1058,
+      "timestamp": 483.5,
+      "word": "If"
+    },
+    {
+      "id": 1059,
+      "timestamp": 483.9,
+      "word": "the"
+    },
+    {
+      "id": 1060,
+      "timestamp": 484.3,
+      "word": "learning"
+    },
+    {
+      "id": 1061,
+      "timestamp": 484.7,
+      "word": "rate"
+    },
+    {
+      "id": 1062,
+      "timestamp": 485.1,
+      "word": "is"
+    },
+    {
+      "id": 1063,
+      "timestamp": 485.5,
+      "word": "too"
+    },
+    {
+      "id": 1064,
+      "timestamp": 485.9,
+      "word": "high"
+    },
+    {
+      "id": 1065,
+      "timestamp": 486.3,
+      "word": "the"
+    },
+    {
+      "id": 1066,
+      "timestamp": 486.7,
+      "word": "model"
+    },
+    {
+      "id": 1067,
+      "timestamp": 487.1,
+      "word": "may"
+    },
+    {
+      "id": 1068,
+      "timestamp": 487.5,
+      "word": "overshoot"
+    },
+    {
+      "id": 1069,
+      "timestamp": 487.9,
+      "word": "the"
+    },
+    {
+      "id": 1070,
+      "timestamp": 488.4,
+      "word": "optimal"
+    },
+    {
+      "id": 1071,
+      "timestamp": 488.9,
+      "word": "solution"
+    },
+    {
+      "id": 1072,
+      "timestamp": 489.8,
+      "word": "If"
+    },
+    {
+      "id": 1073,
+      "timestamp": 490.1,
+      "word": "it"
+    },
+    {
+      "id": 1074,
+      "timestamp": 490.5,
+      "word": "is"
+    },
+    {
+      "id": 1075,
+      "timestamp": 490.8,
+      "word": "too"
+    },
+    {
+      "id": 1076,
+      "timestamp": 491.1,
+      "word": "low"
+    },
+    {
+      "id": 1077,
+      "timestamp": 491.6,
+      "word": "training"
+    },
+    {
+      "id": 1078,
+      "timestamp": 491.9,
+      "word": "will"
+    },
+    {
+      "id": 1079,
+      "timestamp": 492.3,
+      "word": "be"
+    },
+    {
+      "id": 1080,
+      "timestamp": 492.8,
+      "word": "very"
+    },
+    {
+      "id": 1081,
+      "timestamp": 493.3,
+      "word": "slow"
+    },
+    {
+      "id": 1082,
+      "timestamp": 493.7,
+      "word": "and"
+    },
+    {
+      "id": 1083,
+      "timestamp": 494.1,
+      "word": "may"
+    },
+    {
+      "id": 1084,
+      "timestamp": 494.5,
+      "word": "get"
+    },
+    {
+      "id": 1085,
+      "timestamp": 494.9,
+      "word": "stuck"
+    },
+    {
+      "id": 1086,
+      "timestamp": 495.3,
+      "word": "in"
+    },
+    {
+      "id": 1087,
+      "timestamp": 495.8,
+      "word": "local"
+    },
+    {
+      "id": 1088,
+      "timestamp": 496.2,
+      "word": "minima"
+    },
+    {
+      "id": 1089,
+      "timestamp": 497.5,
+      "word": "Convolutional"
+    },
+    {
+      "id": 1090,
+      "timestamp": 497.9,
+      "word": "neural"
+    },
+    {
+      "id": 1091,
+      "timestamp": 498.2,
+      "word": "networks"
+    },
+    {
+      "id": 1092,
+      "timestamp": 498.7,
+      "word": "or"
+    },
+    {
+      "id": 1093,
+      "timestamp": 499.1,
+      "word": "CNNs"
+    },
+    {
+      "id": 1094,
+      "timestamp": 499.5,
+      "word": "are"
+    },
+    {
+      "id": 1095,
+      "timestamp": 499.9,
+      "word": "specialized"
+    },
+    {
+      "id": 1096,
+      "timestamp": 500.3,
+      "word": "for"
+    },
+    {
+      "id": 1097,
+      "timestamp": 500.7,
+      "word": "processing"
+    },
+    {
+      "id": 1098,
+      "timestamp": 501.1,
+      "word": "grid"
+    },
+    {
+      "id": 1099,
+      "timestamp": 501.6,
+      "word": "like"
+    },
+    {
+      "id": 1100,
+      "timestamp": 501.9,
+      "word": "data"
+    },
+    {
+      "id": 1101,
+      "timestamp": 502.2,
+      "word": "such"
+    },
+    {
+      "id": 1102,
+      "timestamp": 502.6,
+      "word": "as"
+    },
+    {
+      "id": 1103,
+      "timestamp": 503.1,
+      "word": "images"
+    },
+    {
+      "id": 1104,
+      "timestamp": 504.3,
+      "word": "CNNs"
+    },
+    {
+      "id": 1105,
+      "timestamp": 504.6,
+      "word": "use"
+    },
+    {
+      "id": 1106,
+      "timestamp": 505.1,
+      "word": "convolutional"
+    },
+    {
+      "id": 1107,
+      "timestamp": 505.4,
+      "word": "layers"
+    },
+    {
+      "id": 1108,
+      "timestamp": 505.7,
+      "word": "that"
+    },
+    {
+      "id": 1109,
+      "timestamp": 506.1,
+      "word": "apply"
+    },
+    {
+      "id": 1110,
+      "timestamp": 506.5,
+      "word": "filters"
+    },
+    {
+      "id": 1111,
+      "timestamp": 506.9,
+      "word": "to"
+    },
+    {
+      "id": 1112,
+      "timestamp": 507.3,
+      "word": "detect"
+    },
+    {
+      "id": 1113,
+      "timestamp": 507.7,
+      "word": "features"
+    },
+    {
+      "id": 1114,
+      "timestamp": 508.1,
+      "word": "like"
+    },
+    {
+      "id": 1115,
+      "timestamp": 508.5,
+      "word": "edges"
+    },
+    {
+      "id": 1116,
+      "timestamp": 508.9,
+      "word": "and"
+    },
+    {
+      "id": 1117,
+      "timestamp": 509.4,
+      "word": "textures"
+    },
+    {
+      "id": 1118,
+      "timestamp": 510.5,
+      "word": "Pooling"
+    },
+    {
+      "id": 1119,
+      "timestamp": 510.8,
+      "word": "layers"
+    },
+    {
+      "id": 1120,
+      "timestamp": 511.2,
+      "word": "reduce"
+    },
+    {
+      "id": 1121,
+      "timestamp": 511.7,
+      "word": "the"
+    },
+    {
+      "id": 1122,
+      "timestamp": 512.1,
+      "word": "spatial"
+    },
+    {
+      "id": 1123,
+      "timestamp": 512.4,
+      "word": "dimensions"
+    },
+    {
+      "id": 1124,
+      "timestamp": 512.7,
+      "word": "while"
+    },
+    {
+      "id": 1125,
+      "timestamp": 513.0,
+      "word": "preserving"
+    },
+    {
+      "id": 1126,
+      "timestamp": 513.4,
+      "word": "important"
+    },
+    {
+      "id": 1127,
+      "timestamp": 513.8,
+      "word": "features"
+    },
+    {
+      "id": 1128,
+      "timestamp": 514.7,
+      "word": "This"
+    },
+    {
+      "id": 1129,
+      "timestamp": 515.1,
+      "word": "makes"
+    },
+    {
+      "id": 1130,
+      "timestamp": 515.4,
+      "word": "CNNs"
+    },
+    {
+      "id": 1131,
+      "timestamp": 515.7,
+      "word": "translation"
+    },
+    {
+      "id": 1132,
+      "timestamp": 516.1,
+      "word": "invariant"
+    },
+    {
+      "id": 1133,
+      "timestamp": 516.6,
+      "word": "meaning"
+    },
+    {
+      "id": 1134,
+      "timestamp": 516.9,
+      "word": "they"
+    },
+    {
+      "id": 1135,
+      "timestamp": 517.4,
+      "word": "can"
+    },
+    {
+      "id": 1136,
+      "timestamp": 517.8,
+      "word": "recognize"
+    },
+    {
+      "id": 1137,
+      "timestamp": 518.3,
+      "word": "objects"
+    },
+    {
+      "id": 1138,
+      "timestamp": 518.6,
+      "word": "regardless"
+    },
+    {
+      "id": 1139,
+      "timestamp": 518.9,
+      "word": "of"
+    },
+    {
+      "id": 1140,
+      "timestamp": 519.3,
+      "word": "position"
+    },
+    {
+      "id": 1141,
+      "timestamp": 520.6,
+      "word": "Recurrent"
+    },
+    {
+      "id": 1142,
+      "timestamp": 521.0,
+      "word": "neural"
+    },
+    {
+      "id": 1143,
+      "timestamp": 521.5,
+      "word": "networks"
+    },
+    {
+      "id": 1144,
+      "timestamp": 521.9,
+      "word": "or"
+    },
+    {
+      "id": 1145,
+      "timestamp": 522.3,
+      "word": "RNNs"
+    },
+    {
+      "id": 1146,
+      "timestamp": 522.7,
+      "word": "are"
+    },
+    {
+      "id": 1147,
+      "timestamp": 523.1,
+      "word": "designed"
+    },
+    {
+      "id": 1148,
+      "timestamp": 523.6,
+      "word": "for"
+    },
+    {
+      "id": 1149,
+      "timestamp": 524.0,
+      "word": "sequential"
+    },
+    {
+      "id": 1150,
+      "timestamp": 524.4,
+      "word": "data"
+    },
+    {
+      "id": 1151,
+      "timestamp": 524.9,
+      "word": "like"
+    },
+    {
+      "id": 1152,
+      "timestamp": 525.4,
+      "word": "text"
+    },
+    {
+      "id": 1153,
+      "timestamp": 525.8,
+      "word": "and"
+    },
+    {
+      "id": 1154,
+      "timestamp": 526.1,
+      "word": "time"
+    },
+    {
+      "id": 1155,
+      "timestamp": 526.6,
+      "word": "series"
+    },
+    {
+      "id": 1156,
+      "timestamp": 527.8,
+      "word": "RNNs"
+    },
+    {
+      "id": 1157,
+      "timestamp": 528.1,
+      "word": "have"
+    },
+    {
+      "id": 1158,
+      "timestamp": 528.5,
+      "word": "loops"
+    },
+    {
+      "id": 1159,
+      "timestamp": 528.9,
+      "word": "that"
+    },
+    {
+      "id": 1160,
+      "timestamp": 529.4,
+      "word": "allow"
+    },
+    {
+      "id": 1161,
+      "timestamp": 529.7,
+      "word": "information"
+    },
+    {
+      "id": 1162,
+      "timestamp": 530.1,
+      "word": "to"
+    },
+    {
+      "id": 1163,
+      "timestamp": 530.4,
+      "word": "persist"
+    },
+    {
+      "id": 1164,
+      "timestamp": 530.8,
+      "word": "across"
+    },
+    {
+      "id": 1165,
+      "timestamp": 531.2,
+      "word": "time"
+    },
+    {
+      "id": 1166,
+      "timestamp": 531.7,
+      "word": "steps"
+    },
+    {
+      "id": 1167,
+      "timestamp": 532.5,
+      "word": "However"
+    },
+    {
+      "id": 1168,
+      "timestamp": 533.0,
+      "word": "traditional"
+    },
+    {
+      "id": 1169,
+      "timestamp": 533.4,
+      "word": "RNNs"
+    },
+    {
+      "id": 1170,
+      "timestamp": 533.7,
+      "word": "suffer"
+    },
+    {
+      "id": 1171,
+      "timestamp": 534.2,
+      "word": "from"
+    },
+    {
+      "id": 1172,
+      "timestamp": 534.6,
+      "word": "vanishing"
+    },
+    {
+      "id": 1173,
+      "timestamp": 535.0,
+      "word": "and"
+    },
+    {
+      "id": 1174,
+      "timestamp": 535.4,
+      "word": "exploding"
+    },
+    {
+      "id": 1175,
+      "timestamp": 535.9,
+      "word": "gradient"
+    },
+    {
+      "id": 1176,
+      "timestamp": 536.3,
+      "word": "problems"
+    },
+    {
+      "id": 1177,
+      "timestamp": 537.6,
+      "word": "Long"
+    },
+    {
+      "id": 1178,
+      "timestamp": 538.1,
+      "word": "short"
+    },
+    {
+      "id": 1179,
+      "timestamp": 538.5,
+      "word": "term"
+    },
+    {
+      "id": 1180,
+      "timestamp": 538.8,
+      "word": "memory"
+    },
+    {
+      "id": 1181,
+      "timestamp": 539.3,
+      "word": "or"
+    },
+    {
+      "id": 1182,
+      "timestamp": 539.7,
+      "word": "LSTM"
+    },
+    {
+      "id": 1183,
+      "timestamp": 540.0,
+      "word": "networks"
+    },
+    {
+      "id": 1184,
+      "timestamp": 540.5,
+      "word": "solve"
+    },
+    {
+      "id": 1185,
+      "timestamp": 540.9,
+      "word": "this"
+    },
+    {
+      "id": 1186,
+      "timestamp": 541.4,
+      "word": "with"
+    },
+    {
+      "id": 1187,
+      "timestamp": 541.7,
+      "word": "special"
+    },
+    {
+      "id": 1188,
+      "timestamp": 542.1,
+      "word": "gating"
+    },
+    {
+      "id": 1189,
+      "timestamp": 542.6,
+      "word": "mechanisms"
+    },
+    {
+      "id": 1190,
+      "timestamp": 544.0,
+      "word": "LSTMs"
+    },
+    {
+      "id": 1191,
+      "timestamp": 544.4,
+      "word": "have"
+    },
+    {
+      "id": 1192,
+      "timestamp": 544.8,
+      "word": "forget"
+    },
+    {
+      "id": 1193,
+      "timestamp": 545.2,
+      "word": "gates"
+    },
+    {
+      "id": 1194,
+      "timestamp": 545.6,
+      "word": "input"
+    },
+    {
+      "id": 1195,
+      "timestamp": 546.0,
+      "word": "gates"
+    },
+    {
+      "id": 1196,
+      "timestamp": 546.4,
+      "word": "and"
+    },
+    {
+      "id": 1197,
+      "timestamp": 546.9,
+      "word": "output"
+    },
+    {
+      "id": 1198,
+      "timestamp": 547.3,
+      "word": "gates"
+    },
+    {
+      "id": 1199,
+      "timestamp": 547.6,
+      "word": "that"
+    },
+    {
+      "id": 1200,
+      "timestamp": 548.0,
+      "word": "control"
+    },
+    {
+      "id": 1201,
+      "timestamp": 548.5,
+      "word": "information"
+    },
+    {
+      "id": 1202,
+      "timestamp": 548.9,
+      "word": "flow"
+    },
+    {
+      "id": 1203,
+      "timestamp": 550.2,
+      "word": "Transformers"
+    },
+    {
+      "id": 1204,
+      "timestamp": 550.5,
+      "word": "are"
+    },
+    {
+      "id": 1205,
+      "timestamp": 550.9,
+      "word": "a"
+    },
+    {
+      "id": 1206,
+      "timestamp": 551.4,
+      "word": "newer"
+    },
+    {
+      "id": 1207,
+      "timestamp": 551.7,
+      "word": "architecture"
+    },
+    {
+      "id": 1208,
+      "timestamp": 552.2,
+      "word": "that"
+    },
+    {
+      "id": 1209,
+      "timestamp": 552.5,
+      "word": "has"
+    },
+    {
+      "id": 1210,
+      "timestamp": 552.9,
+      "word": "revolutionized"
+    },
+    {
+      "id": 1211,
+      "timestamp": 553.3,
+      "word": "natural"
+    },
+    {
+      "id": 1212,
+      "timestamp": 553.7,
+      "word": "language"
+    },
+    {
+      "id": 1213,
+      "timestamp": 554.1,
+      "word": "processing"
+    },
+    {
+      "id": 1214,
+      "timestamp": 555.2,
+      "word": "They"
+    },
+    {
+      "id": 1215,
+      "timestamp": 555.6,
+      "word": "use"
+    },
+    {
+      "id": 1216,
+      "timestamp": 556.1,
+      "word": "self"
+    },
+    {
+      "id": 1217,
+      "timestamp": 556.5,
+      "word": "attention"
+    },
+    {
+      "id": 1218,
+      "timestamp": 556.9,
+      "word": "mechanisms"
+    },
+    {
+      "id": 1219,
+      "timestamp": 557.4,
+      "word": "to"
+    },
+    {
+      "id": 1220,
+      "timestamp": 557.8,
+      "word": "process"
+    },
+    {
+      "id": 1221,
+      "timestamp": 558.2,
+      "word": "entire"
+    },
+    {
+      "id": 1222,
+      "timestamp": 558.7,
+      "word": "sequences"
+    },
+    {
+      "id": 1223,
+      "timestamp": 559.1,
+      "word": "in"
+    },
+    {
+      "id": 1224,
+      "timestamp": 559.5,
+      "word": "parallel"
+    },
+    {
+      "id": 1225,
+      "timestamp": 560.8,
+      "word": "This"
+    },
+    {
+      "id": 1226,
+      "timestamp": 561.2,
+      "word": "makes"
+    },
+    {
+      "id": 1227,
+      "timestamp": 561.6,
+      "word": "them"
+    },
+    {
+      "id": 1228,
+      "timestamp": 561.9,
+      "word": "much"
+    },
+    {
+      "id": 1229,
+      "timestamp": 562.3,
+      "word": "faster"
+    },
+    {
+      "id": 1230,
+      "timestamp": 562.6,
+      "word": "to"
+    },
+    {
+      "id": 1231,
+      "timestamp": 563.1,
+      "word": "train"
+    },
+    {
+      "id": 1232,
+      "timestamp": 563.4,
+      "word": "than"
+    },
+    {
+      "id": 1233,
+      "timestamp": 563.9,
+      "word": "RNNs"
+    },
+    {
+      "id": 1234,
+      "timestamp": 564.2,
+      "word": "while"
+    },
+    {
+      "id": 1235,
+      "timestamp": 564.5,
+      "word": "achieving"
+    },
+    {
+      "id": 1236,
+      "timestamp": 564.9,
+      "word": "better"
+    },
+    {
+      "id": 1237,
+      "timestamp": 565.4,
+      "word": "performance"
+    },
+    {
+      "id": 1238,
+      "timestamp": 566.7,
+      "word": "BERT"
+    },
+    {
+      "id": 1239,
+      "timestamp": 567.1,
+      "word": "GPT"
+    },
+    {
+      "id": 1240,
+      "timestamp": 567.5,
+      "word": "and"
+    },
+    {
+      "id": 1241,
+      "timestamp": 567.9,
+      "word": "other"
+    },
+    {
+      "id": 1242,
+      "timestamp": 568.3,
+      "word": "transformer"
+    },
+    {
+      "id": 1243,
+      "timestamp": 568.7,
+      "word": "models"
+    },
+    {
+      "id": 1244,
+      "timestamp": 569.0,
+      "word": "have"
+    },
+    {
+      "id": 1245,
+      "timestamp": 569.4,
+      "word": "achieved"
+    },
+    {
+      "id": 1246,
+      "timestamp": 569.9,
+      "word": "state"
+    },
+    {
+      "id": 1247,
+      "timestamp": 570.3,
+      "word": "of"
+    },
+    {
+      "id": 1248,
+      "timestamp": 570.7,
+      "word": "the"
+    },
+    {
+      "id": 1249,
+      "timestamp": 571.0,
+      "word": "art"
+    },
+    {
+      "id": 1250,
+      "timestamp": 571.4,
+      "word": "results"
+    },
+    {
+      "id": 1251,
+      "timestamp": 571.7,
+      "word": "on"
+    },
+    {
+      "id": 1252,
+      "timestamp": 572.1,
+      "word": "many"
+    },
+    {
+      "id": 1253,
+      "timestamp": 572.4,
+      "word": "tasks"
+    },
+    {
+      "id": 1254,
+      "timestamp": 573.6,
+      "word": "Regularization"
+    },
+    {
+      "id": 1255,
+      "timestamp": 574.0,
+      "word": "techniques"
+    },
+    {
+      "id": 1256,
+      "timestamp": 574.4,
+      "word": "help"
+    },
+    {
+      "id": 1257,
+      "timestamp": 574.7,
+      "word": "prevent"
+    },
+    {
+      "id": 1258,
+      "timestamp": 575.2,
+      "word": "overfitting"
+    },
+    {
+      "id": 1259,
+      "timestamp": 575.6,
+      "word": "when"
+    },
+    {
+      "id": 1260,
+      "timestamp": 576.0,
+      "word": "training"
+    },
+    {
+      "id": 1261,
+      "timestamp": 576.4,
+      "word": "deep"
+    },
+    {
+      "id": 1262,
+      "timestamp": 576.9,
+      "word": "neural"
+    },
+    {
+      "id": 1263,
+      "timestamp": 577.3,
+      "word": "networks"
+    },
+    {
+      "id": 1264,
+      "timestamp": 578.4,
+      "word": "Dropout"
+    },
+    {
+      "id": 1265,
+      "timestamp": 578.9,
+      "word": "randomly"
+    },
+    {
+      "id": 1266,
+      "timestamp": 579.3,
+      "word": "deactivates"
+    },
+    {
+      "id": 1267,
+      "timestamp": 579.6,
+      "word": "neurons"
+    },
+    {
+      "id": 1268,
+      "timestamp": 580.1,
+      "word": "during"
+    },
+    {
+      "id": 1269,
+      "timestamp": 580.4,
+      "word": "training"
+    },
+    {
+      "id": 1270,
+      "timestamp": 580.8,
+      "word": "forcing"
+    },
+    {
+      "id": 1271,
+      "timestamp": 581.1,
+      "word": "the"
+    },
+    {
+      "id": 1272,
+      "timestamp": 581.6,
+      "word": "network"
+    },
+    {
+      "id": 1273,
+      "timestamp": 582.1,
+      "word": "to"
+    },
+    {
+      "id": 1274,
+      "timestamp": 582.4,
+      "word": "learn"
+    },
+    {
+      "id": 1275,
+      "timestamp": 582.8,
+      "word": "robust"
+    },
+    {
+      "id": 1276,
+      "timestamp": 583.3,
+      "word": "features"
+    },
+    {
+      "id": 1277,
+      "timestamp": 584.3,
+      "word": "Batch"
+    },
+    {
+      "id": 1278,
+      "timestamp": 584.7,
+      "word": "normalization"
+    },
+    {
+      "id": 1279,
+      "timestamp": 585.0,
+      "word": "normalizes"
+    },
+    {
+      "id": 1280,
+      "timestamp": 585.5,
+      "word": "inputs"
+    },
+    {
+      "id": 1281,
+      "timestamp": 585.8,
+      "word": "to"
+    },
+    {
+      "id": 1282,
+      "timestamp": 586.2,
+      "word": "each"
+    },
+    {
+      "id": 1283,
+      "timestamp": 586.6,
+      "word": "layer"
+    },
+    {
+      "id": 1284,
+      "timestamp": 587.0,
+      "word": "improving"
+    },
+    {
+      "id": 1285,
+      "timestamp": 587.4,
+      "word": "training"
+    },
+    {
+      "id": 1286,
+      "timestamp": 587.8,
+      "word": "stability"
+    },
+    {
+      "id": 1287,
+      "timestamp": 588.2,
+      "word": "and"
+    },
+    {
+      "id": 1288,
+      "timestamp": 588.5,
+      "word": "speed"
+    },
+    {
+      "id": 1289,
+      "timestamp": 589.5,
+      "word": "Data"
+    },
+    {
+      "id": 1290,
+      "timestamp": 589.9,
+      "word": "augmentation"
+    },
+    {
+      "id": 1291,
+      "timestamp": 590.4,
+      "word": "artificially"
+    },
+    {
+      "id": 1292,
+      "timestamp": 590.8,
+      "word": "increases"
+    },
+    {
+      "id": 1293,
+      "timestamp": 591.3,
+      "word": "training"
+    },
+    {
+      "id": 1294,
+      "timestamp": 591.7,
+      "word": "data"
+    },
+    {
+      "id": 1295,
+      "timestamp": 592.1,
+      "word": "by"
+    },
+    {
+      "id": 1296,
+      "timestamp": 592.5,
+      "word": "applying"
+    },
+    {
+      "id": 1297,
+      "timestamp": 593.0,
+      "word": "transformations"
+    },
+    {
+      "id": 1298,
+      "timestamp": 593.4,
+      "word": "like"
+    },
+    {
+      "id": 1299,
+      "timestamp": 593.9,
+      "word": "rotation"
+    },
+    {
+      "id": 1300,
+      "timestamp": 594.2,
+      "word": "and"
+    },
+    {
+      "id": 1301,
+      "timestamp": 594.6,
+      "word": "flipping"
+    },
+    {
+      "id": 1302,
+      "timestamp": 595.7,
+      "word": "Transfer"
+    },
+    {
+      "id": 1303,
+      "timestamp": 596.0,
+      "word": "learning"
+    },
+    {
+      "id": 1304,
+      "timestamp": 596.5,
+      "word": "allows"
+    },
+    {
+      "id": 1305,
+      "timestamp": 596.9,
+      "word": "us"
+    },
+    {
+      "id": 1306,
+      "timestamp": 597.2,
+      "word": "to"
+    },
+    {
+      "id": 1307,
+      "timestamp": 597.5,
+      "word": "use"
+    },
+    {
+      "id": 1308,
+      "timestamp": 597.8,
+      "word": "pre"
+    },
+    {
+      "id": 1309,
+      "timestamp": 598.3,
+      "word": "trained"
+    },
+    {
+      "id": 1310,
+      "timestamp": 598.7,
+      "word": "models"
+    },
+    {
+      "id": 1311,
+      "timestamp": 599.1,
+      "word": "as"
+    },
+    {
+      "id": 1312,
+      "timestamp": 599.5,
+      "word": "starting"
+    },
+    {
+      "id": 1313,
+      "timestamp": 599.9,
+      "word": "points"
+    },
+    {
+      "id": 1314,
+      "timestamp": 600.3,
+      "word": "for"
+    },
+    {
+      "id": 1315,
+      "timestamp": 600.7,
+      "word": "new"
+    },
+    {
+      "id": 1316,
+      "timestamp": 601.2,
+      "word": "tasks"
+    },
+    {
+      "id": 1317,
+      "timestamp": 602.4,
+      "word": "This"
+    },
+    {
+      "id": 1318,
+      "timestamp": 602.9,
+      "word": "is"
+    },
+    {
+      "id": 1319,
+      "timestamp": 603.3,
+      "word": "especially"
+    },
+    {
+      "id": 1320,
+      "timestamp": 603.7,
+      "word": "useful"
+    },
+    {
+      "id": 1321,
+      "timestamp": 604.2,
+      "word": "when"
+    },
+    {
+      "id": 1322,
+      "timestamp": 604.6,
+      "word": "we"
+    },
+    {
+      "id": 1323,
+      "timestamp": 605.0,
+      "word": "have"
+    },
+    {
+      "id": 1324,
+      "timestamp": 605.4,
+      "word": "limited"
+    },
+    {
+      "id": 1325,
+      "timestamp": 605.7,
+      "word": "training"
+    },
+    {
+      "id": 1326,
+      "timestamp": 606.0,
+      "word": "data"
+    },
+    {
+      "id": 1327,
+      "timestamp": 606.4,
+      "word": "for"
+    },
+    {
+      "id": 1328,
+      "timestamp": 606.9,
+      "word": "our"
+    },
+    {
+      "id": 1329,
+      "timestamp": 607.4,
+      "word": "specific"
+    },
+    {
+      "id": 1330,
+      "timestamp": 607.8,
+      "word": "problem"
+    },
+    {
+      "id": 1331,
+      "timestamp": 608.8,
+      "word": "Fine"
+    },
+    {
+      "id": 1332,
+      "timestamp": 609.2,
+      "word": "tuning"
+    },
+    {
+      "id": 1333,
+      "timestamp": 609.6,
+      "word": "involves"
+    },
+    {
+      "id": 1334,
+      "timestamp": 610.1,
+      "word": "training"
+    },
+    {
+      "id": 1335,
+      "timestamp": 610.5,
+      "word": "just"
+    },
+    {
+      "id": 1336,
+      "timestamp": 610.9,
+      "word": "the"
+    },
+    {
+      "id": 1337,
+      "timestamp": 611.3,
+      "word": "last"
+    },
+    {
+      "id": 1338,
+      "timestamp": 611.7,
+      "word": "few"
+    },
+    {
+      "id": 1339,
+      "timestamp": 612.1,
+      "word": "layers"
+    },
+    {
+      "id": 1340,
+      "timestamp": 612.4,
+      "word": "while"
+    },
+    {
+      "id": 1341,
+      "timestamp": 612.7,
+      "word": "keeping"
+    },
+    {
+      "id": 1342,
+      "timestamp": 613.1,
+      "word": "earlier"
+    },
+    {
+      "id": 1343,
+      "timestamp": 613.4,
+      "word": "layers"
+    },
+    {
+      "id": 1344,
+      "timestamp": 613.9,
+      "word": "frozen"
+    },
+    {
+      "id": 1345,
+      "timestamp": 615.2,
+      "word": "Deep"
+    },
+    {
+      "id": 1346,
+      "timestamp": 615.6,
+      "word": "learning"
+    },
+    {
+      "id": 1347,
+      "timestamp": 616.0,
+      "word": "frameworks"
+    },
+    {
+      "id": 1348,
+      "timestamp": 616.3,
+      "word": "like"
+    },
+    {
+      "id": 1349,
+      "timestamp": 616.8,
+      "word": "TensorFlow"
+    },
+    {
+      "id": 1350,
+      "timestamp": 617.1,
+      "word": "and"
+    },
+    {
+      "id": 1351,
+      "timestamp": 617.4,
+      "word": "PyTorch"
+    },
+    {
+      "id": 1352,
+      "timestamp": 617.9,
+      "word": "make"
+    },
+    {
+      "id": 1353,
+      "timestamp": 618.3,
+      "word": "it"
+    },
+    {
+      "id": 1354,
+      "timestamp": 618.7,
+      "word": "easy"
+    },
+    {
+      "id": 1355,
+      "timestamp": 619.0,
+      "word": "to"
+    },
+    {
+      "id": 1356,
+      "timestamp": 619.4,
+      "word": "build"
+    },
+    {
+      "id": 1357,
+      "timestamp": 619.8,
+      "word": "and"
+    },
+    {
+      "id": 1358,
+      "timestamp": 620.3,
+      "word": "train"
+    },
+    {
+      "id": 1359,
+      "timestamp": 620.7,
+      "word": "models"
+    },
+    {
+      "id": 1360,
+      "timestamp": 621.7,
+      "word": "These"
+    },
+    {
+      "id": 1361,
+      "timestamp": 622.1,
+      "word": "frameworks"
+    },
+    {
+      "id": 1362,
+      "timestamp": 622.6,
+      "word": "provide"
+    },
+    {
+      "id": 1363,
+      "timestamp": 622.9,
+      "word": "automatic"
+    },
+    {
+      "id": 1364,
+      "timestamp": 623.4,
+      "word": "differentiation"
+    },
+    {
+      "id": 1365,
+      "timestamp": 623.8,
+      "word": "GPU"
+    },
+    {
+      "id": 1366,
+      "timestamp": 624.2,
+      "word": "acceleration"
+    },
+    {
+      "id": 1367,
+      "timestamp": 624.6,
+      "word": "and"
+    },
+    {
+      "id": 1368,
+      "timestamp": 625.1,
+      "word": "pre"
+    },
+    {
+      "id": 1369,
+      "timestamp": 625.6,
+      "word": "built"
+    },
+    {
+      "id": 1370,
+      "timestamp": 626.0,
+      "word": "layers"
+    },
+    {
+      "id": 1371,
+      "timestamp": 626.9,
+      "word": "Choosing"
+    },
+    {
+      "id": 1372,
+      "timestamp": 627.3,
+      "word": "the"
+    },
+    {
+      "id": 1373,
+      "timestamp": 627.7,
+      "word": "right"
+    },
+    {
+      "id": 1374,
+      "timestamp": 628.1,
+      "word": "architecture"
+    },
+    {
+      "id": 1375,
+      "timestamp": 628.6,
+      "word": "depends"
+    },
+    {
+      "id": 1376,
+      "timestamp": 629.1,
+      "word": "on"
+    },
+    {
+      "id": 1377,
+      "timestamp": 629.4,
+      "word": "your"
+    },
+    {
+      "id": 1378,
+      "timestamp": 629.9,
+      "word": "data"
+    },
+    {
+      "id": 1379,
+      "timestamp": 630.4,
+      "word": "type"
+    },
+    {
+      "id": 1380,
+      "timestamp": 630.9,
+      "word": "and"
+    },
+    {
+      "id": 1381,
+      "timestamp": 631.3,
+      "word": "problem"
+    },
+    {
+      "id": 1382,
+      "timestamp": 631.8,
+      "word": "requirements"
+    },
+    {
+      "id": 1383,
+      "timestamp": 633.0,
+      "word": "For"
+    },
+    {
+      "id": 1384,
+      "timestamp": 633.4,
+      "word": "image"
+    },
+    {
+      "id": 1385,
+      "timestamp": 633.7,
+      "word": "classification"
+    },
+    {
+      "id": 1386,
+      "timestamp": 634.1,
+      "word": "CNNs"
+    },
+    {
+      "id": 1387,
+      "timestamp": 634.4,
+      "word": "are"
+    },
+    {
+      "id": 1388,
+      "timestamp": 634.9,
+      "word": "the"
+    },
+    {
+      "id": 1389,
+      "timestamp": 635.3,
+      "word": "standard"
+    },
+    {
+      "id": 1390,
+      "timestamp": 635.8,
+      "word": "choice"
+    },
+    {
+      "id": 1391,
+      "timestamp": 636.2,
+      "word": "with"
+    },
+    {
+      "id": 1392,
+      "timestamp": 636.7,
+      "word": "architectures"
+    },
+    {
+      "id": 1393,
+      "timestamp": 637.1,
+      "word": "like"
+    },
+    {
+      "id": 1394,
+      "timestamp": 637.5,
+      "word": "ResNet"
+    },
+    {
+      "id": 1395,
+      "timestamp": 638.0,
+      "word": "and"
+    },
+    {
+      "id": 1396,
+      "timestamp": 638.4,
+      "word": "EfficientNet"
+    },
+    {
+      "id": 1397,
+      "timestamp": 639.5,
+      "word": "For"
+    },
+    {
+      "id": 1398,
+      "timestamp": 639.9,
+      "word": "natural"
+    },
+    {
+      "id": 1399,
+      "timestamp": 640.3,
+      "word": "language"
+    },
+    {
+      "id": 1400,
+      "timestamp": 640.8,
+      "word": "processing"
+    },
+    {
+      "id": 1401,
+      "timestamp": 641.2,
+      "word": "transformers"
+    },
+    {
+      "id": 1402,
+      "timestamp": 641.5,
+      "word": "like"
+    },
+    {
+      "id": 1403,
+      "timestamp": 641.9,
+      "word": "BERT"
+    },
+    {
+      "id": 1404,
+      "timestamp": 642.4,
+      "word": "and"
+    },
+    {
+      "id": 1405,
+      "timestamp": 642.7,
+      "word": "GPT"
+    },
+    {
+      "id": 1406,
+      "timestamp": 643.0,
+      "word": "are"
+    },
+    {
+      "id": 1407,
+      "timestamp": 643.5,
+      "word": "most"
+    },
+    {
+      "id": 1408,
+      "timestamp": 643.9,
+      "word": "effective"
+    },
+    {
+      "id": 1409,
+      "timestamp": 645.3,
+      "word": "For"
+    },
+    {
+      "id": 1410,
+      "timestamp": 645.7,
+      "word": "time"
+    },
+    {
+      "id": 1411,
+      "timestamp": 646.0,
+      "word": "series"
+    },
+    {
+      "id": 1412,
+      "timestamp": 646.4,
+      "word": "forecasting"
+    },
+    {
+      "id": 1413,
+      "timestamp": 646.9,
+      "word": "RNNs"
+    },
+    {
+      "id": 1414,
+      "timestamp": 647.3,
+      "word": "LSTMs"
+    },
+    {
+      "id": 1415,
+      "timestamp": 647.7,
+      "word": "or"
+    },
+    {
+      "id": 1416,
+      "timestamp": 648.0,
+      "word": "temporal"
+    },
+    {
+      "id": 1417,
+      "timestamp": 648.5,
+      "word": "convolutional"
+    },
+    {
+      "id": 1418,
+      "timestamp": 648.8,
+      "word": "networks"
+    },
+    {
+      "id": 1419,
+      "timestamp": 649.1,
+      "word": "work"
+    },
+    {
+      "id": 1420,
+      "timestamp": 649.6,
+      "word": "well"
+    },
+    {
+      "id": 1421,
+      "timestamp": 650.9,
+      "word": "Hyperparameter"
+    },
+    {
+      "id": 1422,
+      "timestamp": 651.3,
+      "word": "tuning"
+    },
+    {
+      "id": 1423,
+      "timestamp": 651.7,
+      "word": "is"
+    },
+    {
+      "id": 1424,
+      "timestamp": 652.2,
+      "word": "essential"
+    },
+    {
+      "id": 1425,
+      "timestamp": 652.6,
+      "word": "for"
+    },
+    {
+      "id": 1426,
+      "timestamp": 653.1,
+      "word": "achieving"
+    },
+    {
+      "id": 1427,
+      "timestamp": 653.5,
+      "word": "good"
+    },
+    {
+      "id": 1428,
+      "timestamp": 653.9,
+      "word": "performance"
+    },
+    {
+      "id": 1429,
+      "timestamp": 654.4,
+      "word": "with"
+    },
+    {
+      "id": 1430,
+      "timestamp": 654.9,
+      "word": "deep"
+    },
+    {
+      "id": 1431,
+      "timestamp": 655.2,
+      "word": "learning"
+    },
+    {
+      "id": 1432,
+      "timestamp": 655.5,
+      "word": "models"
+    },
+    {
+      "id": 1433,
+      "timestamp": 656.5,
+      "word": "Important"
+    },
+    {
+      "id": 1434,
+      "timestamp": 657.0,
+      "word": "hyperparameters"
+    },
+    {
+      "id": 1435,
+      "timestamp": 657.3,
+      "word": "include"
+    },
+    {
+      "id": 1436,
+      "timestamp": 657.6,
+      "word": "learning"
+    },
+    {
+      "id": 1437,
+      "timestamp": 658.1,
+      "word": "rate"
+    },
+    {
+      "id": 1438,
+      "timestamp": 658.5,
+      "word": "batch"
+    },
+    {
+      "id": 1439,
+      "timestamp": 658.9,
+      "word": "size"
+    },
+    {
+      "id": 1440,
+      "timestamp": 659.4,
+      "word": "number"
+    },
+    {
+      "id": 1441,
+      "timestamp": 659.8,
+      "word": "of"
+    },
+    {
+      "id": 1442,
+      "timestamp": 660.3,
+      "word": "layers"
+    },
+    {
+      "id": 1443,
+      "timestamp": 660.7,
+      "word": "and"
+    },
+    {
+      "id": 1444,
+      "timestamp": 661.1,
+      "word": "neurons"
+    },
+    {
+      "id": 1445,
+      "timestamp": 662.0,
+      "word": "Grid"
+    },
+    {
+      "id": 1446,
+      "timestamp": 662.3,
+      "word": "search"
+    },
+    {
+      "id": 1447,
+      "timestamp": 662.6,
+      "word": "random"
+    },
+    {
+      "id": 1448,
+      "timestamp": 663.0,
+      "word": "search"
+    },
+    {
+      "id": 1449,
+      "timestamp": 663.4,
+      "word": "and"
+    },
+    {
+      "id": 1450,
+      "timestamp": 663.7,
+      "word": "Bayesian"
+    },
+    {
+      "id": 1451,
+      "timestamp": 664.1,
+      "word": "optimization"
+    },
+    {
+      "id": 1452,
+      "timestamp": 664.4,
+      "word": "are"
+    },
+    {
+      "id": 1453,
+      "timestamp": 664.8,
+      "word": "common"
+    },
+    {
+      "id": 1454,
+      "timestamp": 665.3,
+      "word": "tuning"
+    },
+    {
+      "id": 1455,
+      "timestamp": 665.8,
+      "word": "strategies"
+    },
+    {
+      "id": 1456,
+      "timestamp": 666.8,
+      "word": "Cross"
+    },
+    {
+      "id": 1457,
+      "timestamp": 667.3,
+      "word": "validation"
+    },
+    {
+      "id": 1458,
+      "timestamp": 667.7,
+      "word": "helps"
+    },
+    {
+      "id": 1459,
+      "timestamp": 668.1,
+      "word": "ensure"
+    },
+    {
+      "id": 1460,
+      "timestamp": 668.5,
+      "word": "your"
+    },
+    {
+      "id": 1461,
+      "timestamp": 669.0,
+      "word": "model"
+    },
+    {
+      "id": 1462,
+      "timestamp": 669.4,
+      "word": "generalizes"
+    },
+    {
+      "id": 1463,
+      "timestamp": 669.8,
+      "word": "well"
+    },
+    {
+      "id": 1464,
+      "timestamp": 670.3,
+      "word": "to"
+    },
+    {
+      "id": 1465,
+      "timestamp": 670.7,
+      "word": "unseen"
+    },
+    {
+      "id": 1466,
+      "timestamp": 671.1,
+      "word": "data"
+    },
+    {
+      "id": 1467,
+      "timestamp": 672.4,
+      "word": "Monitoring"
+    },
+    {
+      "id": 1468,
+      "timestamp": 672.8,
+      "word": "training"
+    },
+    {
+      "id": 1469,
+      "timestamp": 673.1,
+      "word": "and"
+    },
+    {
+      "id": 1470,
+      "timestamp": 673.6,
+      "word": "validation"
+    },
+    {
+      "id": 1471,
+      "timestamp": 674.1,
+      "word": "loss"
+    },
+    {
+      "id": 1472,
+      "timestamp": 674.5,
+      "word": "helps"
+    },
+    {
+      "id": 1473,
+      "timestamp": 674.8,
+      "word": "detect"
+    },
+    {
+      "id": 1474,
+      "timestamp": 675.3,
+      "word": "overfitting"
+    },
+    {
+      "id": 1475,
+      "timestamp": 675.6,
+      "word": "early"
+    },
+    {
+      "id": 1476,
+      "timestamp": 676.8,
+      "word": "If"
+    },
+    {
+      "id": 1477,
+      "timestamp": 677.3,
+      "word": "validation"
+    },
+    {
+      "id": 1478,
+      "timestamp": 677.6,
+      "word": "loss"
+    },
+    {
+      "id": 1479,
+      "timestamp": 678.0,
+      "word": "increases"
+    },
+    {
+      "id": 1480,
+      "timestamp": 678.3,
+      "word": "while"
+    },
+    {
+      "id": 1481,
+      "timestamp": 678.6,
+      "word": "training"
+    },
+    {
+      "id": 1482,
+      "timestamp": 679.0,
+      "word": "loss"
+    },
+    {
+      "id": 1483,
+      "timestamp": 679.4,
+      "word": "decreases"
+    },
+    {
+      "id": 1484,
+      "timestamp": 679.8,
+      "word": "you"
+    },
+    {
+      "id": 1485,
+      "timestamp": 680.3,
+      "word": "are"
+    },
+    {
+      "id": 1486,
+      "timestamp": 680.7,
+      "word": "overfitting"
+    },
+    {
+      "id": 1487,
+      "timestamp": 681.6,
+      "word": "Early"
+    },
+    {
+      "id": 1488,
+      "timestamp": 681.9,
+      "word": "stopping"
+    },
+    {
+      "id": 1489,
+      "timestamp": 682.3,
+      "word": "halts"
+    },
+    {
+      "id": 1490,
+      "timestamp": 682.8,
+      "word": "training"
+    },
+    {
+      "id": 1491,
+      "timestamp": 683.2,
+      "word": "when"
+    },
+    {
+      "id": 1492,
+      "timestamp": 683.5,
+      "word": "validation"
+    },
+    {
+      "id": 1493,
+      "timestamp": 684.0,
+      "word": "performance"
+    },
+    {
+      "id": 1494,
+      "timestamp": 684.4,
+      "word": "stops"
+    },
+    {
+      "id": 1495,
+      "timestamp": 684.9,
+      "word": "improving"
+    },
+    {
+      "id": 1496,
+      "timestamp": 686.1,
+      "word": "Model"
+    },
+    {
+      "id": 1497,
+      "timestamp": 686.6,
+      "word": "checkpointing"
+    },
+    {
+      "id": 1498,
+      "timestamp": 686.9,
+      "word": "saves"
+    },
+    {
+      "id": 1499,
+      "timestamp": 687.4,
+      "word": "the"
+    },
+    {
+      "id": 1500,
+      "timestamp": 687.8,
+      "word": "best"
+    },
+    {
+      "id": 1501,
+      "timestamp": 688.3,
+      "word": "model"
+    },
+    {
+      "id": 1502,
+      "timestamp": 688.7,
+      "word": "weights"
+    },
+    {
+      "id": 1503,
+      "timestamp": 689.1,
+      "word": "during"
+    },
+    {
+      "id": 1504,
+      "timestamp": 689.4,
+      "word": "training"
+    },
+    {
+      "id": 1505,
+      "timestamp": 690.5,
+      "word": "Ensemble"
+    },
+    {
+      "id": 1506,
+      "timestamp": 690.9,
+      "word": "methods"
+    },
+    {
+      "id": 1507,
+      "timestamp": 691.3,
+      "word": "combine"
+    },
+    {
+      "id": 1508,
+      "timestamp": 691.8,
+      "word": "multiple"
+    },
+    {
+      "id": 1509,
+      "timestamp": 692.2,
+      "word": "models"
+    },
+    {
+      "id": 1510,
+      "timestamp": 692.7,
+      "word": "to"
+    },
+    {
+      "id": 1511,
+      "timestamp": 693.1,
+      "word": "improve"
+    },
+    {
+      "id": 1512,
+      "timestamp": 693.5,
+      "word": "prediction"
+    },
+    {
+      "id": 1513,
+      "timestamp": 693.8,
+      "word": "accuracy"
+    },
+    {
+      "id": 1514,
+      "timestamp": 694.2,
+      "word": "and"
+    },
+    {
+      "id": 1515,
+      "timestamp": 694.5,
+      "word": "robustness"
+    },
+    {
+      "id": 1516,
+      "timestamp": 695.5,
+      "word": "Deep"
+    },
+    {
+      "id": 1517,
+      "timestamp": 695.9,
+      "word": "learning"
+    },
+    {
+      "id": 1518,
+      "timestamp": 696.2,
+      "word": "has"
+    },
+    {
+      "id": 1519,
+      "timestamp": 696.6,
+      "word": "achieved"
+    },
+    {
+      "id": 1520,
+      "timestamp": 697.1,
+      "word": "remarkable"
+    },
+    {
+      "id": 1521,
+      "timestamp": 697.5,
+      "word": "success"
+    },
+    {
+      "id": 1522,
+      "timestamp": 697.9,
+      "word": "in"
+    },
+    {
+      "id": 1523,
+      "timestamp": 698.3,
+      "word": "computer"
+    },
+    {
+      "id": 1524,
+      "timestamp": 698.8,
+      "word": "vision"
+    },
+    {
+      "id": 1525,
+      "timestamp": 699.2,
+      "word": "speech"
+    },
+    {
+      "id": 1526,
+      "timestamp": 699.5,
+      "word": "recognition"
+    },
+    {
+      "id": 1527,
+      "timestamp": 700.0,
+      "word": "and"
+    },
+    {
+      "id": 1528,
+      "timestamp": 700.3,
+      "word": "game"
+    },
+    {
+      "id": 1529,
+      "timestamp": 700.7,
+      "word": "playing"
+    },
+    {
+      "id": 1530,
+      "timestamp": 702.0,
+      "word": "However"
+    },
+    {
+      "id": 1531,
+      "timestamp": 702.5,
+      "word": "it"
+    },
+    {
+      "id": 1532,
+      "timestamp": 702.9,
+      "word": "requires"
+    },
+    {
+      "id": 1533,
+      "timestamp": 703.2,
+      "word": "large"
+    },
+    {
+      "id": 1534,
+      "timestamp": 703.7,
+      "word": "amounts"
+    },
+    {
+      "id": 1535,
+      "timestamp": 704.1,
+      "word": "of"
+    },
+    {
+      "id": 1536,
+      "timestamp": 704.4,
+      "word": "data"
+    },
+    {
+      "id": 1537,
+      "timestamp": 704.8,
+      "word": "and"
+    },
+    {
+      "id": 1538,
+      "timestamp": 705.2,
+      "word": "computational"
+    },
+    {
+      "id": 1539,
+      "timestamp": 705.5,
+      "word": "resources"
+    },
+    {
+      "id": 1540,
+      "timestamp": 707.0,
+      "word": "Interpretability"
+    },
+    {
+      "id": 1541,
+      "timestamp": 707.3,
+      "word": "remains"
+    },
+    {
+      "id": 1542,
+      "timestamp": 707.6,
+      "word": "a"
+    },
+    {
+      "id": 1543,
+      "timestamp": 707.9,
+      "word": "challenge"
+    },
+    {
+      "id": 1544,
+      "timestamp": 708.2,
+      "word": "as"
+    },
+    {
+      "id": 1545,
+      "timestamp": 708.5,
+      "word": "deep"
+    },
+    {
+      "id": 1546,
+      "timestamp": 709.0,
+      "word": "networks"
+    },
+    {
+      "id": 1547,
+      "timestamp": 709.5,
+      "word": "are"
+    },
+    {
+      "id": 1548,
+      "timestamp": 709.9,
+      "word": "often"
+    },
+    {
+      "id": 1549,
+      "timestamp": 710.3,
+      "word": "seen"
+    },
+    {
+      "id": 1550,
+      "timestamp": 710.6,
+      "word": "as"
+    },
+    {
+      "id": 1551,
+      "timestamp": 711.1,
+      "word": "black"
+    },
+    {
+      "id": 1552,
+      "timestamp": 711.4,
+      "word": "boxes"
+    },
+    {
+      "id": 1553,
+      "timestamp": 712.4,
+      "word": "Techniques"
+    },
+    {
+      "id": 1554,
+      "timestamp": 712.8,
+      "word": "like"
+    },
+    {
+      "id": 1555,
+      "timestamp": 713.3,
+      "word": "attention"
+    },
+    {
+      "id": 1556,
+      "timestamp": 713.6,
+      "word": "visualization"
+    },
+    {
+      "id": 1557,
+      "timestamp": 714.0,
+      "word": "and"
+    },
+    {
+      "id": 1558,
+      "timestamp": 714.3,
+      "word": "saliency"
+    },
+    {
+      "id": 1559,
+      "timestamp": 714.7,
+      "word": "maps"
+    },
+    {
+      "id": 1560,
+      "timestamp": 715.1,
+      "word": "help"
+    },
+    {
+      "id": 1561,
+      "timestamp": 715.4,
+      "word": "understand"
+    },
+    {
+      "id": 1562,
+      "timestamp": 715.9,
+      "word": "model"
+    },
+    {
+      "id": 1563,
+      "timestamp": 716.3,
+      "word": "decisions"
+    },
+    {
+      "id": 1564,
+      "timestamp": 717.1,
+      "word": "Ethical"
+    },
+    {
+      "id": 1565,
+      "timestamp": 717.6,
+      "word": "considerations"
+    },
+    {
+      "id": 1566,
+      "timestamp": 718.1,
+      "word": "include"
+    },
+    {
+      "id": 1567,
+      "timestamp": 718.5,
+      "word": "bias"
+    },
+    {
+      "id": 1568,
+      "timestamp": 718.8,
+      "word": "in"
+    },
+    {
+      "id": 1569,
+      "timestamp": 719.2,
+      "word": "training"
+    },
+    {
+      "id": 1570,
+      "timestamp": 719.6,
+      "word": "data"
+    },
+    {
+      "id": 1571,
+      "timestamp": 720.1,
+      "word": "privacy"
+    },
+    {
+      "id": 1572,
+      "timestamp": 720.6,
+      "word": "concerns"
+    },
+    {
+      "id": 1573,
+      "timestamp": 721.0,
+      "word": "and"
+    },
+    {
+      "id": 1574,
+      "timestamp": 721.3,
+      "word": "potential"
+    },
+    {
+      "id": 1575,
+      "timestamp": 721.6,
+      "word": "misuse"
+    },
+    {
+      "id": 1576,
+      "timestamp": 722.9,
+      "word": "As"
+    },
+    {
+      "id": 1577,
+      "timestamp": 723.3,
+      "word": "you"
+    },
+    {
+      "id": 1578,
+      "timestamp": 723.8,
+      "word": "continue"
+    },
+    {
+      "id": 1579,
+      "timestamp": 724.2,
+      "word": "learning"
+    },
+    {
+      "id": 1580,
+      "timestamp": 724.6,
+      "word": "focus"
+    },
+    {
+      "id": 1581,
+      "timestamp": 725.1,
+      "word": "on"
+    },
+    {
+      "id": 1582,
+      "timestamp": 725.4,
+      "word": "implementing"
+    },
+    {
+      "id": 1583,
+      "timestamp": 725.9,
+      "word": "models"
+    },
+    {
+      "id": 1584,
+      "timestamp": 726.4,
+      "word": "and"
+    },
+    {
+      "id": 1585,
+      "timestamp": 726.7,
+      "word": "experimenting"
+    },
+    {
+      "id": 1586,
+      "timestamp": 727.0,
+      "word": "with"
+    },
+    {
+      "id": 1587,
+      "timestamp": 727.3,
+      "word": "real"
+    },
+    {
+      "id": 1588,
+      "timestamp": 727.8,
+      "word": "datasets"
+    },
+    {
+      "id": 1589,
+      "timestamp": 729.1,
+      "word": "Start"
+    },
+    {
+      "id": 1590,
+      "timestamp": 729.4,
+      "word": "with"
+    },
+    {
+      "id": 1591,
+      "timestamp": 729.8,
+      "word": "simple"
+    },
+    {
+      "id": 1592,
+      "timestamp": 730.2,
+      "word": "problems"
+    },
+    {
+      "id": 1593,
+      "timestamp": 730.5,
+      "word": "and"
+    },
+    {
+      "id": 1594,
+      "timestamp": 731.0,
+      "word": "gradually"
+    },
+    {
+      "id": 1595,
+      "timestamp": 731.5,
+      "word": "increase"
+    },
+    {
+      "id": 1596,
+      "timestamp": 731.9,
+      "word": "complexity"
+    },
+    {
+      "id": 1597,
+      "timestamp": 732.3,
+      "word": "as"
+    },
+    {
+      "id": 1598,
+      "timestamp": 732.7,
+      "word": "you"
+    },
+    {
+      "id": 1599,
+      "timestamp": 733.1,
+      "word": "gain"
+    },
+    {
+      "id": 1600,
+      "timestamp": 733.6,
+      "word": "experience"
+    },
+    {
+      "id": 1601,
+      "timestamp": 734.8,
+      "word": "Thank"
+    },
+    {
+      "id": 1602,
+      "timestamp": 735.2,
+      "word": "you"
+    },
+    {
+      "id": 1603,
+      "timestamp": 735.6,
+      "word": "for"
+    },
+    {
+      "id": 1604,
+      "timestamp": 736.0,
+      "word": "watching"
+    },
+    {
+      "id": 1605,
+      "timestamp": 736.3,
+      "word": "this"
+    },
+    {
+      "id": 1606,
+      "timestamp": 736.7,
+      "word": "tutorial"
+    },
+    {
+      "id": 1607,
+      "timestamp": 737.1,
+      "word": "on"
+    },
+    {
+      "id": 1608,
+      "timestamp": 737.4,
+      "word": "deep"
+    },
+    {
+      "id": 1609,
+      "timestamp": 737.7,
+      "word": "learning"
+    },
+    {
+      "id": 1610,
+      "timestamp": 738.1,
+      "word": "fundamentals"
+    },
+    {
+      "id": 1611,
+      "timestamp": 739.4,
+      "word": "Welcome"
+    },
+    {
+      "id": 1612,
+      "timestamp": 739.8,
+      "word": "to"
+    },
+    {
+      "id": 1613,
+      "timestamp": 740.2,
+      "word": "this"
+    },
+    {
+      "id": 1614,
+      "timestamp": 740.5,
+      "word": "comprehensive"
+    },
+    {
+      "id": 1615,
+      "timestamp": 740.9,
+      "word": "tutorial"
+    },
+    {
+      "id": 1616,
+      "timestamp": 741.2,
+      "word": "on"
+    },
+    {
+      "id": 1617,
+      "timestamp": 741.6,
+      "word": "deep"
+    },
+    {
+      "id": 1618,
+      "timestamp": 742.1,
+      "word": "learning"
+    },
+    {
+      "id": 1619,
+      "timestamp": 742.6,
+      "word": "and"
+    },
+    {
+      "id": 1620,
+      "timestamp": 743.0,
+      "word": "neural"
+    },
+    {
+      "id": 1621,
+      "timestamp": 743.4,
+      "word": "networks"
+    },
+    {
+      "id": 1622,
+      "timestamp": 744.3,
+      "word": "Deep"
+    },
+    {
+      "id": 1623,
+      "timestamp": 744.8,
+      "word": "learning"
+    },
+    {
+      "id": 1624,
+      "timestamp": 745.3,
+      "word": "is"
+    },
+    {
+      "id": 1625,
+      "timestamp": 745.7,
+      "word": "a"
+    },
+    {
+      "id": 1626,
+      "timestamp": 746.1,
+      "word": "subset"
+    },
+    {
+      "id": 1627,
+      "timestamp": 746.5,
+      "word": "of"
+    },
+    {
+      "id": 1628,
+      "timestamp": 747.0,
+      "word": "machine"
+    },
+    {
+      "id": 1629,
+      "timestamp": 747.4,
+      "word": "learning"
+    },
+    {
+      "id": 1630,
+      "timestamp": 747.8,
+      "word": "that"
+    },
+    {
+      "id": 1631,
+      "timestamp": 748.3,
+      "word": "uses"
+    },
+    {
+      "id": 1632,
+      "timestamp": 748.7,
+      "word": "artificial"
+    },
+    {
+      "id": 1633,
+      "timestamp": 749.1,
+      "word": "neural"
+    },
+    {
+      "id": 1634,
+      "timestamp": 749.4,
+      "word": "networks"
+    },
+    {
+      "id": 1635,
+      "timestamp": 749.8,
+      "word": "with"
+    },
+    {
+      "id": 1636,
+      "timestamp": 750.1,
+      "word": "multiple"
+    },
+    {
+      "id": 1637,
+      "timestamp": 750.6,
+      "word": "layers"
+    },
+    {
+      "id": 1638,
+      "timestamp": 751.7,
+      "word": "These"
+    },
+    {
+      "id": 1639,
+      "timestamp": 752.2,
+      "word": "networks"
+    },
+    {
+      "id": 1640,
+      "timestamp": 752.7,
+      "word": "are"
+    },
+    {
+      "id": 1641,
+      "timestamp": 753.1,
+      "word": "inspired"
+    },
+    {
+      "id": 1642,
+      "timestamp": 753.6,
+      "word": "by"
+    },
+    {
+      "id": 1643,
+      "timestamp": 754.0,
+      "word": "the"
+    },
+    {
+      "id": 1644,
+      "timestamp": 754.4,
+      "word": "structure"
+    },
+    {
+      "id": 1645,
+      "timestamp": 754.9,
+      "word": "and"
+    },
+    {
+      "id": 1646,
+      "timestamp": 755.3,
+      "word": "function"
+    },
+    {
+      "id": 1647,
+      "timestamp": 755.7,
+      "word": "of"
+    },
+    {
+      "id": 1648,
+      "timestamp": 756.0,
+      "word": "the"
+    },
+    {
+      "id": 1649,
+      "timestamp": 756.4,
+      "word": "human"
+    },
+    {
+      "id": 1650,
+      "timestamp": 756.8,
+      "word": "brain"
+    },
+    {
+      "id": 1651,
+      "timestamp": 757.9,
+      "word": "The"
+    },
+    {
+      "id": 1652,
+      "timestamp": 758.2,
+      "word": "fundamental"
+    },
+    {
+      "id": 1653,
+      "timestamp": 758.7,
+      "word": "building"
+    },
+    {
+      "id": 1654,
+      "timestamp": 759.1,
+      "word": "block"
+    },
+    {
+      "id": 1655,
+      "timestamp": 759.5,
+      "word": "of"
+    },
+    {
+      "id": 1656,
+      "timestamp": 760.0,
+      "word": "a"
+    },
+    {
+      "id": 1657,
+      "timestamp": 760.5,
+      "word": "neural"
+    },
+    {
+      "id": 1658,
+      "timestamp": 760.9,
+      "word": "network"
+    },
+    {
+      "id": 1659,
+      "timestamp": 761.3,
+      "word": "is"
+    },
+    {
+      "id": 1660,
+      "timestamp": 761.7,
+      "word": "the"
+    },
+    {
+      "id": 1661,
+      "timestamp": 762.2,
+      "word": "artificial"
+    },
+    {
+      "id": 1662,
+      "timestamp": 762.5,
+      "word": "neuron"
+    },
+    {
+      "id": 1663,
+      "timestamp": 762.9,
+      "word": "or"
+    },
+    {
+      "id": 1664,
+      "timestamp": 763.3,
+      "word": "perceptron"
+    },
+    {
+      "id": 1665,
+      "timestamp": 764.4,
+      "word": "Each"
+    },
+    {
+      "id": 1666,
+      "timestamp": 764.7,
+      "word": "neuron"
+    },
+    {
+      "id": 1667,
+      "timestamp": 765.1,
+      "word": "receives"
+    },
+    {
+      "id": 1668,
+      "timestamp": 765.5,
+      "word": "inputs"
+    },
+    {
+      "id": 1669,
+      "timestamp": 765.9,
+      "word": "multiplies"
+    },
+    {
+      "id": 1670,
+      "timestamp": 766.3,
+      "word": "them"
+    },
+    {
+      "id": 1671,
+      "timestamp": 766.7,
+      "word": "by"
+    },
+    {
+      "id": 1672,
+      "timestamp": 767.2,
+      "word": "weights"
+    },
+    {
+      "id": 1673,
+      "timestamp": 767.5,
+      "word": "and"
+    },
+    {
+      "id": 1674,
+      "timestamp": 767.8,
+      "word": "passes"
+    },
+    {
+      "id": 1675,
+      "timestamp": 768.3,
+      "word": "them"
+    },
+    {
+      "id": 1676,
+      "timestamp": 768.6,
+      "word": "through"
+    },
+    {
+      "id": 1677,
+      "timestamp": 769.1,
+      "word": "an"
+    },
+    {
+      "id": 1678,
+      "timestamp": 769.5,
+      "word": "activation"
+    },
+    {
+      "id": 1679,
+      "timestamp": 769.9,
+      "word": "function"
+    },
+    {
+      "id": 1680,
+      "timestamp": 771.0,
+      "word": "Common"
+    },
+    {
+      "id": 1681,
+      "timestamp": 771.3,
+      "word": "activation"
+    },
+    {
+      "id": 1682,
+      "timestamp": 771.7,
+      "word": "functions"
+    },
+    {
+      "id": 1683,
+      "timestamp": 772.2,
+      "word": "include"
+    },
+    {
+      "id": 1684,
+      "timestamp": 772.6,
+      "word": "sigmoid"
+    },
+    {
+      "id": 1685,
+      "timestamp": 773.0,
+      "word": "tanh"
+    },
+    {
+      "id": 1686,
+      "timestamp": 773.4,
+      "word": "and"
+    },
+    {
+      "id": 1687,
+      "timestamp": 773.7,
+      "word": "the"
+    },
+    {
+      "id": 1688,
+      "timestamp": 774.2,
+      "word": "rectified"
+    },
+    {
+      "id": 1689,
+      "timestamp": 774.6,
+      "word": "linear"
+    },
+    {
+      "id": 1690,
+      "timestamp": 774.9,
+      "word": "unit"
+    },
+    {
+      "id": 1691,
+      "timestamp": 775.4,
+      "word": "or"
+    },
+    {
+      "id": 1692,
+      "timestamp": 775.8,
+      "word": "ReLU"
+    },
+    {
+      "id": 1693,
+      "timestamp": 777.1,
+      "word": "ReLU"
+    },
+    {
+      "id": 1694,
+      "timestamp": 777.6,
+      "word": "has"
+    },
+    {
+      "id": 1695,
+      "timestamp": 778.1,
+      "word": "become"
+    },
+    {
+      "id": 1696,
+      "timestamp": 778.5,
+      "word": "the"
+    },
+    {
+      "id": 1697,
+      "timestamp": 779.0,
+      "word": "most"
+    },
+    {
+      "id": 1698,
+      "timestamp": 779.3,
+      "word": "popular"
+    },
+    {
+      "id": 1699,
+      "timestamp": 779.8,
+      "word": "activation"
+    },
+    {
+      "id": 1700,
+      "timestamp": 780.3,
+      "word": "function"
+    },
+    {
+      "id": 1701,
+      "timestamp": 780.7,
+      "word": "because"
+    },
+    {
+      "id": 1702,
+      "timestamp": 781.2,
+      "word": "it"
+    },
+    {
+      "id": 1703,
+      "timestamp": 781.5,
+      "word": "helps"
+    },
+    {
+      "id": 1704,
+      "timestamp": 781.9,
+      "word": "solve"
+    },
+    {
+      "id": 1705,
+      "timestamp": 782.3,
+      "word": "the"
+    },
+    {
+      "id": 1706,
+      "timestamp": 782.7,
+      "word": "vanishing"
+    },
+    {
+      "id": 1707,
+      "timestamp": 783.2,
+      "word": "gradient"
+    },
+    {
+      "id": 1708,
+      "timestamp": 783.5,
+      "word": "problem"
+    },
+    {
+      "id": 1709,
+      "timestamp": 784.7,
+      "word": "A"
+    },
+    {
+      "id": 1710,
+      "timestamp": 785.0,
+      "word": "neural"
+    },
+    {
+      "id": 1711,
+      "timestamp": 785.4,
+      "word": "network"
+    },
+    {
+      "id": 1712,
+      "timestamp": 785.7,
+      "word": "consists"
+    },
+    {
+      "id": 1713,
+      "timestamp": 786.1,
+      "word": "of"
+    },
+    {
+      "id": 1714,
+      "timestamp": 786.4,
+      "word": "an"
+    },
+    {
+      "id": 1715,
+      "timestamp": 786.8,
+      "word": "input"
+    },
+    {
+      "id": 1716,
+      "timestamp": 787.2,
+      "word": "layer"
+    },
+    {
+      "id": 1717,
+      "timestamp": 787.5,
+      "word": "one"
+    },
+    {
+      "id": 1718,
+      "timestamp": 788.0,
+      "word": "or"
+    },
+    {
+      "id": 1719,
+      "timestamp": 788.5,
+      "word": "more"
+    },
+    {
+      "id": 1720,
+      "timestamp": 788.9,
+      "word": "hidden"
+    },
+    {
+      "id": 1721,
+      "timestamp": 789.3,
+      "word": "layers"
+    },
+    {
+      "id": 1722,
+      "timestamp": 789.6,
+      "word": "and"
+    },
+    {
+      "id": 1723,
+      "timestamp": 790.0,
+      "word": "an"
+    },
+    {
+      "id": 1724,
+      "timestamp": 790.3,
+      "word": "output"
+    },
+    {
+      "id": 1725,
+      "timestamp": 790.7,
+      "word": "layer"
+    },
+    {
+      "id": 1726,
+      "timestamp": 791.9,
+      "word": "The"
+    },
+    {
+      "id": 1727,
+      "timestamp": 792.3,
+      "word": "process"
+    },
+    {
+      "id": 1728,
+      "timestamp": 792.7,
+      "word": "of"
+    },
+    {
+      "id": 1729,
+      "timestamp": 793.2,
+      "word": "training"
+    },
+    {
+      "id": 1730,
+      "timestamp": 793.5,
+      "word": "a"
+    },
+    {
+      "id": 1731,
+      "timestamp": 793.8,
+      "word": "neural"
+    },
+    {
+      "id": 1732,
+      "timestamp": 794.3,
+      "word": "network"
+    },
+    {
+      "id": 1733,
+      "timestamp": 794.8,
+      "word": "involves"
+    },
+    {
+      "id": 1734,
+      "timestamp": 795.2,
+      "word": "forward"
+    },
+    {
+      "id": 1735,
+      "timestamp": 795.5,
+      "word": "propagation"
+    },
+    {
+      "id": 1736,
+      "timestamp": 795.9,
+      "word": "and"
+    },
+    {
+      "id": 1737,
+      "timestamp": 796.4,
+      "word": "backpropagation"
+    },
+    {
+      "id": 1738,
+      "timestamp": 797.4,
+      "word": "During"
+    },
+    {
+      "id": 1739,
+      "timestamp": 797.8,
+      "word": "forward"
+    },
+    {
+      "id": 1740,
+      "timestamp": 798.2,
+      "word": "propagation"
+    },
+    {
+      "id": 1741,
+      "timestamp": 798.7,
+      "word": "data"
+    },
+    {
+      "id": 1742,
+      "timestamp": 799.2,
+      "word": "flows"
+    },
+    {
+      "id": 1743,
+      "timestamp": 799.6,
+      "word": "through"
+    },
+    {
+      "id": 1744,
+      "timestamp": 800.1,
+      "word": "the"
+    },
+    {
+      "id": 1745,
+      "timestamp": 800.5,
+      "word": "network"
+    },
+    {
+      "id": 1746,
+      "timestamp": 800.9,
+      "word": "from"
+    },
+    {
+      "id": 1747,
+      "timestamp": 801.2,
+      "word": "input"
+    },
+    {
+      "id": 1748,
+      "timestamp": 801.6,
+      "word": "to"
+    },
+    {
+      "id": 1749,
+      "timestamp": 802.0,
+      "word": "output"
+    },
+    {
+      "id": 1750,
+      "timestamp": 803.1,
+      "word": "The"
+    },
+    {
+      "id": 1751,
+      "timestamp": 803.4,
+      "word": "network"
+    },
+    {
+      "id": 1752,
+      "timestamp": 803.8,
+      "word": "makes"
+    },
+    {
+      "id": 1753,
+      "timestamp": 804.2,
+      "word": "predictions"
+    },
+    {
+      "id": 1754,
+      "timestamp": 804.5,
+      "word": "and"
+    },
+    {
+      "id": 1755,
+      "timestamp": 804.9,
+      "word": "we"
+    },
+    {
+      "id": 1756,
+      "timestamp": 805.2,
+      "word": "calculate"
+    },
+    {
+      "id": 1757,
+      "timestamp": 805.5,
+      "word": "the"
+    },
+    {
+      "id": 1758,
+      "timestamp": 806.0,
+      "word": "loss"
+    },
+    {
+      "id": 1759,
+      "timestamp": 806.4,
+      "word": "or"
+    },
+    {
+      "id": 1760,
+      "timestamp": 806.9,
+      "word": "error"
+    },
+    {
+      "id": 1761,
+      "timestamp": 807.3,
+      "word": "using"
+    },
+    {
+      "id": 1762,
+      "timestamp": 807.7,
+      "word": "a"
+    },
+    {
+      "id": 1763,
+      "timestamp": 808.2,
+      "word": "loss"
+    },
+    {
+      "id": 1764,
+      "timestamp": 808.6,
+      "word": "function"
+    },
+    {
+      "id": 1765,
+      "timestamp": 809.7,
+      "word": "Common"
+    },
+    {
+      "id": 1766,
+      "timestamp": 810.2,
+      "word": "loss"
+    },
+    {
+      "id": 1767,
+      "timestamp": 810.6,
+      "word": "functions"
+    },
+    {
+      "id": 1768,
+      "timestamp": 811.0,
+      "word": "include"
+    },
+    {
+      "id": 1769,
+      "timestamp": 811.5,
+      "word": "mean"
+    },
+    {
+      "id": 1770,
+      "timestamp": 812.0,
+      "word": "squared"
+    },
+    {
+      "id": 1771,
+      "timestamp": 812.3,
+      "word": "error"
+    },
+    {
+      "id": 1772,
+      "timestamp": 812.7,
+      "word": "for"
+    },
+    {
+      "id": 1773,
+      "timestamp": 813.1,
+      "word": "regression"
+    },
+    {
+      "id": 1774,
+      "timestamp": 813.5,
+      "word": "and"
+    },
+    {
+      "id": 1775,
+      "timestamp": 814.0,
+      "word": "cross"
+    },
+    {
+      "id": 1776,
+      "timestamp": 814.4,
+      "word": "entropy"
+    },
+    {
+      "id": 1777,
+      "timestamp": 814.7,
+      "word": "for"
+    },
+    {
+      "id": 1778,
+      "timestamp": 815.1,
+      "word": "classification"
+    },
+    {
+      "id": 1779,
+      "timestamp": 816.0,
+      "word": "Backpropagation"
+    },
+    {
+      "id": 1780,
+      "timestamp": 816.3,
+      "word": "is"
+    },
+    {
+      "id": 1781,
+      "timestamp": 816.6,
+      "word": "the"
+    },
+    {
+      "id": 1782,
+      "timestamp": 817.0,
+      "word": "algorithm"
+    },
+    {
+      "id": 1783,
+      "timestamp": 817.5,
+      "word": "used"
+    },
+    {
+      "id": 1784,
+      "timestamp": 817.8,
+      "word": "to"
+    },
+    {
+      "id": 1785,
+      "timestamp": 818.1,
+      "word": "calculate"
+    },
+    {
+      "id": 1786,
+      "timestamp": 818.5,
+      "word": "gradients"
+    },
+    {
+      "id": 1787,
+      "timestamp": 818.9,
+      "word": "and"
+    },
+    {
+      "id": 1788,
+      "timestamp": 819.4,
+      "word": "update"
+    },
+    {
+      "id": 1789,
+      "timestamp": 819.8,
+      "word": "the"
+    },
+    {
+      "id": 1790,
+      "timestamp": 820.3,
+      "word": "network"
+    },
+    {
+      "id": 1791,
+      "timestamp": 820.7,
+      "word": "weights"
+    },
+    {
+      "id": 1792,
+      "timestamp": 821.9,
+      "word": "It"
+    },
+    {
+      "id": 1793,
+      "timestamp": 822.3,
+      "word": "uses"
+    },
+    {
+      "id": 1794,
+      "timestamp": 822.7,
+      "word": "the"
+    },
+    {
+      "id": 1795,
+      "timestamp": 823.2,
+      "word": "chain"
+    },
+    {
+      "id": 1796,
+      "timestamp": 823.6,
+      "word": "rule"
+    },
+    {
+      "id": 1797,
+      "timestamp": 824.0,
+      "word": "from"
+    },
+    {
+      "id": 1798,
+      "timestamp": 824.3,
+      "word": "calculus"
+    },
+    {
+      "id": 1799,
+      "timestamp": 824.7,
+      "word": "to"
+    },
+    {
+      "id": 1800,
+      "timestamp": 825.2,
+      "word": "compute"
+    },
+    {
+      "id": 1801,
+      "timestamp": 825.6,
+      "word": "how"
+    },
+    {
+      "id": 1802,
+      "timestamp": 826.0,
+      "word": "each"
+    },
+    {
+      "id": 1803,
+      "timestamp": 826.4,
+      "word": "weight"
+    },
+    {
+      "id": 1804,
+      "timestamp": 826.8,
+      "word": "contributed"
+    },
+    {
+      "id": 1805,
+      "timestamp": 827.3,
+      "word": "to"
+    },
+    {
+      "id": 1806,
+      "timestamp": 827.7,
+      "word": "the"
+    },
+    {
+      "id": 1807,
+      "timestamp": 828.2,
+      "word": "error"
+    },
+    {
+      "id": 1808,
+      "timestamp": 829.5,
+      "word": "Gradient"
+    },
+    {
+      "id": 1809,
+      "timestamp": 829.9,
+      "word": "descent"
+    },
+    {
+      "id": 1810,
+      "timestamp": 830.4,
+      "word": "is"
+    },
+    {
+      "id": 1811,
+      "timestamp": 830.7,
+      "word": "the"
+    },
+    {
+      "id": 1812,
+      "timestamp": 831.1,
+      "word": "optimization"
+    },
+    {
+      "id": 1813,
+      "timestamp": 831.5,
+      "word": "algorithm"
+    },
+    {
+      "id": 1814,
+      "timestamp": 832.0,
+      "word": "that"
+    },
+    {
+      "id": 1815,
+      "timestamp": 832.3,
+      "word": "adjusts"
+    },
+    {
+      "id": 1816,
+      "timestamp": 832.6,
+      "word": "weights"
+    },
+    {
+      "id": 1817,
+      "timestamp": 833.1,
+      "word": "to"
+    },
+    {
+      "id": 1818,
+      "timestamp": 833.5,
+      "word": "minimize"
+    },
+    {
+      "id": 1819,
+      "timestamp": 833.9,
+      "word": "the"
+    },
+    {
+      "id": 1820,
+      "timestamp": 834.2,
+      "word": "loss"
+    },
+    {
+      "id": 1821,
+      "timestamp": 835.5,
+      "word": "There"
+    },
+    {
+      "id": 1822,
+      "timestamp": 836.0,
+      "word": "are"
+    },
+    {
+      "id": 1823,
+      "timestamp": 836.3,
+      "word": "several"
+    },
+    {
+      "id": 1824,
+      "timestamp": 836.7,
+      "word": "variants"
+    },
+    {
+      "id": 1825,
+      "timestamp": 837.0,
+      "word": "of"
+    },
+    {
+      "id": 1826,
+      "timestamp": 837.5,
+      "word": "gradient"
+    },
+    {
+      "id": 1827,
+      "timestamp": 837.9,
+      "word": "descent"
+    },
+    {
+      "id": 1828,
+      "timestamp": 838.2,
+      "word": "including"
+    },
+    {
+      "id": 1829,
+      "timestamp": 838.6,
+      "word": "batch"
+    },
+    {
+      "id": 1830,
+      "timestamp": 839.1,
+      "word": "stochastic"
+    },
+    {
+      "id": 1831,
+      "timestamp": 839.4,
+      "word": "and"
+    },
+    {
+      "id": 1832,
+      "timestamp": 839.8,
+      "word": "mini"
+    },
+    {
+      "id": 1833,
+      "timestamp": 840.2,
+      "word": "batch"
+    },
+    {
+      "id": 1834,
+      "timestamp": 841.4,
+      "word": "Mini"
+    },
+    {
+      "id": 1835,
+      "timestamp": 841.7,
+      "word": "batch"
+    },
+    {
+      "id": 1836,
+      "timestamp": 842.0,
+      "word": "gradient"
+    },
+    {
+      "id": 1837,
+      "timestamp": 842.4,
+      "word": "descent"
+    },
+    {
+      "id": 1838,
+      "timestamp": 842.9,
+      "word": "is"
+    },
+    {
+      "id": 1839,
+      "timestamp": 843.4,
+      "word": "most"
+    },
+    {
+      "id": 1840,
+      "timestamp": 843.8,
+      "word": "commonly"
+    },
+    {
+      "id": 1841,
+      "timestamp": 844.2,
+      "word": "used"
+    },
+    {
+      "id": 1842,
+      "timestamp": 844.5,
+      "word": "as"
+    },
+    {
+      "id": 1843,
+      "timestamp": 844.9,
+      "word": "it"
+    },
+    {
+      "id": 1844,
+      "timestamp": 845.2,
+      "word": "balances"
+    },
+    {
+      "id": 1845,
+      "timestamp": 845.6,
+      "word": "speed"
+    },
+    {
+      "id": 1846,
+      "timestamp": 846.0,
+      "word": "and"
+    },
+    {
+      "id": 1847,
+      "timestamp": 846.5,
+      "word": "stability"
+    },
+    {
+      "id": 1848,
+      "timestamp": 847.9,
+      "word": "Learning"
+    },
+    {
+      "id": 1849,
+      "timestamp": 848.3,
+      "word": "rate"
+    },
+    {
+      "id": 1850,
+      "timestamp": 848.7,
+      "word": "is"
+    },
+    {
+      "id": 1851,
+      "timestamp": 849.2,
+      "word": "a"
+    },
+    {
+      "id": 1852,
+      "timestamp": 849.6,
+      "word": "crucial"
+    },
+    {
+      "id": 1853,
+      "timestamp": 849.9,
+      "word": "hyperparameter"
+    },
+    {
+      "id": 1854,
+      "timestamp": 850.4,
+      "word": "that"
+    },
+    {
+      "id": 1855,
+      "timestamp": 850.9,
+      "word": "controls"
+    },
+    {
+      "id": 1856,
+      "timestamp": 851.3,
+      "word": "how"
+    },
+    {
+      "id": 1857,
+      "timestamp": 851.7,
+      "word": "much"
+    },
+    {
+      "id": 1858,
+      "timestamp": 852.1,
+      "word": "we"
+    },
+    {
+      "id": 1859,
+      "timestamp": 852.5,
+      "word": "adjust"
+    },
+    {
+      "id": 1860,
+      "timestamp": 853.0,
+      "word": "weights"
+    },
+    {
+      "id": 1861,
+      "timestamp": 853.5,
+      "word": "during"
+    },
+    {
+      "id": 1862,
+      "timestamp": 853.9,
+      "word": "training"
+    },
+    {
+      "id": 1863,
+      "timestamp": 855.0,
+      "word": "If"
+    },
+    {
+      "id": 1864,
+      "timestamp": 855.4,
+      "word": "the"
+    },
+    {
+      "id": 1865,
+      "timestamp": 855.7,
+      "word": "learning"
+    },
+    {
+      "id": 1866,
+      "timestamp": 856.1,
+      "word": "rate"
+    },
+    {
+      "id": 1867,
+      "timestamp": 856.6,
+      "word": "is"
+    },
+    {
+      "id": 1868,
+      "timestamp": 857.0,
+      "word": "too"
+    },
+    {
+      "id": 1869,
+      "timestamp": 857.3,
+      "word": "high"
+    },
+    {
+      "id": 1870,
+      "timestamp": 857.7,
+      "word": "the"
+    },
+    {
+      "id": 1871,
+      "timestamp": 858.1,
+      "word": "model"
+    },
+    {
+      "id": 1872,
+      "timestamp": 858.4,
+      "word": "may"
+    },
+    {
+      "id": 1873,
+      "timestamp": 858.8,
+      "word": "overshoot"
+    },
+    {
+      "id": 1874,
+      "timestamp": 859.1,
+      "word": "the"
+    },
+    {
+      "id": 1875,
+      "timestamp": 859.5,
+      "word": "optimal"
+    },
+    {
+      "id": 1876,
+      "timestamp": 859.9,
+      "word": "solution"
+    },
+    {
+      "id": 1877,
+      "timestamp": 861.0,
+      "word": "If"
+    },
+    {
+      "id": 1878,
+      "timestamp": 861.4,
+      "word": "it"
+    },
+    {
+      "id": 1879,
+      "timestamp": 861.7,
+      "word": "is"
+    },
+    {
+      "id": 1880,
+      "timestamp": 862.1,
+      "word": "too"
+    },
+    {
+      "id": 1881,
+      "timestamp": 862.6,
+      "word": "low"
+    },
+    {
+      "id": 1882,
+      "timestamp": 863.0,
+      "word": "training"
+    },
+    {
+      "id": 1883,
+      "timestamp": 863.4,
+      "word": "will"
+    },
+    {
+      "id": 1884,
+      "timestamp": 863.9,
+      "word": "be"
+    },
+    {
+      "id": 1885,
+      "timestamp": 864.3,
+      "word": "very"
+    },
+    {
+      "id": 1886,
+      "timestamp": 864.8,
+      "word": "slow"
+    },
+    {
+      "id": 1887,
+      "timestamp": 865.2,
+      "word": "and"
+    },
+    {
+      "id": 1888,
+      "timestamp": 865.6,
+      "word": "may"
+    },
+    {
+      "id": 1889,
+      "timestamp": 866.0,
+      "word": "get"
+    },
+    {
+      "id": 1890,
+      "timestamp": 866.4,
+      "word": "stuck"
+    },
+    {
+      "id": 1891,
+      "timestamp": 866.7,
+      "word": "in"
+    },
+    {
+      "id": 1892,
+      "timestamp": 867.0,
+      "word": "local"
+    },
+    {
+      "id": 1893,
+      "timestamp": 867.4,
+      "word": "minima"
+    },
+    {
+      "id": 1894,
+      "timestamp": 868.3,
+      "word": "Convolutional"
+    },
+    {
+      "id": 1895,
+      "timestamp": 868.6,
+      "word": "neural"
+    },
+    {
+      "id": 1896,
+      "timestamp": 869.0,
+      "word": "networks"
+    },
+    {
+      "id": 1897,
+      "timestamp": 869.3,
+      "word": "or"
+    },
+    {
+      "id": 1898,
+      "timestamp": 869.7,
+      "word": "CNNs"
+    },
+    {
+      "id": 1899,
+      "timestamp": 870.1,
+      "word": "are"
+    },
+    {
+      "id": 1900,
+      "timestamp": 870.5,
+      "word": "specialized"
+    },
+    {
+      "id": 1901,
+      "timestamp": 870.8,
+      "word": "for"
+    },
+    {
+      "id": 1902,
+      "timestamp": 871.1,
+      "word": "processing"
+    },
+    {
+      "id": 1903,
+      "timestamp": 871.5,
+      "word": "grid"
+    },
+    {
+      "id": 1904,
+      "timestamp": 871.9,
+      "word": "like"
+    },
+    {
+      "id": 1905,
+      "timestamp": 872.2,
+      "word": "data"
+    },
+    {
+      "id": 1906,
+      "timestamp": 872.6,
+      "word": "such"
+    },
+    {
+      "id": 1907,
+      "timestamp": 873.0,
+      "word": "as"
+    },
+    {
+      "id": 1908,
+      "timestamp": 873.4,
+      "word": "images"
+    },
+    {
+      "id": 1909,
+      "timestamp": 874.7,
+      "word": "CNNs"
+    },
+    {
+      "id": 1910,
+      "timestamp": 875.0,
+      "word": "use"
+    },
+    {
+      "id": 1911,
+      "timestamp": 875.4,
+      "word": "convolutional"
+    },
+    {
+      "id": 1912,
+      "timestamp": 875.8,
+      "word": "layers"
+    },
+    {
+      "id": 1913,
+      "timestamp": 876.3,
+      "word": "that"
+    },
+    {
+      "id": 1914,
+      "timestamp": 876.7,
+      "word": "apply"
+    },
+    {
+      "id": 1915,
+      "timestamp": 877.1,
+      "word": "filters"
+    },
+    {
+      "id": 1916,
+      "timestamp": 877.5,
+      "word": "to"
+    },
+    {
+      "id": 1917,
+      "timestamp": 878.0,
+      "word": "detect"
+    },
+    {
+      "id": 1918,
+      "timestamp": 878.4,
+      "word": "features"
+    },
+    {
+      "id": 1919,
+      "timestamp": 878.7,
+      "word": "like"
+    },
+    {
+      "id": 1920,
+      "timestamp": 879.2,
+      "word": "edges"
+    },
+    {
+      "id": 1921,
+      "timestamp": 879.6,
+      "word": "and"
+    },
+    {
+      "id": 1922,
+      "timestamp": 879.9,
+      "word": "textures"
+    },
+    {
+      "id": 1923,
+      "timestamp": 881.2,
+      "word": "Pooling"
+    },
+    {
+      "id": 1924,
+      "timestamp": 881.6,
+      "word": "layers"
+    },
+    {
+      "id": 1925,
+      "timestamp": 882.0,
+      "word": "reduce"
+    },
+    {
+      "id": 1926,
+      "timestamp": 882.3,
+      "word": "the"
+    },
+    {
+      "id": 1927,
+      "timestamp": 882.8,
+      "word": "spatial"
+    },
+    {
+      "id": 1928,
+      "timestamp": 883.1,
+      "word": "dimensions"
+    },
+    {
+      "id": 1929,
+      "timestamp": 883.5,
+      "word": "while"
+    },
+    {
+      "id": 1930,
+      "timestamp": 883.8,
+      "word": "preserving"
+    },
+    {
+      "id": 1931,
+      "timestamp": 884.2,
+      "word": "important"
+    },
+    {
+      "id": 1932,
+      "timestamp": 884.6,
+      "word": "features"
+    },
+    {
+      "id": 1933,
+      "timestamp": 885.9,
+      "word": "This"
+    },
+    {
+      "id": 1934,
+      "timestamp": 886.3,
+      "word": "makes"
+    },
+    {
+      "id": 1935,
+      "timestamp": 886.8,
+      "word": "CNNs"
+    },
+    {
+      "id": 1936,
+      "timestamp": 887.2,
+      "word": "translation"
+    },
+    {
+      "id": 1937,
+      "timestamp": 887.6,
+      "word": "invariant"
+    },
+    {
+      "id": 1938,
+      "timestamp": 888.0,
+      "word": "meaning"
+    },
+    {
+      "id": 1939,
+      "timestamp": 888.3,
+      "word": "they"
+    },
+    {
+      "id": 1940,
+      "timestamp": 888.6,
+      "word": "can"
+    },
+    {
+      "id": 1941,
+      "timestamp": 889.0,
+      "word": "recognize"
+    },
+    {
+      "id": 1942,
+      "timestamp": 889.4,
+      "word": "objects"
+    },
+    {
+      "id": 1943,
+      "timestamp": 889.9,
+      "word": "regardless"
+    },
+    {
+      "id": 1944,
+      "timestamp": 890.2,
+      "word": "of"
+    },
+    {
+      "id": 1945,
+      "timestamp": 890.6,
+      "word": "position"
+    },
+    {
+      "id": 1946,
+      "timestamp": 891.9,
+      "word": "Recurrent"
+    },
+    {
+      "id": 1947,
+      "timestamp": 892.3,
+      "word": "neural"
+    },
+    {
+      "id": 1948,
+      "timestamp": 892.6,
+      "word": "networks"
+    },
+    {
+      "id": 1949,
+      "timestamp": 893.0,
+      "word": "or"
+    },
+    {
+      "id": 1950,
+      "timestamp": 893.3,
+      "word": "RNNs"
+    },
+    {
+      "id": 1951,
+      "timestamp": 893.7,
+      "word": "are"
+    },
+    {
+      "id": 1952,
+      "timestamp": 894.0,
+      "word": "designed"
+    },
+    {
+      "id": 1953,
+      "timestamp": 894.4,
+      "word": "for"
+    },
+    {
+      "id": 1954,
+      "timestamp": 894.8,
+      "word": "sequential"
+    },
+    {
+      "id": 1955,
+      "timestamp": 895.1,
+      "word": "data"
+    },
+    {
+      "id": 1956,
+      "timestamp": 895.5,
+      "word": "like"
+    },
+    {
+      "id": 1957,
+      "timestamp": 895.9,
+      "word": "text"
+    },
+    {
+      "id": 1958,
+      "timestamp": 896.2,
+      "word": "and"
+    },
+    {
+      "id": 1959,
+      "timestamp": 896.7,
+      "word": "time"
+    },
+    {
+      "id": 1960,
+      "timestamp": 897.2,
+      "word": "series"
+    },
+    {
+      "id": 1961,
+      "timestamp": 898.2,
+      "word": "RNNs"
+    },
+    {
+      "id": 1962,
+      "timestamp": 898.6,
+      "word": "have"
+    },
+    {
+      "id": 1963,
+      "timestamp": 899.0,
+      "word": "loops"
+    },
+    {
+      "id": 1964,
+      "timestamp": 899.4,
+      "word": "that"
+    },
+    {
+      "id": 1965,
+      "timestamp": 899.8,
+      "word": "allow"
+    },
+    {
+      "id": 1966,
+      "timestamp": 900.2,
+      "word": "information"
+    },
+    {
+      "id": 1967,
+      "timestamp": 900.6,
+      "word": "to"
+    },
+    {
+      "id": 1968,
+      "timestamp": 900.9,
+      "word": "persist"
+    },
+    {
+      "id": 1969,
+      "timestamp": 901.4,
+      "word": "across"
+    },
+    {
+      "id": 1970,
+      "timestamp": 901.8,
+      "word": "time"
+    },
+    {
+      "id": 1971,
+      "timestamp": 902.1,
+      "word": "steps"
+    },
+    {
+      "id": 1972,
+      "timestamp": 903.3,
+      "word": "However"
+    },
+    {
+      "id": 1973,
+      "timestamp": 903.7,
+      "word": "traditional"
+    },
+    {
+      "id": 1974,
+      "timestamp": 904.1,
+      "word": "RNNs"
+    },
+    {
+      "id": 1975,
+      "timestamp": 904.4,
+      "word": "suffer"
+    },
+    {
+      "id": 1976,
+      "timestamp": 904.9,
+      "word": "from"
+    },
+    {
+      "id": 1977,
+      "timestamp": 905.2,
+      "word": "vanishing"
+    },
+    {
+      "id": 1978,
+      "timestamp": 905.6,
+      "word": "and"
+    },
+    {
+      "id": 1979,
+      "timestamp": 906.0,
+      "word": "exploding"
+    },
+    {
+      "id": 1980,
+      "timestamp": 906.4,
+      "word": "gradient"
+    },
+    {
+      "id": 1981,
+      "timestamp": 906.9,
+      "word": "problems"
+    },
+    {
+      "id": 1982,
+      "timestamp": 907.8,
+      "word": "Long"
+    },
+    {
+      "id": 1983,
+      "timestamp": 908.2,
+      "word": "short"
+    },
+    {
+      "id": 1984,
+      "timestamp": 908.6,
+      "word": "term"
+    },
+    {
+      "id": 1985,
+      "timestamp": 909.0,
+      "word": "memory"
+    },
+    {
+      "id": 1986,
+      "timestamp": 909.4,
+      "word": "or"
+    },
+    {
+      "id": 1987,
+      "timestamp": 909.8,
+      "word": "LSTM"
+    },
+    {
+      "id": 1988,
+      "timestamp": 910.2,
+      "word": "networks"
+    },
+    {
+      "id": 1989,
+      "timestamp": 910.6,
+      "word": "solve"
+    },
+    {
+      "id": 1990,
+      "timestamp": 911.0,
+      "word": "this"
+    },
+    {
+      "id": 1991,
+      "timestamp": 911.3,
+      "word": "with"
+    },
+    {
+      "id": 1992,
+      "timestamp": 911.7,
+      "word": "special"
+    },
+    {
+      "id": 1993,
+      "timestamp": 912.2,
+      "word": "gating"
+    },
+    {
+      "id": 1994,
+      "timestamp": 912.6,
+      "word": "mechanisms"
+    },
+    {
+      "id": 1995,
+      "timestamp": 914.0,
+      "word": "LSTMs"
+    },
+    {
+      "id": 1996,
+      "timestamp": 914.3,
+      "word": "have"
+    },
+    {
+      "id": 1997,
+      "timestamp": 914.7,
+      "word": "forget"
+    },
+    {
+      "id": 1998,
+      "timestamp": 915.2,
+      "word": "gates"
+    },
+    {
+      "id": 1999,
+      "timestamp": 915.6,
+      "word": "input"
+    },
+    {
+      "id": 2000,
+      "timestamp": 915.9,
+      "word": "gates"
+    },
+    {
+      "id": 2001,
+      "timestamp": 916.2,
+      "word": "and"
+    },
+    {
+      "id": 2002,
+      "timestamp": 916.6,
+      "word": "output"
+    },
+    {
+      "id": 2003,
+      "timestamp": 917.0,
+      "word": "gates"
+    },
+    {
+      "id": 2004,
+      "timestamp": 917.3,
+      "word": "that"
+    },
+    {
+      "id": 2005,
+      "timestamp": 917.8,
+      "word": "control"
+    },
+    {
+      "id": 2006,
+      "timestamp": 918.3,
+      "word": "information"
+    },
+    {
+      "id": 2007,
+      "timestamp": 918.7,
+      "word": "flow"
+    },
+    {
+      "id": 2008,
+      "timestamp": 919.7,
+      "word": "Transformers"
+    },
+    {
+      "id": 2009,
+      "timestamp": 920.1,
+      "word": "are"
+    },
+    {
+      "id": 2010,
+      "timestamp": 920.4,
+      "word": "a"
+    },
+    {
+      "id": 2011,
+      "timestamp": 920.8,
+      "word": "newer"
+    },
+    {
+      "id": 2012,
+      "timestamp": 921.2,
+      "word": "architecture"
+    },
+    {
+      "id": 2013,
+      "timestamp": 921.5,
+      "word": "that"
+    },
+    {
+      "id": 2014,
+      "timestamp": 922.0,
+      "word": "has"
+    },
+    {
+      "id": 2015,
+      "timestamp": 922.3,
+      "word": "revolutionized"
+    },
+    {
+      "id": 2016,
+      "timestamp": 922.8,
+      "word": "natural"
+    },
+    {
+      "id": 2017,
+      "timestamp": 923.1,
+      "word": "language"
+    },
+    {
+      "id": 2018,
+      "timestamp": 923.5,
+      "word": "processing"
+    },
+    {
+      "id": 2019,
+      "timestamp": 924.6,
+      "word": "They"
+    },
+    {
+      "id": 2020,
+      "timestamp": 925.1,
+      "word": "use"
+    },
+    {
+      "id": 2021,
+      "timestamp": 925.4,
+      "word": "self"
+    },
+    {
+      "id": 2022,
+      "timestamp": 925.8,
+      "word": "attention"
+    },
+    {
+      "id": 2023,
+      "timestamp": 926.1,
+      "word": "mechanisms"
+    },
+    {
+      "id": 2024,
+      "timestamp": 926.6,
+      "word": "to"
+    },
+    {
+      "id": 2025,
+      "timestamp": 927.0,
+      "word": "process"
+    },
+    {
+      "id": 2026,
+      "timestamp": 927.4,
+      "word": "entire"
+    },
+    {
+      "id": 2027,
+      "timestamp": 927.8,
+      "word": "sequences"
+    },
+    {
+      "id": 2028,
+      "timestamp": 928.2,
+      "word": "in"
+    },
+    {
+      "id": 2029,
+      "timestamp": 928.6,
+      "word": "parallel"
+    },
+    {
+      "id": 2030,
+      "timestamp": 929.8,
+      "word": "This"
+    },
+    {
+      "id": 2031,
+      "timestamp": 930.3,
+      "word": "makes"
+    },
+    {
+      "id": 2032,
+      "timestamp": 930.6,
+      "word": "them"
+    },
+    {
+      "id": 2033,
+      "timestamp": 931.0,
+      "word": "much"
+    },
+    {
+      "id": 2034,
+      "timestamp": 931.5,
+      "word": "faster"
+    },
+    {
+      "id": 2035,
+      "timestamp": 931.9,
+      "word": "to"
+    },
+    {
+      "id": 2036,
+      "timestamp": 932.2,
+      "word": "train"
+    },
+    {
+      "id": 2037,
+      "timestamp": 932.7,
+      "word": "than"
+    },
+    {
+      "id": 2038,
+      "timestamp": 933.1,
+      "word": "RNNs"
+    },
+    {
+      "id": 2039,
+      "timestamp": 933.5,
+      "word": "while"
+    },
+    {
+      "id": 2040,
+      "timestamp": 933.8,
+      "word": "achieving"
+    },
+    {
+      "id": 2041,
+      "timestamp": 934.1,
+      "word": "better"
+    },
+    {
+      "id": 2042,
+      "timestamp": 934.6,
+      "word": "performance"
+    },
+    {
+      "id": 2043,
+      "timestamp": 935.8,
+      "word": "BERT"
+    },
+    {
+      "id": 2044,
+      "timestamp": 936.2,
+      "word": "GPT"
+    },
+    {
+      "id": 2045,
+      "timestamp": 936.6,
+      "word": "and"
+    },
+    {
+      "id": 2046,
+      "timestamp": 937.1,
+      "word": "other"
+    },
+    {
+      "id": 2047,
+      "timestamp": 937.4,
+      "word": "transformer"
+    },
+    {
+      "id": 2048,
+      "timestamp": 937.9,
+      "word": "models"
+    },
+    {
+      "id": 2049,
+      "timestamp": 938.3,
+      "word": "have"
+    },
+    {
+      "id": 2050,
+      "timestamp": 938.7,
+      "word": "achieved"
+    },
+    {
+      "id": 2051,
+      "timestamp": 939.0,
+      "word": "state"
+    },
+    {
+      "id": 2052,
+      "timestamp": 939.3,
+      "word": "of"
+    },
+    {
+      "id": 2053,
+      "timestamp": 939.7,
+      "word": "the"
+    },
+    {
+      "id": 2054,
+      "timestamp": 940.1,
+      "word": "art"
+    },
+    {
+      "id": 2055,
+      "timestamp": 940.4,
+      "word": "results"
+    },
+    {
+      "id": 2056,
+      "timestamp": 940.8,
+      "word": "on"
+    },
+    {
+      "id": 2057,
+      "timestamp": 941.3,
+      "word": "many"
+    },
+    {
+      "id": 2058,
+      "timestamp": 941.7,
+      "word": "tasks"
+    },
+    {
+      "id": 2059,
+      "timestamp": 942.7,
+      "word": "Regularization"
+    },
+    {
+      "id": 2060,
+      "timestamp": 943.0,
+      "word": "techniques"
+    },
+    {
+      "id": 2061,
+      "timestamp": 943.5,
+      "word": "help"
+    },
+    {
+      "id": 2062,
+      "timestamp": 943.8,
+      "word": "prevent"
+    },
+    {
+      "id": 2063,
+      "timestamp": 944.3,
+      "word": "overfitting"
+    },
+    {
+      "id": 2064,
+      "timestamp": 944.7,
+      "word": "when"
+    },
+    {
+      "id": 2065,
+      "timestamp": 945.2,
+      "word": "training"
+    },
+    {
+      "id": 2066,
+      "timestamp": 945.6,
+      "word": "deep"
+    },
+    {
+      "id": 2067,
+      "timestamp": 945.9,
+      "word": "neural"
+    },
+    {
+      "id": 2068,
+      "timestamp": 946.4,
+      "word": "networks"
+    },
+    {
+      "id": 2069,
+      "timestamp": 947.4,
+      "word": "Dropout"
+    },
+    {
+      "id": 2070,
+      "timestamp": 947.8,
+      "word": "randomly"
+    },
+    {
+      "id": 2071,
+      "timestamp": 948.1,
+      "word": "deactivates"
+    },
+    {
+      "id": 2072,
+      "timestamp": 948.5,
+      "word": "neurons"
+    },
+    {
+      "id": 2073,
+      "timestamp": 948.9,
+      "word": "during"
+    },
+    {
+      "id": 2074,
+      "timestamp": 949.3,
+      "word": "training"
+    },
+    {
+      "id": 2075,
+      "timestamp": 949.6,
+      "word": "forcing"
+    },
+    {
+      "id": 2076,
+      "timestamp": 950.0,
+      "word": "the"
+    },
+    {
+      "id": 2077,
+      "timestamp": 950.4,
+      "word": "network"
+    },
+    {
+      "id": 2078,
+      "timestamp": 950.9,
+      "word": "to"
+    },
+    {
+      "id": 2079,
+      "timestamp": 951.3,
+      "word": "learn"
+    },
+    {
+      "id": 2080,
+      "timestamp": 951.7,
+      "word": "robust"
+    },
+    {
+      "id": 2081,
+      "timestamp": 952.1,
+      "word": "features"
+    },
+    {
+      "id": 2082,
+      "timestamp": 953.4,
+      "word": "Batch"
+    },
+    {
+      "id": 2083,
+      "timestamp": 953.7,
+      "word": "normalization"
+    },
+    {
+      "id": 2084,
+      "timestamp": 954.0,
+      "word": "normalizes"
+    },
+    {
+      "id": 2085,
+      "timestamp": 954.4,
+      "word": "inputs"
+    },
+    {
+      "id": 2086,
+      "timestamp": 954.7,
+      "word": "to"
+    },
+    {
+      "id": 2087,
+      "timestamp": 955.2,
+      "word": "each"
+    },
+    {
+      "id": 2088,
+      "timestamp": 955.7,
+      "word": "layer"
+    },
+    {
+      "id": 2089,
+      "timestamp": 956.1,
+      "word": "improving"
+    },
+    {
+      "id": 2090,
+      "timestamp": 956.6,
+      "word": "training"
+    },
+    {
+      "id": 2091,
+      "timestamp": 957.0,
+      "word": "stability"
+    },
+    {
+      "id": 2092,
+      "timestamp": 957.5,
+      "word": "and"
+    },
+    {
+      "id": 2093,
+      "timestamp": 957.8,
+      "word": "speed"
+    },
+    {
+      "id": 2094,
+      "timestamp": 958.6,
+      "word": "Data"
+    },
+    {
+      "id": 2095,
+      "timestamp": 959.0,
+      "word": "augmentation"
+    },
+    {
+      "id": 2096,
+      "timestamp": 959.4,
+      "word": "artificially"
+    },
+    {
+      "id": 2097,
+      "timestamp": 959.8,
+      "word": "increases"
+    },
+    {
+      "id": 2098,
+      "timestamp": 960.2,
+      "word": "training"
+    },
+    {
+      "id": 2099,
+      "timestamp": 960.6,
+      "word": "data"
+    },
+    {
+      "id": 2100,
+      "timestamp": 960.9,
+      "word": "by"
+    },
+    {
+      "id": 2101,
+      "timestamp": 961.2,
+      "word": "applying"
+    },
+    {
+      "id": 2102,
+      "timestamp": 961.5,
+      "word": "transformations"
+    },
+    {
+      "id": 2103,
+      "timestamp": 961.9,
+      "word": "like"
+    },
+    {
+      "id": 2104,
+      "timestamp": 962.4,
+      "word": "rotation"
+    },
+    {
+      "id": 2105,
+      "timestamp": 962.7,
+      "word": "and"
+    },
+    {
+      "id": 2106,
+      "timestamp": 963.0,
+      "word": "flipping"
+    },
+    {
+      "id": 2107,
+      "timestamp": 964.3,
+      "word": "Transfer"
+    },
+    {
+      "id": 2108,
+      "timestamp": 964.7,
+      "word": "learning"
+    },
+    {
+      "id": 2109,
+      "timestamp": 965.0,
+      "word": "allows"
+    },
+    {
+      "id": 2110,
+      "timestamp": 965.4,
+      "word": "us"
+    },
+    {
+      "id": 2111,
+      "timestamp": 965.7,
+      "word": "to"
+    },
+    {
+      "id": 2112,
+      "timestamp": 966.0,
+      "word": "use"
+    },
+    {
+      "id": 2113,
+      "timestamp": 966.5,
+      "word": "pre"
+    },
+    {
+      "id": 2114,
+      "timestamp": 967.0,
+      "word": "trained"
+    },
+    {
+      "id": 2115,
+      "timestamp": 967.3,
+      "word": "models"
+    },
+    {
+      "id": 2116,
+      "timestamp": 967.8,
+      "word": "as"
+    },
+    {
+      "id": 2117,
+      "timestamp": 968.1,
+      "word": "starting"
+    },
+    {
+      "id": 2118,
+      "timestamp": 968.5,
+      "word": "points"
+    },
+    {
+      "id": 2119,
+      "timestamp": 969.0,
+      "word": "for"
+    },
+    {
+      "id": 2120,
+      "timestamp": 969.3,
+      "word": "new"
+    },
+    {
+      "id": 2121,
+      "timestamp": 969.7,
+      "word": "tasks"
+    },
+    {
+      "id": 2122,
+      "timestamp": 970.7,
+      "word": "This"
+    },
+    {
+      "id": 2123,
+      "timestamp": 971.0,
+      "word": "is"
+    },
+    {
+      "id": 2124,
+      "timestamp": 971.4,
+      "word": "especially"
+    },
+    {
+      "id": 2125,
+      "timestamp": 971.8,
+      "word": "useful"
+    },
+    {
+      "id": 2126,
+      "timestamp": 972.1,
+      "word": "when"
+    },
+    {
+      "id": 2127,
+      "timestamp": 972.6,
+      "word": "we"
+    },
+    {
+      "id": 2128,
+      "timestamp": 972.9,
+      "word": "have"
+    },
+    {
+      "id": 2129,
+      "timestamp": 973.4,
+      "word": "limited"
+    },
+    {
+      "id": 2130,
+      "timestamp": 973.8,
+      "word": "training"
+    },
+    {
+      "id": 2131,
+      "timestamp": 974.2,
+      "word": "data"
+    },
+    {
+      "id": 2132,
+      "timestamp": 974.5,
+      "word": "for"
+    },
+    {
+      "id": 2133,
+      "timestamp": 974.8,
+      "word": "our"
+    },
+    {
+      "id": 2134,
+      "timestamp": 975.2,
+      "word": "specific"
+    },
+    {
+      "id": 2135,
+      "timestamp": 975.6,
+      "word": "problem"
+    },
+    {
+      "id": 2136,
+      "timestamp": 976.7,
+      "word": "Fine"
+    },
+    {
+      "id": 2137,
+      "timestamp": 977.0,
+      "word": "tuning"
+    },
+    {
+      "id": 2138,
+      "timestamp": 977.4,
+      "word": "involves"
+    },
+    {
+      "id": 2139,
+      "timestamp": 977.8,
+      "word": "training"
+    },
+    {
+      "id": 2140,
+      "timestamp": 978.1,
+      "word": "just"
+    },
+    {
+      "id": 2141,
+      "timestamp": 978.6,
+      "word": "the"
+    },
+    {
+      "id": 2142,
+      "timestamp": 978.9,
+      "word": "last"
+    },
+    {
+      "id": 2143,
+      "timestamp": 979.2,
+      "word": "few"
+    },
+    {
+      "id": 2144,
+      "timestamp": 979.6,
+      "word": "layers"
+    },
+    {
+      "id": 2145,
+      "timestamp": 980.0,
+      "word": "while"
+    },
+    {
+      "id": 2146,
+      "timestamp": 980.5,
+      "word": "keeping"
+    },
+    {
+      "id": 2147,
+      "timestamp": 980.8,
+      "word": "earlier"
+    },
+    {
+      "id": 2148,
+      "timestamp": 981.2,
+      "word": "layers"
+    },
+    {
+      "id": 2149,
+      "timestamp": 981.6,
+      "word": "frozen"
+    },
+    {
+      "id": 2150,
+      "timestamp": 982.7,
+      "word": "Deep"
+    },
+    {
+      "id": 2151,
+      "timestamp": 983.1,
+      "word": "learning"
+    },
+    {
+      "id": 2152,
+      "timestamp": 983.5,
+      "word": "frameworks"
+    },
+    {
+      "id": 2153,
+      "timestamp": 983.9,
+      "word": "like"
+    },
+    {
+      "id": 2154,
+      "timestamp": 984.2,
+      "word": "TensorFlow"
+    },
+    {
+      "id": 2155,
+      "timestamp": 984.7,
+      "word": "and"
+    },
+    {
+      "id": 2156,
+      "timestamp": 985.1,
+      "word": "PyTorch"
+    },
+    {
+      "id": 2157,
+      "timestamp": 985.5,
+      "word": "make"
+    },
+    {
+      "id": 2158,
+      "timestamp": 986.0,
+      "word": "it"
+    },
+    {
+      "id": 2159,
+      "timestamp": 986.3,
+      "word": "easy"
+    },
+    {
+      "id": 2160,
+      "timestamp": 986.7,
+      "word": "to"
+    },
+    {
+      "id": 2161,
+      "timestamp": 987.2,
+      "word": "build"
+    },
+    {
+      "id": 2162,
+      "timestamp": 987.6,
+      "word": "and"
+    },
+    {
+      "id": 2163,
+      "timestamp": 988.0,
+      "word": "train"
+    },
+    {
+      "id": 2164,
+      "timestamp": 988.4,
+      "word": "models"
+    },
+    {
+      "id": 2165,
+      "timestamp": 989.8,
+      "word": "These"
+    },
+    {
+      "id": 2166,
+      "timestamp": 990.2,
+      "word": "frameworks"
+    },
+    {
+      "id": 2167,
+      "timestamp": 990.7,
+      "word": "provide"
+    },
+    {
+      "id": 2168,
+      "timestamp": 991.1,
+      "word": "automatic"
+    },
+    {
+      "id": 2169,
+      "timestamp": 991.5,
+      "word": "differentiation"
+    },
+    {
+      "id": 2170,
+      "timestamp": 991.9,
+      "word": "GPU"
+    },
+    {
+      "id": 2171,
+      "timestamp": 992.4,
+      "word": "acceleration"
+    },
+    {
+      "id": 2172,
+      "timestamp": 992.7,
+      "word": "and"
+    },
+    {
+      "id": 2173,
+      "timestamp": 993.2,
+      "word": "pre"
+    },
+    {
+      "id": 2174,
+      "timestamp": 993.6,
+      "word": "built"
+    },
+    {
+      "id": 2175,
+      "timestamp": 994.0,
+      "word": "layers"
+    },
+    {
+      "id": 2176,
+      "timestamp": 995.2,
+      "word": "Choosing"
+    },
+    {
+      "id": 2177,
+      "timestamp": 995.6,
+      "word": "the"
+    },
+    {
+      "id": 2178,
+      "timestamp": 996.0,
+      "word": "right"
+    },
+    {
+      "id": 2179,
+      "timestamp": 996.3,
+      "word": "architecture"
+    },
+    {
+      "id": 2180,
+      "timestamp": 996.8,
+      "word": "depends"
+    },
+    {
+      "id": 2181,
+      "timestamp": 997.2,
+      "word": "on"
+    },
+    {
+      "id": 2182,
+      "timestamp": 997.5,
+      "word": "your"
+    },
+    {
+      "id": 2183,
+      "timestamp": 998.0,
+      "word": "data"
+    },
+    {
+      "id": 2184,
+      "timestamp": 998.4,
+      "word": "type"
+    },
+    {
+      "id": 2185,
+      "timestamp": 998.8,
+      "word": "and"
+    },
+    {
+      "id": 2186,
+      "timestamp": 999.2,
+      "word": "problem"
+    },
+    {
+      "id": 2187,
+      "timestamp": 999.6,
+      "word": "requirements"
+    },
+    {
+      "id": 2188,
+      "timestamp": 1000.8,
+      "word": "For"
+    },
+    {
+      "id": 2189,
+      "timestamp": 1001.2,
+      "word": "image"
+    },
+    {
+      "id": 2190,
+      "timestamp": 1001.6,
+      "word": "classification"
+    },
+    {
+      "id": 2191,
+      "timestamp": 1001.9,
+      "word": "CNNs"
+    },
+    {
+      "id": 2192,
+      "timestamp": 1002.3,
+      "word": "are"
+    },
+    {
+      "id": 2193,
+      "timestamp": 1002.7,
+      "word": "the"
+    },
+    {
+      "id": 2194,
+      "timestamp": 1003.1,
+      "word": "standard"
+    },
+    {
+      "id": 2195,
+      "timestamp": 1003.6,
+      "word": "choice"
+    },
+    {
+      "id": 2196,
+      "timestamp": 1004.0,
+      "word": "with"
+    },
+    {
+      "id": 2197,
+      "timestamp": 1004.4,
+      "word": "architectures"
+    },
+    {
+      "id": 2198,
+      "timestamp": 1004.8,
+      "word": "like"
+    },
+    {
+      "id": 2199,
+      "timestamp": 1005.3,
+      "word": "ResNet"
+    },
+    {
+      "id": 2200,
+      "timestamp": 1005.6,
+      "word": "and"
+    },
+    {
+      "id": 2201,
+      "timestamp": 1006.0,
+      "word": "EfficientNet"
+    },
+    {
+      "id": 2202,
+      "timestamp": 1007.4,
+      "word": "For"
+    },
+    {
+      "id": 2203,
+      "timestamp": 1007.7,
+      "word": "natural"
+    },
+    {
+      "id": 2204,
+      "timestamp": 1008.2,
+      "word": "language"
+    },
+    {
+      "id": 2205,
+      "timestamp": 1008.7,
+      "word": "processing"
+    },
+    {
+      "id": 2206,
+      "timestamp": 1009.0,
+      "word": "transformers"
+    },
+    {
+      "id": 2207,
+      "timestamp": 1009.4,
+      "word": "like"
+    },
+    {
+      "id": 2208,
+      "timestamp": 1009.8,
+      "word": "BERT"
+    },
+    {
+      "id": 2209,
+      "timestamp": 1010.2,
+      "word": "and"
+    },
+    {
+      "id": 2210,
+      "timestamp": 1010.6,
+      "word": "GPT"
+    },
+    {
+      "id": 2211,
+      "timestamp": 1011.0,
+      "word": "are"
+    },
+    {
+      "id": 2212,
+      "timestamp": 1011.4,
+      "word": "most"
+    },
+    {
+      "id": 2213,
+      "timestamp": 1011.8,
+      "word": "effective"
+    },
+    {
+      "id": 2214,
+      "timestamp": 1013.2,
+      "word": "For"
+    },
+    {
+      "id": 2215,
+      "timestamp": 1013.7,
+      "word": "time"
+    },
+    {
+      "id": 2216,
+      "timestamp": 1014.1,
+      "word": "series"
+    },
+    {
+      "id": 2217,
+      "timestamp": 1014.5,
+      "word": "forecasting"
+    },
+    {
+      "id": 2218,
+      "timestamp": 1014.8,
+      "word": "RNNs"
+    },
+    {
+      "id": 2219,
+      "timestamp": 1015.3,
+      "word": "LSTMs"
+    },
+    {
+      "id": 2220,
+      "timestamp": 1015.8,
+      "word": "or"
+    },
+    {
+      "id": 2221,
+      "timestamp": 1016.2,
+      "word": "temporal"
+    },
+    {
+      "id": 2222,
+      "timestamp": 1016.6,
+      "word": "convolutional"
+    },
+    {
+      "id": 2223,
+      "timestamp": 1016.9,
+      "word": "networks"
+    },
+    {
+      "id": 2224,
+      "timestamp": 1017.2,
+      "word": "work"
+    },
+    {
+      "id": 2225,
+      "timestamp": 1017.7,
+      "word": "well"
+    },
+    {
+      "id": 2226,
+      "timestamp": 1018.9,
+      "word": "Hyperparameter"
+    },
+    {
+      "id": 2227,
+      "timestamp": 1019.3,
+      "word": "tuning"
+    },
+    {
+      "id": 2228,
+      "timestamp": 1019.7,
+      "word": "is"
+    },
+    {
+      "id": 2229,
+      "timestamp": 1020.0,
+      "word": "essential"
+    },
+    {
+      "id": 2230,
+      "timestamp": 1020.4,
+      "word": "for"
+    },
+    {
+      "id": 2231,
+      "timestamp": 1020.8,
+      "word": "achieving"
+    },
+    {
+      "id": 2232,
+      "timestamp": 1021.2,
+      "word": "good"
+    },
+    {
+      "id": 2233,
+      "timestamp": 1021.7,
+      "word": "performance"
+    },
+    {
+      "id": 2234,
+      "timestamp": 1022.1,
+      "word": "with"
+    },
+    {
+      "id": 2235,
+      "timestamp": 1022.4,
+      "word": "deep"
+    },
+    {
+      "id": 2236,
+      "timestamp": 1022.8,
+      "word": "learning"
+    },
+    {
+      "id": 2237,
+      "timestamp": 1023.2,
+      "word": "models"
+    },
+    {
+      "id": 2238,
+      "timestamp": 1024.3,
+      "word": "Important"
+    },
+    {
+      "id": 2239,
+      "timestamp": 1024.8,
+      "word": "hyperparameters"
+    },
+    {
+      "id": 2240,
+      "timestamp": 1025.2,
+      "word": "include"
+    },
+    {
+      "id": 2241,
+      "timestamp": 1025.6,
+      "word": "learning"
+    },
+    {
+      "id": 2242,
+      "timestamp": 1026.0,
+      "word": "rate"
+    },
+    {
+      "id": 2243,
+      "timestamp": 1026.4,
+      "word": "batch"
+    },
+    {
+      "id": 2244,
+      "timestamp": 1026.8,
+      "word": "size"
+    },
+    {
+      "id": 2245,
+      "timestamp": 1027.3,
+      "word": "number"
+    },
+    {
+      "id": 2246,
+      "timestamp": 1027.8,
+      "word": "of"
+    },
+    {
+      "id": 2247,
+      "timestamp": 1028.1,
+      "word": "layers"
+    },
+    {
+      "id": 2248,
+      "timestamp": 1028.5,
+      "word": "and"
+    },
+    {
+      "id": 2249,
+      "timestamp": 1028.9,
+      "word": "neurons"
+    },
+    {
+      "id": 2250,
+      "timestamp": 1030.3,
+      "word": "Grid"
+    }
+  ]
+}

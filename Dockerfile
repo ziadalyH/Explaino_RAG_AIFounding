@@ -20,16 +20,21 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy pre-downloaded model
-COPY models/ ./models/
+# Download NLTK data
+RUN python -c "import nltk; nltk.download('stopwords', quiet=True)"
+
+# Download the sentence-transformers model during build
+RUN python -c "from sentence_transformers import SentenceTransformer; \
+    print('Downloading MPNet model...'); \
+    model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2', cache_folder='/app/models'); \
+    print('Model downloaded successfully')"
 
 # Copy application code
 COPY src/ ./src/
 COPY main.py .
 COPY entrypoint.sh .
-COPY config/ ./config/
 
 # Make entrypoint executable
 RUN chmod +x entrypoint.sh

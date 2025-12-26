@@ -18,6 +18,8 @@ class RetrievalEngine:
     - Falling back to PDF chunks when video results are insufficient
     - Filtering results by relevance threshold
     - Parsing OpenSearch responses and extracting metadata
+    
+    Both videos and PDFs use pure k-NN search for consistent scoring (0.0 to 1.0).
     """
     
     def __init__(
@@ -52,9 +54,11 @@ class RetrievalEngine:
         Strategy:
         1. Search video transcript embeddings first
         2. If top result score >= relevance_threshold, return top N video results
-        3. Otherwise, search PDF embeddings using hybrid search (k-NN + BM25)
+        3. Otherwise, search PDF embeddings using k-NN search
         4. If top result score >= relevance_threshold, return top N PDF results
         5. Otherwise, return None (no answer)
+        
+        Both searches use pure k-NN for consistent scoring (0.0 to 1.0).
         
         Args:
             query_embedding: Query vector embedding
@@ -89,8 +93,8 @@ class RetrievalEngine:
         else:
             self.logger.info("No video results found, falling back to PDFs")
         
-        # Tier 2: Search PDF documents with hybrid search
-        self.logger.debug("Searching PDF documents with hybrid search")
+        # Tier 2: Search PDF documents with k-NN search
+        self.logger.debug("Searching PDF documents with k-NN search")
         pdf_results = self.search_pdfs(query_embedding, query_text)
         
         if pdf_results:
@@ -183,22 +187,21 @@ class RetrievalEngine:
     
     def search_pdfs(self, query_embedding: np.ndarray, query_text: str = "") -> List[PDFResult]:
         """
-        Search PDF document chunks in OpenSearch using hybrid search (k-NN + BM25).
+        Search PDF document chunks in OpenSearch using k-NN search.
         
         Args:
             query_embedding: Query vector embedding
-            query_text: Original query text for BM25 search
+            query_text: Original query text (not used, kept for backward compatibility)
             
         Returns:
             List of PDFResult objects, sorted by score (descending)
         """
-        self.logger.debug("Executing hybrid search (k-NN + BM25) for PDF documents")
+        self.logger.debug("Executing k-NN search for PDF documents")
         
         try:
-            # Execute hybrid search with source_type filter
-            raw_results = self.hybrid_search(
+            # Execute k-NN search with source_type filter
+            raw_results = self.knn_search(
                 query_embedding=query_embedding,
-                query_text=query_text,
                 source_type="pdf",
                 k=self.max_results
             )
@@ -311,96 +314,6 @@ class RetrievalEngine:
             )
             raise
     
-    def hybrid_search(
-        self,
-        query_embedding: np.ndarray,
-        query_text: str,
-        source_type: str,
-        k: int
-    ) -> List[Dict[str, Any]]:
-        """
-        Perform hybrid search combining k-NN (vector) and BM25 (keyword) search.
-        
-        This method combines:
-        - k-NN vector similarity search (equal weight)
-        - BM25 keyword search on text field (equal weight)
-        
-        Args:
-            query_embedding: Query vector embedding
-            query_text: Original query text for BM25 search
-            source_type: Source type to search ("video" or "pdf")
-            k: Number of results to retrieve
-            
-        Returns:
-            List of raw hit dictionaries from OpenSearch response
-        """
-        # Determine which index to search
-        index_name = self.video_index_name if source_type == "video" else self.pdf_index_name
-        
-        self.logger.debug(
-            f"Executing hybrid search: index={index_name}, k={k}"
-        )
-        
-        # Convert numpy array to list for JSON serialization
-        query_vector = query_embedding.tolist()
-        
-        # Extract key terms from query for better BM25 matching
-        # Remove common question words to focus on content terms
-        key_terms = self._extract_key_terms(query_text)
-        self.logger.debug(f"Extracted key terms for BM25: {key_terms}")
-        
-        # Build hybrid query combining k-NN and BM25
-        query_body = {
-            "size": k,
-            "query": {
-                "bool": {
-                    "should": [
-                        # Vector similarity (k-NN) - base weight
-                        {
-                            "knn": {
-                                "embedding": {
-                                    "vector": query_vector,
-                                    "k": k
-                                }
-                            }
-                        },
-                        # Keyword search (BM25) - boosted weight
-                        {
-                            "match": {
-                                "text": {
-                                    "query": key_terms,
-                                    "boost": 3.0
-                                }
-                            }
-                        }
-                    ],
-                    "minimum_should_match": 1
-                }
-            }
-        }
-        
-        try:
-            # Execute search
-            response = self.opensearch_client.search(
-                index=index_name,
-                body=query_body
-            )
-            
-            # Extract hits
-            hits = response.get("hits", {}).get("hits", [])
-            
-            self.logger.debug(
-                f"Hybrid search returned {len(hits)} results from {index_name}"
-            )
-            
-            return hits
-            
-        except Exception as e:
-            self.logger.error(
-                f"Hybrid search failed for index {index_name}: {str(e)}"
-            )
-            raise
-    
     def filter_by_threshold(
         self,
         results: List[Union[VideoResult, PDFResult]],
@@ -427,35 +340,3 @@ class RetrievalEngine:
         )
         
         return filtered
-
-    def _extract_key_terms(self, query_text: str) -> str:
-        """
-        Extract key terms from query by removing common question words.
-        
-        This helps BM25 search focus on content terms rather than question structure.
-        For "What is X?" queries, we keep the entity name and add common descriptive terms.
-        
-        Args:
-            query_text: Original query text
-            
-        Returns:
-            Key terms extracted from query
-        """
-        # Common question words to remove
-        question_words = {
-            'what', 'is', 'are', 'was', 'were', 'who', 'whom', 'whose',
-            'which', 'when', 'where', 'why', 'how', 'can', 'could',
-            'would', 'should', 'do', 'does', 'did', 'the', 'a', 'an'
-        }
-        
-        # Split query into words and filter out question words
-        words = query_text.lower().split()
-        key_words = [w.strip('?.,!') for w in words if w.lower() not in question_words]
-        
-        # If we only have 1-2 key words (like "openstax"), it's likely a "What is X?" query
-        # In this case, use the original query text for better BM25 matching
-        if len(key_words) <= 2:
-            return query_text
-        
-        # Return key terms as space-separated string
-        return ' '.join(key_words)

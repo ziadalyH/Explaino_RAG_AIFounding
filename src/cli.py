@@ -75,7 +75,9 @@ class CLI:
                 )
             elif args.command == "index":
                 return self.index_command(
-                    force_rebuild=args.force_rebuild
+                    force_rebuild=args.force_rebuild,
+                    videos_only=args.videos_only,
+                    pdfs_only=args.pdfs_only
                 )
             elif args.command == "serve":
                 return self.serve_command()
@@ -127,25 +129,52 @@ class CLI:
             print(f"Error: Failed to process query - {str(e)}", file=sys.stderr)
             return 1
     
-    def index_command(self, force_rebuild: bool = False) -> int:
+    def index_command(
+        self, 
+        force_rebuild: bool = False,
+        videos_only: bool = False,
+        pdfs_only: bool = False
+    ) -> int:
         """
         Handle index command - build or rebuild the vector index.
         
         Args:
             force_rebuild: If True, rebuild index even if it exists
+            videos_only: If True, only index video transcripts
+            pdfs_only: If True, only index PDF documents
             
         Returns:
             Exit code (0 for success, non-zero for error)
         """
         try:
-            if force_rebuild:
-                print("Rebuilding index from scratch...")
+            # Validate mutually exclusive options
+            if videos_only and pdfs_only:
+                print("Error: Cannot use --videos-only and --pdfs-only together", file=sys.stderr)
+                return 1
+            
+            # Determine what to index
+            if videos_only:
+                print("Indexing video transcripts only...")
+                index_type = "videos"
+            elif pdfs_only:
+                print("Indexing PDF documents only...")
+                index_type = "pdfs"
             else:
-                print("Building index (will skip if already exists)...")
+                print("Indexing both videos and PDFs...")
+                index_type = "all"
             
-            self.rag_system.build_index(force_rebuild=force_rebuild)
+            if force_rebuild:
+                print(f"Force rebuild enabled - will reindex {index_type}")
+            else:
+                print(f"Incremental indexing - will only process new/modified {index_type}")
             
-            print("✓ Index building completed successfully")
+            self.rag_system.build_index(
+                force_rebuild=force_rebuild,
+                videos_only=videos_only,
+                pdfs_only=pdfs_only
+            )
+            
+            print(f"✓ Index building completed successfully ({index_type})")
             return 0
             
         except Exception as e:
@@ -256,6 +285,39 @@ class CLI:
             lines.append("❌ NO ANSWER FOUND")
             lines.append("=" * 80)
             lines.append(f"\n{response.message}\n")
+            
+            # Display knowledge summary if available
+            if response.knowledge_summary:
+                lines.append("-" * 80)
+                lines.append("📚 AVAILABLE KNOWLEDGE BASE:")
+                lines.append("-" * 80)
+                
+                summary = response.knowledge_summary
+                
+                # Show indexed content
+                if "indexed_content" in summary:
+                    content = summary["indexed_content"]
+                    lines.append(f"\n📄 PDFs: {content.get('total_pdfs', 0)} documents")
+                    if content.get('pdf_files'):
+                        for pdf in content['pdf_files'][:5]:  # Show first 5
+                            lines.append(f"  • {pdf}")
+                        if len(content.get('pdf_files', [])) > 5:
+                            lines.append(f"  ... and {len(content['pdf_files']) - 5} more")
+                    
+                    lines.append(f"\n📹 Videos: {content.get('total_videos', 0)} transcripts")
+                    if content.get('video_ids'):
+                        for vid in content['video_ids'][:5]:  # Show first 5
+                            lines.append(f"  • {vid}")
+                        if len(content.get('video_ids', [])) > 5:
+                            lines.append(f"  ... and {len(content['video_ids']) - 5} more")
+                
+                # Show suggested questions
+                if "suggested_questions" in summary and summary["suggested_questions"]:
+                    lines.append("\n💡 TRY ASKING:")
+                    for i, q in enumerate(summary["suggested_questions"][:5], 1):
+                        lines.append(f"  {i}. {q}")
+                lines.append("")
+            
             lines.append("Suggestion: Try rephrasing your question or check if relevant")
             lines.append("            content has been indexed.")
         
@@ -286,11 +348,17 @@ Examples:
   # Query with verbose output
   python main.py query -q "What is the pricing?" --verbose
   
-  # Build the index (skip if exists)
+  # Build the index (incremental - only new files)
   python main.py index
   
-  # Force rebuild the index
+  # Force rebuild the entire index
   python main.py index --force-rebuild
+  
+  # Reindex only videos
+  python main.py index --force-rebuild --videos-only
+  
+  # Reindex only PDFs
+  python main.py index --force-rebuild --pdfs-only
   
   # Run as a service (for Docker)
   python main.py serve
@@ -336,6 +404,16 @@ Examples:
         "--force-rebuild",
         action="store_true",
         help="Force rebuild of index even if it already exists"
+    )
+    index_parser.add_argument(
+        "--videos-only",
+        action="store_true",
+        help="Only index video transcripts (skip PDFs)"
+    )
+    index_parser.add_argument(
+        "--pdfs-only",
+        action="store_true",
+        help="Only index PDF documents (skip videos)"
     )
     
     # Serve command

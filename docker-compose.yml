@@ -7,23 +7,28 @@ services:
       - node.name=opensearch-node1
       - discovery.seed_hosts=opensearch-node1
       - cluster.initial_cluster_manager_nodes=opensearch-node1
-      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
-      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
-      - DISABLE_SECURITY_PLUGIN=true # Disable security plugin for development
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+      - DISABLE_SECURITY_PLUGIN=true
     ulimits:
       memlock:
         soft: -1
         hard: -1
       nofile:
-        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        soft: 65536
         hard: 262144
     volumes:
       - opensearch-data1:/usr/share/opensearch/data
     ports:
       - 9200:9200
-      - 9600:9600 # required for Performance Analyzer
+      - 9600:9600
     networks:
       - opensearch-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
 
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:latest
@@ -39,6 +44,62 @@ services:
       - opensearch-node1
     networks:
       - opensearch-net
+
+  # RAG Backend - CLI Mode (for command-line operations)
+  rag-backend-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-backend-cli
+    env_file:
+      - .env
+    environment:
+      - OPENSEARCH_HOST=opensearch-node1
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_USE_SSL=false
+      - OPENSEARCH_VERIFY_CERTS=false
+      - SENTENCE_TRANSFORMERS_HOME=/app/models
+      - RUN_MODE=cli
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      opensearch-node1:
+        condition: service_healthy
+    networks:
+      - opensearch-net
+    command: ["serve"]
+    profiles:
+      - cli
+
+  # RAG Backend - API Mode (for REST API access)
+  rag-backend-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-backend-api
+    env_file:
+      - .env
+    environment:
+      - OPENSEARCH_HOST=opensearch-node1
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_USE_SSL=false
+      - OPENSEARCH_VERIFY_CERTS=false
+      - SENTENCE_TRANSFORMERS_HOME=/app/models
+      - RUN_MODE=api
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - API_DEBUG=false
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      opensearch-node1:
+        condition: service_healthy
+    networks:
+      - opensearch-net
+    ports:
+      - "8000:8000"
+    profiles:
+      - api
 
 volumes:
   opensearch-data1:

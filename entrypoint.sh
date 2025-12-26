@@ -8,7 +8,8 @@ echo "=========================================="
 # Configuration
 OPENSEARCH_HOST="${OPENSEARCH_HOST:-localhost}"
 OPENSEARCH_PORT="${OPENSEARCH_PORT:-9200}"
-OPENSEARCH_INDEX_NAME="${OPENSEARCH_INDEX_NAME:-rag-index}"
+OPENSEARCH_PDF_INDEX="${OPENSEARCH_PDF_INDEX:-rag-pdf-index}"
+OPENSEARCH_VIDEO_INDEX="${OPENSEARCH_VIDEO_INDEX:-rag-video-index}"
 MAX_RETRIES=30
 RETRY_INTERVAL=2
 
@@ -21,6 +22,30 @@ check_opensearch_health() {
     if curl -s -f "${url}/_cluster/health" > /dev/null 2>&1; then
         return 0
     else
+        return 1
+    fi
+}
+
+# Function to check if index exists and get document count
+check_index_status() {
+    local index_name="$1"
+    local status=$(curl -s -o /dev/null -w "%{http_code}" "${OPENSEARCH_URL}/${index_name}")
+    
+    if [ "$status" = "404" ]; then
+        echo "missing"
+        return 0
+    elif [ "$status" = "200" ]; then
+        local count_response=$(curl -s "${OPENSEARCH_URL}/${index_name}/_count")
+        local doc_count=$(echo "$count_response" | grep -o '"count":[0-9]*' | grep -o '[0-9]*' | head -1)
+        
+        if [ -z "$doc_count" ]; then
+            echo "0"
+        else
+            echo "$doc_count"
+        fi
+        return 0
+    else
+        echo "error"
         return 1
     fi
 }
@@ -44,53 +69,17 @@ echo "✓ OpenSearch is up and running!"
 # Check if auto-indexing is enabled
 if [ "${AUTO_INDEX_ON_STARTUP}" = "true" ]; then
     echo ""
-    echo "AUTO_INDEX_ON_STARTUP is enabled. Checking index status..."
+    echo "AUTO_INDEX_ON_STARTUP is enabled. Checking for new data..."
     
-    # Check if index exists
-    INDEX_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${OPENSEARCH_URL}/${OPENSEARCH_INDEX_NAME}")
-    
-    if [ "$INDEX_STATUS" = "404" ]; then
-        echo "✗ Index '${OPENSEARCH_INDEX_NAME}' does not exist"
-        echo "→ Running initial indexing..."
-        if python main.py index; then
-            echo "✓ Indexing completed successfully"
-        else
-            echo "ERROR: Indexing failed"
-            exit 1
-        fi
-    elif [ "$INDEX_STATUS" = "200" ]; then
-        echo "✓ Index '${OPENSEARCH_INDEX_NAME}' exists"
-        
-        # Check document count
-        COUNT_RESPONSE=$(curl -s "${OPENSEARCH_URL}/${OPENSEARCH_INDEX_NAME}/_count")
-        DOC_COUNT=$(echo "$COUNT_RESPONSE" | grep -o '"count":[0-9]*' | grep -o '[0-9]*' | head -1)
-        
-        if [ -z "$DOC_COUNT" ]; then
-            echo "⚠ Warning: Could not determine document count, assuming empty"
-            DOC_COUNT=0
-        fi
-        
-        if [ "$DOC_COUNT" -eq 0 ]; then
-            echo "✗ Index is empty (0 documents)"
-            echo "→ Running indexing..."
-            if python main.py index; then
-                echo "✓ Indexing completed successfully"
-            else
-                echo "ERROR: Indexing failed"
-                exit 1
-            fi
-        else
-            echo "✓ Index contains ${DOC_COUNT} documents - skipping indexing"
-        fi
+    # Always run indexing - the Python code will handle checking for new files
+    # and only process what's new (resume capability)
+    echo ""
+    echo "→ Running indexing (will only process new/modified files)..."
+    if python main.py index; then
+        echo "✓ Indexing completed successfully"
     else
-        echo "⚠ Warning: Unexpected HTTP status ${INDEX_STATUS} when checking index"
-        echo "→ Attempting to run indexing anyway..."
-        if python main.py index; then
-            echo "✓ Indexing completed successfully"
-        else
-            echo "ERROR: Indexing failed"
-            exit 1
-        fi
+        echo "ERROR: Indexing failed"
+        exit 1
     fi
 else
     echo ""
@@ -100,9 +89,16 @@ fi
 echo ""
 echo "=========================================="
 echo "Startup complete!"
-echo "Executing command: $@"
 echo "=========================================="
-echo ""
 
-# Execute the main command
-exec python main.py "$@"
+# Check if we should run in API mode or CLI mode
+if [ "$RUN_MODE" = "api" ]; then
+    echo "Starting in API mode on port ${API_PORT:-8000}..."
+    echo ""
+    exec python -m src.api
+else
+    echo "Starting in CLI mode..."
+    echo "Executing command: $@"
+    echo ""
+    exec python main.py "$@"
+fi

@@ -10,6 +10,7 @@ tiktoken==0.5.2               # Token counting for chunking
 # Embeddings
 sentence-transformers         # Local embedding models (MPNet)
 torch                         # Required by sentence-transformers
+tqdm                          # Progress bars for embedding generation
 
 # NLP
 nltk==3.8.1                   # Stop words for preprocessing

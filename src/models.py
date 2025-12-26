@@ -233,9 +233,10 @@ class PDFResponse:
 
 @dataclass
 class NoAnswerResponse:
-    """Represents a no-answer response."""
+    """Represents a no-answer response with knowledge summary."""
     answer_type: str = "no_answer"
     message: str = "No relevant answer found in the knowledge base."
+    knowledge_summary: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary."""

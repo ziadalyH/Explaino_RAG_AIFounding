@@ -154,7 +154,12 @@ class RAGSystem:
             self.logger.error(f"Error answering question: {str(e)}", exc_info=True)
             raise
     
-    def build_index(self, force_rebuild: bool = False) -> None:
+    def build_index(
+        self, 
+        force_rebuild: bool = False,
+        videos_only: bool = False,
+        pdfs_only: bool = False
+    ) -> None:
         """
         Build or rebuild the vector index from data files.
         
@@ -168,35 +173,49 @@ class RAGSystem:
         
         Args:
             force_rebuild: If True, delete and rebuild entire index from scratch
+            videos_only: If True, only index video transcripts (skip PDFs)
+            pdfs_only: If True, only index PDF documents (skip videos)
             
         Raises:
             Exception: If indexing fails
         """
         self.logger.info("Starting index building process")
         
+        # Validate mutually exclusive options
+        if videos_only and pdfs_only:
+            raise ValueError("Cannot use videos_only and pdfs_only together")
+        
         try:
             # Check if we should rebuild from scratch
             if force_rebuild:
                 self.logger.info("Force rebuild requested - deleting existing indices")
-                if self.opensearch_client.indices.exists(index=self.config.opensearch_pdf_index):
-                    self.opensearch_client.indices.delete(index=self.config.opensearch_pdf_index)
-                    self.logger.info(f"Deleted PDF index: {self.config.opensearch_pdf_index}")
-                if self.opensearch_client.indices.exists(index=self.config.opensearch_video_index):
+                
+                if not pdfs_only and self.opensearch_client.indices.exists(index=self.config.opensearch_video_index):
                     self.opensearch_client.indices.delete(index=self.config.opensearch_video_index)
                     self.logger.info(f"Deleted video index: {self.config.opensearch_video_index}")
+                
+                if not videos_only and self.opensearch_client.indices.exists(index=self.config.opensearch_pdf_index):
+                    self.opensearch_client.indices.delete(index=self.config.opensearch_pdf_index)
+                    self.logger.info(f"Deleted PDF index: {self.config.opensearch_pdf_index}")
             
             # Create indices if they don't exist
-            self.vector_index_builder.create_index_if_not_exists(self.config.opensearch_pdf_index, "pdf")
-            self.vector_index_builder.create_index_if_not_exists(self.config.opensearch_video_index, "video")
+            if not pdfs_only:
+                self.vector_index_builder.create_index_if_not_exists(self.config.opensearch_video_index, "video")
+            if not videos_only:
+                self.vector_index_builder.create_index_if_not_exists(self.config.opensearch_pdf_index, "pdf")
             
             # Get already indexed files (for resume capability)
             indexed_pdfs, indexed_videos = self._get_indexed_files()
             
             self.logger.info(f"Already indexed: {len(indexed_pdfs)} PDFs, {len(indexed_videos)} videos")
             
-            # Step 1: Ingest video transcripts
-            self.logger.info("Step 1: Ingesting video transcripts")
-            all_transcripts = self.transcript_ingester.ingest_directory()
+            # Step 1: Ingest video transcripts (unless pdfs_only)
+            all_transcripts = []
+            if not pdfs_only:
+                self.logger.info("Step 1: Ingesting video transcripts")
+                all_transcripts = self.transcript_ingester.ingest_directory()
+            else:
+                self.logger.info("Step 1: Skipping video transcripts (pdfs_only mode)")
             
             # Filter out already indexed transcripts
             transcripts = [t for t in all_transcripts if t.video_id not in indexed_videos]
@@ -206,9 +225,13 @@ class RAGSystem:
                 f"({len(transcripts)} new, {len(indexed_videos)} already indexed)"
             )
             
-            # Step 2: Ingest PDF documents
-            self.logger.info("Step 2: Ingesting PDF documents")
-            all_pdf_paragraphs = self.pdf_ingester.ingest_directory()
+            # Step 2: Ingest PDF documents (unless videos_only)
+            all_pdf_paragraphs = []
+            if not videos_only:
+                self.logger.info("Step 2: Ingesting PDF documents")
+                all_pdf_paragraphs = self.pdf_ingester.ingest_directory()
+            else:
+                self.logger.info("Step 2: Skipping PDF documents (videos_only mode)")
             
             # Filter out already indexed PDFs
             pdf_paragraphs = [p for p in all_pdf_paragraphs if p.pdf_filename not in indexed_pdfs]
@@ -220,10 +243,11 @@ class RAGSystem:
             
             new_pdf_count = len(set(p.pdf_filename for p in pdf_paragraphs))
             
-            self.logger.info(
-                f"Ingested {len(all_pdf_paragraphs)} PDF paragraphs from {len(pdf_counts)} PDFs "
-                f"({new_pdf_count} new PDFs, {len(indexed_pdfs)} already indexed)"
-            )
+            if not videos_only:
+                self.logger.info(
+                    f"Ingested {len(all_pdf_paragraphs)} PDF paragraphs from {len(pdf_counts)} PDFs "
+                    f"({new_pdf_count} new PDFs, {len(indexed_pdfs)} already indexed)"
+                )
             
             # Check if there's anything to index
             if not transcripts and not pdf_paragraphs:

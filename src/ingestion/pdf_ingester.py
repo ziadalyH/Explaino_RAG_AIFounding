@@ -235,7 +235,12 @@ class PDFIngester:
                         font_sizes.append(span.get("size", 0))
         
         avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 12
-        title_threshold = avg_font_size * 1.2  # 20% larger than average
+        title_threshold = avg_font_size * 1.15  # 15% larger than average (more sensitive)
+        
+        self.logger.debug(
+            f"Page {page.number + 1}: avg_font_size={avg_font_size:.1f}, "
+            f"title_threshold={title_threshold:.1f}"
+        )
         
         # Extract blocks with title detection
         for block in text_dict.get("blocks", []):
@@ -251,11 +256,16 @@ class PDFIngester:
                     block_text += line_text + " "
                 
                 block_text = block_text.strip()
-                if block_text and len(block_text) >= 50:  # Filter out short headers/footers
+                if block_text:  # Keep all blocks, including potential titles
+                    is_likely_title = (
+                        max_font_size >= title_threshold and 
+                        len(block_text) < 200 and  # Titles are usually short
+                        not block_text.endswith('.')  # Titles often don't end with period
+                    )
                     blocks.append({
                         "text": block_text,
                         "font_size": max_font_size,
-                        "is_title": max_font_size >= title_threshold
+                        "is_title": is_likely_title
                     })
         
         return blocks
@@ -310,6 +320,7 @@ class PDFIngester:
             # Handle title blocks - update current title context
             if is_title:
                 current_title = text
+                self.logger.debug(f"Detected title: '{text[:100]}...' (font_size={block['font_size']:.1f})")
                 continue
             
             # Handle content blocks - each becomes its own chunk(s)

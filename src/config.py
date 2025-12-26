@@ -50,17 +50,28 @@ class Config:
     log_level: str
     
     @classmethod
-    def from_env(cls, config_path: str = "config/config.example.yaml") -> "Config":
-        """Load configuration from YAML file and environment variables."""
-        # Load YAML config
-        config_file = Path(config_path)
-        if config_file.exists():
-            with open(config_file, 'r') as f:
-                config_data = yaml.safe_load(f)
-        else:
-            config_data = {}
+    def from_env(cls, config_path: Optional[str] = None) -> "Config":
+        """
+        Load configuration from environment variables and optional YAML file.
         
-        # Override with environment variables
+        Environment variables take priority over YAML values.
+        If no YAML file is provided, all values come from environment variables with sensible defaults.
+        
+        Args:
+            config_path: Optional path to YAML config file (defaults to None)
+        """
+        # Load YAML config if provided
+        config_data = {}
+        if config_path:
+            config_file = Path(config_path)
+            if config_file.exists():
+                with open(config_file, 'r') as f:
+                    config_data = yaml.safe_load(f)
+            else:
+                # YAML file specified but doesn't exist - just use defaults
+                pass
+        
+        # Override with environment variables (or use defaults)
         return cls(
             # Data paths
             transcript_dir=Path(os.getenv("TRANSCRIPT_DIR", config_data.get("data", {}).get("transcript_dir", "data/transcripts"))),

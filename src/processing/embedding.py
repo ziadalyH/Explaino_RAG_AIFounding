@@ -336,13 +336,16 @@ class EmbeddingEngine:
             return []
         
         try:
+            from tqdm import tqdm
+            
             self.logger.info(f"Generating {len(texts)} embeddings with local model")
             
-            # Generate all embeddings at once (much faster than one-by-one)
+            # Generate all embeddings at once with progress bar
             embeddings = self.local_model.encode(
                 texts,
                 convert_to_numpy=True,
-                show_progress_bar=len(texts) > 100  # Show progress for large batches
+                show_progress_bar=True,  # Always show progress bar
+                batch_size=32  # Process in batches for better progress tracking
             )
             embeddings = embeddings.astype(np.float32)
             

@@ -1,7 +1,8 @@
 """Response generator module for formatting retrieval results and generating LLM answers."""
 
 import logging
-from typing import Union, List
+from typing import Union, List, Optional
+from pathlib import Path
 import openai
 
 from ..models import (
@@ -26,19 +27,21 @@ class ResponseGenerator:
     - Converting responses to human-readable display format
     """
     
-    def __init__(self, config: Config, logger: logging.Logger):
+    def __init__(self, config: Config, logger: logging.Logger, knowledge_summary_path: Optional[str] = None):
         """
         Initialize the ResponseGenerator.
         
         Args:
             config: Configuration object containing LLM settings
             logger: Logger instance for logging operations
+            knowledge_summary_path: Optional path to knowledge summary file
         """
         self.config = config
         self.logger = logger
         self.llm_model = config.llm_model
         self.llm_temperature = config.llm_temperature
         self.llm_max_tokens = config.llm_max_tokens
+        self.knowledge_summary_path = Path(knowledge_summary_path) if knowledge_summary_path else Path("data/knowledge_summary.json")
         self._initialize_openai_client()
     
     def _initialize_openai_client(self) -> None:
@@ -74,14 +77,14 @@ class ResponseGenerator:
         self.logger.info(f"Generating response for query: {query[:50]}...")
         
         if result is None:
-            self.logger.info("No retrieval result, returning NoAnswerResponse")
-            return NoAnswerResponse()
+            self.logger.info("No retrieval result, returning NoAnswerResponse with knowledge summary")
+            return self._generate_no_answer_response()
         
         # Handle list of results (Option 2: LLM-based selection)
         elif isinstance(result, list):
             if not result:
-                self.logger.info("Empty result list, returning NoAnswerResponse")
-                return NoAnswerResponse()
+                self.logger.info("Empty result list, returning NoAnswerResponse with knowledge summary")
+                return self._generate_no_answer_response()
             
             # Check if it's a list of VideoResult or PDFResult
             if isinstance(result[0], VideoResult):
@@ -105,9 +108,38 @@ class ResponseGenerator:
         
         else:
             self.logger.error(f"Unexpected result type: {type(result)}")
-            return NoAnswerResponse(
+            return self._generate_no_answer_response(
                 message="An error occurred while generating the response."
             )
+    
+    def _generate_no_answer_response(self, message: str = "No relevant answer found in the knowledge base.") -> NoAnswerResponse:
+        """
+        Generate NoAnswerResponse with knowledge summary.
+        
+        Args:
+            message: Custom message for the no-answer response
+            
+        Returns:
+            NoAnswerResponse with knowledge summary included
+        """
+        knowledge_summary = None
+        
+        # Try to load knowledge summary
+        try:
+            if self.knowledge_summary_path.exists():
+                import json
+                with open(self.knowledge_summary_path, 'r') as f:
+                    knowledge_summary = json.load(f)
+                self.logger.info("Loaded knowledge summary for no-answer response")
+            else:
+                self.logger.warning(f"Knowledge summary file not found: {self.knowledge_summary_path}")
+        except Exception as e:
+            self.logger.error(f"Failed to load knowledge summary: {e}")
+        
+        return NoAnswerResponse(
+            message=message,
+            knowledge_summary=knowledge_summary
+        )
     
     def _generate_video_response_from_single(self, query: str, result: VideoResult) -> VideoResponse:
         """Generate VideoResponse from a single VideoResult."""
@@ -175,7 +207,7 @@ class ResponseGenerator:
         # Check if LLM refused to answer
         if generated_answer is None:
             self.logger.info("LLM refused to answer, returning NoAnswerResponse")
-            return NoAnswerResponse(
+            return self._generate_no_answer_response(
                 message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
             )
         
@@ -239,7 +271,7 @@ class ResponseGenerator:
         # Check if LLM refused to answer
         if generated_answer is None:
             self.logger.info("LLM refused to answer, returning NoAnswerResponse")
-            return NoAnswerResponse(
+            return self._generate_no_answer_response(
                 message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
             )
         

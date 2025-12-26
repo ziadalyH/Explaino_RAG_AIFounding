@@ -36,9 +36,13 @@ ENV/
 # Environment variables
 .env
 
-# Data directories (user data, not mock data)
-data/transcripts/*.json
-data/pdfs/*.pdf
+# Data directories - sample data is committed for reference
+# Add your own data files here if you don't want to commit them
+# data/transcripts/my_custom_video.json
+# data/pdfs/my_custom_document.pdf
+
+# Ignore generated knowledge summary
+data/knowledge_summary.json
 
 # Test coverage
 .coverage

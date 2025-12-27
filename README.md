@@ -529,11 +529,12 @@ docker-compose restart
 
 ### Retrieval Strategy
 
-1. **Tier 1 - Videos**: k-NN search on video index
+1. **Query Processing**: Stop words are removed from the query before embedding (same as during indexing)
+2. **Tier 1 - Videos**: k-NN search on video index
    - If score ≥ threshold → return video results
-2. **Tier 2 - PDFs**: k-NN search on PDF index
+3. **Tier 2 - PDFs**: k-NN search on PDF index
    - If score ≥ threshold → return PDF results
-3. **No Results**: Return "No answer found" message
+4. **No Results**: Return "No answer found" message
 
 Both tiers use pure k-NN vector similarity search for consistent scoring (0.0 to 1.0).
 
@@ -652,6 +653,7 @@ When you add files to the `data/` directory, here's what happens:
 ┌─────────────────────────────────────────────────────────────────┐
 │                    4. EMBEDDING GENERATION                      │
 │  Uses: sentence-transformers/all-mpnet-base-v2 (768-dim)       │
+│  Stop words removed before embedding for better semantic focus  │
 │  ┌──────────────────────┐      ┌──────────────────────┐        │
 │  │  PDF Embeddings      │      │  Video Embeddings    │        │
 │  │  • Content embedding │      │  • Text embedding    │        │

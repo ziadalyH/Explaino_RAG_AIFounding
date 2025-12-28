@@ -148,11 +148,6 @@ The repository includes sample data for testing:
 - **Auto-Indexing**: Data indexed automatically on startup
 - **Resume Capability**: Only processes new files on re-indexing
 
-> 💡 **New Features!**
->
-> - Change embedding models: Edit `.env` and restart - see [QUICK_MODEL_CHANGE.md](QUICK_MODEL_CHANGE.md)
-> - Change data paths: Edit `.env` and restart - see [DYNAMIC_PATHS.md](DYNAMIC_PATHS.md)
-
 ## 🏗️ Architecture
 
 ```
@@ -288,9 +283,7 @@ docker-compose exec rag-backend-cli python main.py index --force-rebuild
 
 **📖 Detailed Guides:**
 
-- [QUICK_MODEL_CHANGE.md](QUICK_MODEL_CHANGE.md) - Quick reference for changing models
 - [MODEL_OPTIONS.md](MODEL_OPTIONS.md) - Complete list of available models
-- [MODEL_COMPARISON_CHART.md](MODEL_COMPARISON_CHART.md) - Visual comparison and decision guide
 
 ### Changing Data Paths
 
@@ -314,10 +307,6 @@ docker-compose restart
 # 5. Reindex with new data
 docker-compose exec rag-backend-cli python main.py index --force-rebuild
 ```
-
-**📖 Detailed Guide:**
-
-- [DYNAMIC_PATHS.md](DYNAMIC_PATHS.md) - Complete guide for custom data paths
 
 ## 🔧 Advanced Usage
 
@@ -408,8 +397,6 @@ docker-compose exec rag-backend-cli python main.py index --pdfs-only    # Only n
 - ⚡ **Faster** - Only processes one content type
 - 🎯 **Targeted** - Update specific content without affecting the other
 - 💾 **Efficient** - Saves time when you only changed videos or PDFs
-
-See [CLI_COMMANDS.md](CLI_COMMANDS.md) for complete command reference.
 
 ### API Server
 

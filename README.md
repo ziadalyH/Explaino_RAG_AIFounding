@@ -8,8 +8,8 @@ Get up and running in 3 steps:
 
 ```bash
 # 1. Clone and navigate
-git clone https://github.com/ziadalyH/Explaino_RAG-based-chatbot-.git
-cd Explaino_RAG_AIFounding
+git clone https://github.com/ziadalyH/Explaino_RAG-based-chatbot.git
+cd Explaino_RAG-based-chatbot
 
 # 2. Add your OpenAI API key
 cp .env.example .env

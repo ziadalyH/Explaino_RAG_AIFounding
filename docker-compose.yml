@@ -60,8 +60,11 @@ services:
       - OPENSEARCH_VERIFY_CERTS=false
       - SENTENCE_TRANSFORMERS_HOME=/app/models
       - RUN_MODE=cli
+      - PYTHONPATH=/app/workspace  # Use workspace for Python imports
     volumes:
-      - ./data:/app/data
+      - .:/app/workspace  # Mount entire workspace for flexible paths
+      - models-cache:/app/models  # Persist downloaded models
+    working_dir: /app/workspace  # Run from workspace directory
     depends_on:
       opensearch-node1:
         condition: service_healthy
@@ -89,8 +92,11 @@ services:
       - API_HOST=0.0.0.0
       - API_PORT=8000
       - API_DEBUG=false
+      - PYTHONPATH=/app/workspace  # Use workspace for Python imports
     volumes:
-      - ./data:/app/data
+      - .:/app/workspace  # Mount entire workspace for flexible paths
+      - models-cache:/app/models  # Persist downloaded models
+    working_dir: /app/workspace  # Run from workspace directory
     depends_on:
       opensearch-node1:
         condition: service_healthy
@@ -103,6 +109,7 @@ services:
 
 volumes:
   opensearch-data1:
+  models-cache:  # Shared volume for embedding models
 
 networks:
   opensearch-net:

@@ -81,6 +81,8 @@ class CLI:
                 )
             elif args.command == "serve":
                 return self.serve_command()
+            elif args.command == "status":
+                return self.status_command(detailed=args.detailed)
             else:
                 self.logger.error(f"Unknown command: {args.command}")
                 return 1
@@ -180,6 +182,105 @@ class CLI:
         except Exception as e:
             self.logger.error(f"Failed to build index: {str(e)}", exc_info=True)
             print(f"Error: Failed to build index - {str(e)}", file=sys.stderr)
+            return 1
+    
+    def status_command(self, detailed: bool = False) -> int:
+        """
+        Handle status command - show system configuration and status.
+        
+        Args:
+            detailed: If True, show detailed configuration
+            
+        Returns:
+            Exit code (0 for success, 1 for error)
+        """
+        try:
+            print("=" * 80)
+            print("RAG SYSTEM STATUS")
+            print("=" * 80)
+            print()
+            
+            # Embedding Configuration
+            print("🔧 EMBEDDING CONFIGURATION")
+            print("-" * 80)
+            print(f"Provider:  {self.config.embedding_provider}")
+            print(f"Model:     {self.config.embedding_model}")
+            print(f"Dimension: {self.config.embedding_dimension}")
+            print()
+            
+            # LLM Configuration
+            print("🤖 LLM CONFIGURATION")
+            print("-" * 80)
+            print(f"Model:       {self.config.llm_model}")
+            print(f"Temperature: {self.config.llm_temperature}")
+            print(f"Max Tokens:  {self.config.llm_max_tokens}")
+            print()
+            
+            # Data Paths
+            print("📁 DATA PATHS")
+            print("-" * 80)
+            print(f"PDFs:        {self.config.pdf_dir}")
+            print(f"Transcripts: {self.config.transcript_dir}")
+            print()
+            
+            # OpenSearch Configuration
+            print("🔍 OPENSEARCH CONFIGURATION")
+            print("-" * 80)
+            print(f"Host:        {self.config.opensearch_host}:{self.config.opensearch_port}")
+            print(f"PDF Index:   {self.config.opensearch_pdf_index}")
+            print(f"Video Index: {self.config.opensearch_video_index}")
+            print(f"SSL:         {self.config.opensearch_use_ssl}")
+            print()
+            
+            # Retrieval Configuration
+            print("⚙️  RETRIEVAL CONFIGURATION")
+            print("-" * 80)
+            print(f"Relevance Threshold: {self.config.relevance_threshold}")
+            print(f"Max Results:         {self.config.max_results}")
+            print()
+            
+            if detailed:
+                # Chunking Configuration
+                print("📄 CHUNKING CONFIGURATION")
+                print("-" * 80)
+                print(f"Strategy:     {self.config.chunking_strategy}")
+                print(f"Chunk Size:   {self.config.chunk_size}")
+                print(f"Chunk Overlap: {self.config.chunk_overlap}")
+                print(f"Max Window:   {self.config.max_chunk_window}")
+                print()
+                
+                # Check if model is actually loaded
+                try:
+                    from .processing.embedding import EmbeddingEngine
+                    engine = EmbeddingEngine(self.config, self.logger)
+                    
+                    if hasattr(engine, 'local_model'):
+                        print("✅ MODEL VERIFICATION")
+                        print("-" * 80)
+                        actual_dim = engine.local_model.get_sentence_embedding_dimension()
+                        max_seq = engine.local_model.max_seq_length
+                        print(f"Model Loaded:        Yes")
+                        print(f"Actual Dimension:    {actual_dim}")
+                        print(f"Max Sequence Length: {max_seq} tokens")
+                        print(f"Dimension Match:     {'✅ Yes' if actual_dim == self.config.embedding_dimension else '❌ No'}")
+                        print()
+                except Exception as e:
+                    print("⚠️  MODEL VERIFICATION")
+                    print("-" * 80)
+                    print(f"Could not load model: {str(e)}")
+                    print()
+            
+            print("=" * 80)
+            print("✅ System configuration loaded successfully")
+            print()
+            print("💡 Tip: Use --detailed flag for more information")
+            print("=" * 80)
+            
+            return 0
+            
+        except Exception as e:
+            self.logger.error(f"Status command failed: {str(e)}")
+            print(f"Error: Failed to get status - {str(e)}", file=sys.stderr)
             return 1
     
     def serve_command(self) -> int:
@@ -348,6 +449,12 @@ Examples:
   # Query with verbose output
   python main.py query -q "What is the pricing?" --verbose
   
+  # Check system status and configuration
+  python main.py status
+  
+  # Check detailed status (including model verification)
+  python main.py status --detailed
+  
   # Build the index (incremental - only new files)
   python main.py index
   
@@ -420,6 +527,17 @@ Examples:
     serve_parser = subparsers.add_parser(
         "serve",
         help="Run the system as a service (for Docker deployment)"
+    )
+    
+    # Status command
+    status_parser = subparsers.add_parser(
+        "status",
+        help="Show system status and configuration"
+    )
+    status_parser.add_argument(
+        "--detailed",
+        action="store_true",
+        help="Show detailed configuration information"
     )
     
     return parser

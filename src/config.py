@@ -71,11 +71,24 @@ class Config:
                 # YAML file specified but doesn't exist - just use defaults
                 pass
         
+        # Determine workspace root (for Docker: /app/workspace, for local: current dir)
+        workspace_root = Path("/app/workspace") if Path("/app/workspace").exists() else Path.cwd()
+        
+        # Helper function to resolve data paths
+        def resolve_data_path(path_str: str) -> Path:
+            """Resolve data path relative to workspace root."""
+            path = Path(path_str)
+            if path.is_absolute():
+                return path
+            else:
+                # Relative path - resolve from workspace root
+                return workspace_root / path
+        
         # Override with environment variables (or use defaults)
         return cls(
-            # Data paths
-            transcript_dir=Path(os.getenv("TRANSCRIPT_DIR", config_data.get("data", {}).get("transcript_dir", "data/transcripts"))),
-            pdf_dir=Path(os.getenv("PDF_DIR", config_data.get("data", {}).get("pdf_dir", "data/pdfs"))),
+            # Data paths - resolve relative to workspace
+            transcript_dir=resolve_data_path(os.getenv("TRANSCRIPT_DIR", config_data.get("data", {}).get("transcript_dir", "data/transcripts"))),
+            pdf_dir=resolve_data_path(os.getenv("PDF_DIR", config_data.get("data", {}).get("pdf_dir", "data/pdfs"))),
             
             # OpenSearch configuration
             opensearch_host=os.getenv("OPENSEARCH_HOST", config_data.get("opensearch", {}).get("host", "localhost")),

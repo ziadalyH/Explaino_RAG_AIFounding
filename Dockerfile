@@ -25,11 +25,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download NLTK data
 RUN python -c "import nltk; nltk.download('stopwords', quiet=True)"
 
-# Download the sentence-transformers model during build
-RUN python -c "from sentence_transformers import SentenceTransformer; \
-    print('Downloading MPNet model...'); \
-    model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2', cache_folder='/app/models'); \
-    print('Model downloaded successfully')"
+# Note: Embedding model will be downloaded on first run based on EMBEDDING_MODEL env var
+# This allows flexibility to change models without rebuilding the Docker image
 
 # Copy application code
 COPY src/ ./src/

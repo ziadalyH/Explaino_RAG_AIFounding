@@ -38,6 +38,15 @@ class EmbeddingEngine:
         # Load English stop words for preprocessing before embedding
         self.stop_words = set(stopwords.words('english'))
         
+        # Log configuration
+        self.logger.info("=" * 60)
+        self.logger.info("EMBEDDING ENGINE CONFIGURATION")
+        self.logger.info("=" * 60)
+        self.logger.info(f"Provider: {self.embedding_provider}")
+        self.logger.info(f"Model: {self.model_name}")
+        self.logger.info(f"Dimension: {self.embedding_dimension}")
+        self.logger.info("=" * 60)
+        
         if self.embedding_provider == "openai":
             self._initialize_openai_client()
         elif self.embedding_provider == "local":
@@ -63,25 +72,72 @@ class EmbeddingEngine:
             from sentence_transformers import SentenceTransformer
             import os
             
-            self.logger.info(f"Loading local embedding model: {self.model_name}")
+            self.logger.info(f"🔄 Loading local embedding model: {self.model_name}")
             
             # Check if model exists locally in ./models directory
             local_model_path = "./models"
+            model_exists = False
+            
             if os.path.exists(local_model_path):
-                self.logger.info(f"Using pre-downloaded model from: {local_model_path}")
+                # Check if this specific model is cached
+                model_cache_name = self.model_name.replace('/', '_')
+                model_cache_path = os.path.join(local_model_path, model_cache_name)
+                
+                if os.path.exists(model_cache_path):
+                    model_exists = True
+                    self.logger.info(f"✅ Found cached model at: {model_cache_path}")
+                    self.logger.info(f"📦 Loading from cache (fast)...")
+                else:
+                    self.logger.info(f"⚠️  Model not in cache")
+                    self.logger.info(f"🌐 Will download from HuggingFace: {self.model_name}")
+                
                 self.local_model = SentenceTransformer(self.model_name, cache_folder=local_model_path)
             else:
-                self.logger.info(f"Downloading model from HuggingFace: {self.model_name}")
-                self.local_model = SentenceTransformer(self.model_name)
+                self.logger.info(f"📁 Cache directory not found, creating: {local_model_path}")
+                self.logger.info(f"🌐 Downloading model from HuggingFace: {self.model_name}")
+                os.makedirs(local_model_path, exist_ok=True)
+                self.local_model = SentenceTransformer(self.model_name, cache_folder=local_model_path)
             
-            self.logger.info(f"Local model loaded successfully with dimension: {self.embedding_dimension}")
+            # Get actual model info
+            actual_dimension = self.local_model.get_sentence_embedding_dimension()
+            max_seq_length = self.local_model.max_seq_length
+            
+            self.logger.info("=" * 60)
+            self.logger.info("✅ MODEL LOADED SUCCESSFULLY")
+            self.logger.info("=" * 60)
+            self.logger.info(f"Model Name: {self.model_name}")
+            self.logger.info(f"Model Type: {type(self.local_model).__name__}")
+            self.logger.info(f"Embedding Dimension: {actual_dimension}")
+            self.logger.info(f"Max Sequence Length: {max_seq_length} tokens")
+            self.logger.info(f"Cached: {'Yes' if model_exists else 'No (just downloaded)'}")
+            self.logger.info(f"Cache Location: {local_model_path}")
+            self.logger.info("=" * 60)
+            
+            # Validate dimension matches config
+            if actual_dimension != self.embedding_dimension:
+                self.logger.error("=" * 60)
+                self.logger.error("❌ DIMENSION MISMATCH ERROR")
+                self.logger.error("=" * 60)
+                self.logger.error(f"Expected dimension: {self.embedding_dimension}")
+                self.logger.error(f"Actual dimension: {actual_dimension}")
+                self.logger.error("")
+                self.logger.error("Fix: Update EMBEDDING_DIMENSION in .env to match model:")
+                self.logger.error(f"EMBEDDING_DIMENSION={actual_dimension}")
+                self.logger.error("=" * 60)
+                raise ValueError(
+                    f"Dimension mismatch: Expected {self.embedding_dimension}, "
+                    f"but model produces {actual_dimension}. "
+                    f"Update EMBEDDING_DIMENSION={actual_dimension} in .env"
+                )
             
         except ImportError:
+            self.logger.error("❌ sentence-transformers not installed")
             raise ImportError(
                 "sentence-transformers not installed. "
                 "Install with: pip install sentence-transformers"
             )
         except Exception as e:
+            self.logger.error(f"❌ Failed to load model: {str(e)}")
             raise RuntimeError(f"Failed to load local model: {str(e)}")
     
     def preprocess_for_embedding(self, text: str) -> str:

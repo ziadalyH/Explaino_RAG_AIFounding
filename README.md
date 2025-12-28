@@ -141,10 +141,17 @@ The repository includes sample data for testing:
 - **Two-Tier Retrieval**: Searches videos first, falls back to PDFs
 - **Precise Citations**: Exact timestamps for videos, page/paragraph for PDFs
 - **Dual Indices**: Separate `rag-pdf-index` and `rag-video-index`
-- **Local Embeddings**: Uses MPNet (768-dim) - no API costs
+- **Flexible Embeddings**: Choose any sentence-transformers model via `.env` - no Docker rebuild needed!
+- **Flexible Data Paths**: Use custom data directories via `.env` - no docker-compose.yml editing needed!
+- **Local Embeddings**: Uses MPNet (768-dim) by default - no API costs
 - **Pure k-NN Search**: Consistent vector similarity scoring (0.0 to 1.0) for both videos and PDFs
 - **Auto-Indexing**: Data indexed automatically on startup
 - **Resume Capability**: Only processes new files on re-indexing
+
+> 💡 **New Features!**
+>
+> - Change embedding models: Edit `.env` and restart - see [QUICK_MODEL_CHANGE.md](QUICK_MODEL_CHANGE.md)
+> - Change data paths: Edit `.env` and restart - see [DYNAMIC_PATHS.md](DYNAMIC_PATHS.md)
 
 ## 🏗️ Architecture
 
@@ -252,10 +259,65 @@ AUTO_INDEX_ON_STARTUP=true
 nano .env
 
 # Restart to apply changes
-docker-compose restart rag-backend
+docker-compose restart
 ```
 
 Changes take effect immediately on restart.
+
+### Changing Embedding Models
+
+**New!** You can now change embedding models without rebuilding Docker:
+
+```bash
+# 1. Edit .env file
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+EMBEDDING_DIMENSION=384
+
+# 2. Restart container (no rebuild!)
+docker-compose restart
+
+# 3. Reindex with new model
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
+```
+
+**Popular Models:**
+
+- `all-MiniLM-L6-v2` (384-dim) - Fast, good for development
+- `all-mpnet-base-v2` (768-dim) - **Default**, balanced quality/speed
+- `all-roberta-large-v1` (1024-dim) - Highest quality, slower
+
+**📖 Detailed Guides:**
+
+- [QUICK_MODEL_CHANGE.md](QUICK_MODEL_CHANGE.md) - Quick reference for changing models
+- [MODEL_OPTIONS.md](MODEL_OPTIONS.md) - Complete list of available models
+- [MODEL_COMPARISON_CHART.md](MODEL_COMPARISON_CHART.md) - Visual comparison and decision guide
+
+### Changing Data Paths
+
+**New!** You can now use custom data directories without editing docker-compose.yml:
+
+```bash
+# 1. Create your custom directories
+mkdir -p my_data/pdfs my_data/transcripts
+
+# 2. Copy your files
+cp data/pdfs/* my_data/pdfs/
+cp data/transcripts/* my_data/transcripts/
+
+# 3. Edit .env file
+PDF_DIR=my_data/pdfs
+TRANSCRIPT_DIR=my_data/transcripts
+
+# 4. Restart container (no rebuild!)
+docker-compose restart
+
+# 5. Reindex with new data
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
+```
+
+**📖 Detailed Guide:**
+
+- [DYNAMIC_PATHS.md](DYNAMIC_PATHS.md) - Complete guide for custom data paths
 
 ## 🔧 Advanced Usage
 

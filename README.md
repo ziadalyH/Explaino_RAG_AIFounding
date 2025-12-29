@@ -261,7 +261,7 @@ Changes take effect immediately on restart.
 
 ### Changing Embedding Models
 
-**New!** You can now change embedding models without rebuilding Docker:
+You can now change embedding models without rebuilding Docker:
 
 ```bash
 # 1. Edit .env file

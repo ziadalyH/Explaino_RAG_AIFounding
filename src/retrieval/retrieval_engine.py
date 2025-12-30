@@ -6,7 +6,7 @@ import numpy as np
 from opensearchpy import OpenSearch
 
 from ..models import VideoResult, PDFResult
-from ..config import Config
+from config.config import Config
 
 
 class RetrievalEngine:

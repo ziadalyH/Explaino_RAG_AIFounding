@@ -14,7 +14,7 @@ import fitz  # PyMuPDF
 import tiktoken
 
 from ..models import PDFParagraph
-from ..config import Config
+from config.config import Config
 
 
 class PDFIngester:

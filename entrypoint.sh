@@ -66,6 +66,77 @@ done
 
 echo "✓ OpenSearch is up and running!"
 
+# Check if we need to run setup
+NEED_SETUP=false
+
+if [ ! -f ".opensearch_rag_config" ]; then
+    echo ""
+    echo "No .opensearch_rag_config found - setup required"
+    NEED_SETUP=true
+else
+    echo ""
+    echo "Found .opensearch_rag_config - verifying resources exist in OpenSearch..."
+    
+    # Load config
+    if [ -f ".opensearch_rag_config" ]; then
+        source .opensearch_rag_config 2>/dev/null || true
+    fi
+    
+    # Check if model exists in OpenSearch
+    if [ ! -z "$MODEL_ID" ]; then
+        MODEL_CHECK=$(curl -s -o /dev/null -w "%{http_code}" "${OPENSEARCH_URL}/_plugins/_ml/models/${MODEL_ID}" 2>/dev/null || echo "000")
+        
+        if [ "$MODEL_CHECK" = "200" ]; then
+            echo "✓ Model exists in OpenSearch (ID: ${MODEL_ID})"
+        else
+            echo "⚠ Model not found in OpenSearch (expected ID: ${MODEL_ID})"
+            echo "Resources may have been deleted - setup required"
+            NEED_SETUP=true
+        fi
+    else
+        echo "⚠ MODEL_ID not found in config - setup required"
+        NEED_SETUP=true
+    fi
+fi
+
+# Run setup if needed
+if [ "$NEED_SETUP" = true ]; then
+    echo ""
+    echo "=========================================="
+    echo "OpenSearch RAG Setup"
+    echo "=========================================="
+    echo "Creating connector, model, and pipeline..."
+    echo ""
+    
+    # Remove old config if it exists
+    rm -f .opensearch_rag_config
+    
+    if python -m config.opensearch_ml.setup; then
+        echo ""
+        echo "✓ OpenSearch RAG setup completed successfully"
+    else
+        echo ""
+        echo "ERROR: OpenSearch RAG setup failed"
+        echo "Please check your LLM provider configuration in config/.env"
+        exit 1
+    fi
+else
+    echo ""
+    echo "=========================================="
+    echo "OpenSearch RAG Configuration"
+    echo "=========================================="
+    echo "✓ Using existing configuration"
+    echo ""
+    echo "Current Configuration:"
+    cat .opensearch_rag_config | while IFS='=' read -r key value; do
+        echo "  $key: $value"
+    done
+    echo ""
+    echo "To recreate connector/model/pipeline:"
+    echo "  1. Delete .opensearch_rag_config"
+    echo "  2. Restart the container"
+fi
+
 # Check if auto-indexing is enabled
 if [ "${AUTO_INDEX_ON_STARTUP}" = "true" ]; then
     echo ""

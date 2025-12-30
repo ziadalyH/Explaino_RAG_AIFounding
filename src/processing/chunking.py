@@ -4,7 +4,7 @@ from typing import List
 import logging
 
 from ..models import VideoTranscript, PDFParagraph, TranscriptChunk, PDFChunk
-from ..config import Config
+from config.config import Config
 
 
 class ChunkingModule:

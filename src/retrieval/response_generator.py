@@ -1,9 +1,11 @@
-"""Response generator module for formatting retrieval results and generating LLM answers."""
+"""Response generator module for formatting retrieval results and generating LLM answers.
+
+This module uses centralized LLM inference service for all LLM responses.
+"""
 
 import logging
-from typing import Union, List, Optional
+from typing import Union, List, Optional, TYPE_CHECKING
 from pathlib import Path
-import openai
 
 from ..models import (
     VideoResult,
@@ -12,50 +14,48 @@ from ..models import (
     PDFResponse,
     NoAnswerResponse
 )
-from ..config import Config
+from config.config import Config
+
+if TYPE_CHECKING:
+    from ..llm_inference import LLMInferenceService
 
 
 class ResponseGenerator:
     """
     Format retrieval results into structured responses and generate natural language answers.
     
+    Uses centralized LLM inference service for all LLM operations.
+    
     This class handles:
-    - Generating natural language answers using OpenAI's LLM
+    - Generating natural language answers using centralized LLM service
     - Formatting video-based responses with timestamps and citations
     - Formatting PDF-based responses with page/paragraph citations
     - Handling no-answer scenarios
     - Converting responses to human-readable display format
     """
     
-    def __init__(self, config: Config, logger: logging.Logger, knowledge_summary_path: Optional[str] = None):
+    def __init__(
+        self,
+        config: Config,
+        logger: logging.Logger,
+        llm_service: 'LLMInferenceService',
+        knowledge_summary_path: Optional[str] = None
+    ):
         """
         Initialize the ResponseGenerator.
         
         Args:
             config: Configuration object containing LLM settings
             logger: Logger instance for logging operations
+            llm_service: Centralized LLM inference service
             knowledge_summary_path: Optional path to knowledge summary file
         """
         self.config = config
         self.logger = logger
-        self.llm_model = config.llm_model
-        self.llm_temperature = config.llm_temperature
-        self.llm_max_tokens = config.llm_max_tokens
+        self.llm_service = llm_service
         self.knowledge_summary_path = Path(knowledge_summary_path) if knowledge_summary_path else Path("data/knowledge_summary.json")
-        self._initialize_openai_client()
-    
-    def _initialize_openai_client(self) -> None:
-        """
-        Initialize OpenAI client for LLM calls.
         
-        Raises:
-            ValueError: If API key is not configured
-        """
-        if not self.config.openai_api_key:
-            raise ValueError("OpenAI API key not configured")
-        
-        self.logger.info(f"Initializing OpenAI client for LLM with model: {self.llm_model}")
-        openai.api_key = self.config.openai_api_key
+        self.logger.info("Initialized ResponseGenerator with centralized LLM service")
     
     def generate_response(
         self,
@@ -188,7 +188,7 @@ class ResponseGenerator:
         """
         Generate VideoResponse from multiple VideoResults.
         Let LLM choose the best context and generate answer.
-        Returns NoAnswerResponse if LLM refuses to answer.
+        Returns NoAnswerResponse if LLM refuses to answer (WITHOUT knowledge summary for fallback).
         """
         # Combine contexts with metadata
         combined_context = self._combine_contexts_for_llm(
@@ -206,9 +206,10 @@ class ResponseGenerator:
         
         # Check if LLM refused to answer
         if generated_answer is None:
-            self.logger.info("LLM refused to answer, returning NoAnswerResponse")
-            return self._generate_no_answer_response(
-                message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
+            self.logger.info("LLM refused to answer from videos, returning NoAnswerResponse WITHOUT knowledge summary (for fallback)")
+            # Don't include knowledge summary here - we'll try PDFs first
+            return NoAnswerResponse(
+                message="I couldn't find relevant information to answer your question in the video transcripts."
             )
         
         # Return response with the best result's metadata
@@ -235,7 +236,7 @@ class ResponseGenerator:
         """
         Generate PDFResponse from multiple PDFResults.
         Let LLM choose the best context and generate answer.
-        Returns NoAnswerResponse if LLM refuses to answer.
+        Returns NoAnswerResponse WITH knowledge summary if LLM refuses (final fallback).
         """
         # Log the results being processed
         self.logger.info("="*80)
@@ -270,7 +271,8 @@ class ResponseGenerator:
         
         # Check if LLM refused to answer
         if generated_answer is None:
-            self.logger.info("LLM refused to answer, returning NoAnswerResponse")
+            self.logger.info("LLM refused to answer from PDFs (final fallback), returning NoAnswerResponse WITH knowledge summary")
+            # This is the final fallback - include knowledge summary
             return self._generate_no_answer_response(
                 message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
             )
@@ -317,12 +319,12 @@ class ResponseGenerator:
         query: str,
         contexts: str,
         num_results: int
-    ) -> tuple[str, int]:
+    ) -> tuple[Optional[str], int]:
         """
-        Use OpenAI LLM to select best context and generate answer.
+        Use centralized LLM service to select best context and generate answer.
         
         Returns:
-            Tuple of (generated_answer, best_context_index)
+            Tuple of (generated_answer, best_context_index) or (None, index) if refused
         """
         self.logger.debug(f"Generating LLM answer with selection from {num_results} contexts")
         
@@ -345,31 +347,7 @@ Instructions:
 Answer:"""
         
         try:
-            # Call OpenAI API
-            self.logger.debug(
-                f"Calling OpenAI API with model={self.llm_model}, "
-                f"temperature={self.llm_temperature}, "
-                f"max_tokens={self.llm_max_tokens}"
-            )
-            
-            response = openai.ChatCompletion.create(
-                model=self.llm_model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a helpful assistant that answers questions based on provided context. Be concise and accurate. Always indicate which context you used."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                temperature=self.llm_temperature,
-                max_tokens=self.llm_max_tokens
-            )
-            
-            # Extract generated answer
-            answer = response['choices'][0]['message']['content'].strip()
+            answer = self.llm_service.generate(prompt)
             
             # Parse which context was used
             best_idx = 0  # Default to first
@@ -414,7 +392,7 @@ Answer:"""
     
     def generate_answer_with_llm(self, query: str, context: str) -> str:
         """
-        Use OpenAI LLM to generate natural language answer from context.
+        Use centralized LLM service to generate natural language answer from context.
         
         Args:
             query: User's question
@@ -425,53 +403,15 @@ Answer:"""
         """
         self.logger.debug(f"Generating LLM answer for query: {query[:50]}...")
         
-        # Build prompt template
-        prompt = f"""Based on the following context, answer the user's question concisely and accurately.
-
-IMPORTANT: If the context does not contain information to answer the question, respond with "I cannot answer this question based on the provided context."
-
-Context: {context}
-
-Question: {query}
-
-Answer:"""
+        answer = self.llm_service.generate_with_context(
+            query=query,
+            context=context
+        )
         
-        try:
-            # Call OpenAI API
-            self.logger.debug(
-                f"Calling OpenAI API with model={self.llm_model}, "
-                f"temperature={self.llm_temperature}, "
-                f"max_tokens={self.llm_max_tokens}"
-            )
-            
-            response = openai.ChatCompletion.create(
-                model=self.llm_model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a helpful assistant that answers questions based on provided context. Be concise and accurate."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                temperature=self.llm_temperature,
-                max_tokens=self.llm_max_tokens
-            )
-            
-            # Extract generated answer
-            answer = response['choices'][0]['message']['content'].strip()
-            
-            self.logger.debug(f"LLM generated answer: {answer[:100]}...")
-            self.logger.info("LLM answer generated successfully")
-            
-            return answer
-            
-        except Exception as e:
-            self.logger.error(f"Failed to generate LLM answer: {str(e)}")
-            # Return a fallback message if LLM fails
-            return "I found relevant information but couldn't generate a detailed answer. Please refer to the source snippet."
+        self.logger.debug(f"LLM generated answer: {answer[:100]}...")
+        self.logger.info("LLM answer generated successfully")
+        
+        return answer
     
     def format_for_display(
         self,

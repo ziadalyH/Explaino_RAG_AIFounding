@@ -1,29 +1,23 @@
 {
-  "overview": "The indexed content covers a wide range of topics related to computing and technology, including cloud infrastructure, web development, machine learning, data science, Python programming, and database systems. This collection includes both practical guides and theoretical knowledge, making it suitable for learners and practitioners alike.",
+  "overview": "The indexed content covers fundamental concepts in data science, machine learning, cloud computing, database systems, and web development. It provides comprehensive resources including tutorial videos and PDFs on programming with Python, data management, and modern web technologies.",
   "topics": [
-    "Cloud Infrastructure",
-    "Modern Web Development",
-    "Machine Learning Fundamentals",
     "Data Science Principles",
-    "Python Programming",
+    "Machine Learning Fundamentals",
+    "Cloud Computing Infrastructure",
     "Database Systems",
-    "Deep Learning",
-    "Web Development Trends",
-    "Data Science Tutorials",
-    "Cloud Computing"
+    "Python Programming Basics and Advanced Techniques",
+    "Modern Web Development Trends",
+    "Deep Learning Techniques",
+    "Data Management and Transformation"
   ],
   "suggested_questions": [
-    "What are the best practices for cloud infrastructure management?",
-    "How do I get started with modern web development?",
-    "What are the key concepts in machine learning?",
-    "Can you explain the principles of data science?",
-    "What resources are available for learning Python programming?",
-    "What are the fundamentals of database systems?",
-    "How does deep learning differ from traditional machine learning?",
-    "What are the current trends in web development for 2024?",
-    "What tutorials are best for beginners in data science?",
-    "How is cloud computing transforming data storage and access?",
-    "What advanced topics should I explore in Python programming?",
-    "How can I apply machine learning algorithms in real-world scenarios?"
+    "What are the key principles of data science?",
+    "How does cloud computing enhance data processing?",
+    "What is the difference between relational and NoSQL databases?",
+    "How can I get started with Python programming?",
+    "What are the latest trends in web development for 2024?",
+    "Can you explain the process of training a neural network?",
+    "What are some common data transformation techniques?",
+    "How do I choose the right machine learning model for my data?"
   ]
 }

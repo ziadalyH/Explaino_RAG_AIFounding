@@ -7,7 +7,7 @@ from opensearchpy import OpenSearch, helpers
 from opensearchpy.exceptions import RequestError, ConnectionError as OpenSearchConnectionError
 
 from ..models import TranscriptChunk, PDFChunk
-from ..config import Config
+from config.config import Config
 from .embedding import EmbeddingEngine
 
 

@@ -1,174 +1,47 @@
 # Explaino RAG System
 
-A production-ready Retrieval-Augmented Generation (RAG) system that answers questions from video transcripts and PDF documents using semantic search and LLM-powered responses.
+A production-ready Retrieval-Augmented Generation (RAG) system that answers questions from video transcripts and PDF documents using semantic search and OpenSearch-managed LLM connections.
+
+## ✨ Key Features
+
+- **🔌 Dynamic LLM Providers** - Support for 9+ providers (OpenAI, DeepSeek, Cohere, Azure OpenAI, Bedrock, VertexAI, SageMaker, Comprehend, Custom)
+- **🚀 OpenSearch-Native RAG** - All LLM connections managed by OpenSearch ML Commons
+- **🎯 Centralized LLM Service** - Single initialization point for all LLM operations
+- **🔄 Automatic Setup** - Connector, model, and pipeline created automatically on first run
 
 ## 🚀 Quick Start
 
-Get up and running in 3 steps:
+### One-Command Setup (Recommended)
 
 ```bash
-# 1. Clone and navigate
-git clone https://github.com/ziadalyH/Explaino_RAG-based-chatbot.git
-cd Explaino_RAG-based-chatbot
+# 1. Configure your LLM provider
+cp config/.env.example config/.env
+# Edit config/.env and set your LLM_PROVIDER and LLM_API_KEY
 
-# 2. Add your OpenAI API key
-cp .env.example .env
-# Edit .env and set: OPENAI_API_KEY=your_key_here
-
-# 3. Start with your preferred mode
-```
-
-### Choose Your Mode
-
-The system supports two modes in one docker-compose file:
-
-#### CLI Mode (Default)
-
-For command-line interactions and scripting:
-
-```bash
-# Start CLI mode
+# 2. Start everything with one command
 docker-compose --profile cli up -d
-
-# ⏳ IMPORTANT: Wait for indexing to complete before querying!
-# Check the logs to see indexing progress:
-docker-compose logs -f rag-backend-cli
-
-# Look for these messages in the logs:
-# - "✓ Generated X embeddings" (embedding generation)
-# - "✓ Index 'rag-pdf-index' refreshed and ready for search"
-# - "✓ Index 'rag-video-index' refreshed and ready for search"
-# - "Index building completed successfully"
-
-# Once indexing is complete (usually 2-3 minutes), query the system:
-docker-compose exec rag-backend-cli python main.py query -q "What is a database?"
-
-# Index management
-docker-compose exec rag-backend-cli python main.py index --force-rebuild
 ```
 
-#### API Mode
+This automatically:
 
-For REST API access (ideal for frontend integration):
+1. ✅ Starts OpenSearch
+2. ✅ Creates LLM connector (first time only)
+3. ✅ Registers and deploys model (first time only)
+4. ✅ Creates RAG pipeline (first time only)
+5. ✅ Indexes your data (first time or new files)
+6. ✅ Starts CLI backend
+
+**Then query:**
 
 ```bash
-# Start API mode
-docker-compose --profile api up -d
-
-# ⏳ IMPORTANT: Wait for indexing to complete before querying!
-# Check the logs to see indexing progress:
-docker-compose logs -f rag-backend-api
-
-# Look for these messages in the logs:
-# - "✓ Generated X embeddings" (embedding generation)
-# - "✓ Index 'rag-pdf-index' refreshed and ready for search"
-# - "✓ Index 'rag-video-index' refreshed and ready for search"
-# - "Index building completed successfully"
-
-# Once indexing is complete (usually 2-3 minutes), the API is ready at http://localhost:8000
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is a database?"}'
+docker-compose exec rag-backend-cli python main.py query -q "What is machine learning?"
 ```
 
-#### Both Modes Together
+### Adding Your Own Data
 
-```bash
-# Start both CLI and API
-docker-compose --profile cli --profile api up -d
-
-# ⏳ IMPORTANT: Wait for indexing to complete before querying!
-# Monitor both services:
-docker-compose logs -f rag-backend-cli rag-backend-api
-
-# Or check specific service:
-docker-compose logs -f rag-backend-cli
-
-# Once you see "Index building completed successfully" in the logs:
-
-# Use CLI
-docker-compose exec rag-backend-cli python main.py query -q "test"
-
-# Use API
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "test"}'
-```
-
-**💡 Pro Tip:** To check if indexing is complete without watching logs:
-
-```bash
-# Check index status via CLI
-docker-compose exec rag-backend-cli python main.py status
-
-# Or via API
-curl http://localhost:8000/index/status
-```
-
-The system will:
-
-- Download the MPNet embedding model (~420MB, first time only)
-- Start OpenSearch vector database
-- Automatically index sample data (6 PDFs + 8 video transcripts)
-- Be ready to answer questions in ~2-3 minutes
-
-## 📋 What's Included
-
-The repository includes sample data for testing:
+Before running the system, add your data to these directories:
 
 **Video Transcripts** (`data/transcripts/`):
-
-- Database fundamentals
-- Machine learning intro
-- Python programming basics
-- Cloud computing overview
-- Web development trends
-- Deep learning tutorial (15min)
-- Data science tutorial (20min)
-- Python advanced tutorial (30min)
-
-**PDF Documents** (`data/pdfs/`):
-
-- Database systems textbook
-- Machine learning fundamentals
-- Python programming guide
-- Cloud infrastructure guide
-- Modern web development
-- Principles of Data Science (32MB)
-
-## 🎯 Key Features
-
-- **Two-Tier Retrieval**: Searches videos first, falls back to PDFs
-- **Precise Citations**: Exact timestamps for videos, page/paragraph for PDFs
-- **Dual Indices**: Separate `rag-pdf-index` and `rag-video-index`
-- **Flexible Embeddings**: Choose any sentence-transformers model via `.env` - no Docker rebuild needed!
-- **Flexible Data Paths**: Use custom data directories via `.env` - no docker-compose.yml editing needed!
-- **Local Embeddings**: Uses MPNet (768-dim) by default - no API costs
-- **Pure k-NN Search**: Consistent vector similarity scoring (0.0 to 1.0) for both videos and PDFs
-- **Auto-Indexing**: Data indexed automatically on startup
-- **Resume Capability**: Only processes new files on re-indexing
-
-## 🏗️ Architecture
-
-```
-User Query
-    ↓
-Query Processor (MPNet embeddings)
-    ↓
-Two-Tier Retrieval Engine
-    ├─→ Video Index (k-NN search)
-    └─→ PDF Index (k-NN search)
-    ↓
-Response Generator (GPT-4o-mini)
-    ↓
-Structured Answer with Citations
-```
-
-## 📊 Adding Your Own Data
-
-### Video Transcripts
-
-Place JSON files in `data/transcripts/`:
 
 ```json
 {
@@ -184,95 +57,126 @@ Place JSON files in `data/transcripts/`:
 }
 ```
 
-### PDF Documents
+**PDF Documents** (`data/pdfs/`):
 
-Place PDF files in `data/pdfs/`:
-
-- Must contain extractable text (not scanned images)
+- Place PDF files here (must contain extractable text)
 - Filename should match `pdf_reference` in video transcripts
 
-### Re-index Data
+**Re-index After Adding Data:**
 
 ```bash
 # Index new files (only processes new/modified files)
-docker-compose exec rag-backend python main.py index
+docker-compose exec rag-backend-cli python main.py index
 
 # Force rebuild entire index
-docker-compose exec rag-backend python main.py index --rebuild
-
-# Reindex only videos (force rebuild)
-docker-compose exec rag-backend python main.py index --force-rebuild --videos-only
-
-# Reindex only PDFs (force rebuild)
-docker-compose exec rag-backend python main.py index --force-rebuild --pdfs-only
-
-# Add new videos (incremental)
-docker-compose exec rag-backend python main.py index --videos-only
-
-# Add new PDFs (incremental)
-docker-compose exec rag-backend python main.py index --pdfs-only
-
-# See all options
-docker-compose exec rag-backend python main.py index --help
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
 ```
+
+**📖 Understanding the Data Flow:** See [DATA_FLOW_GUIDE.md](DATA_FLOW_GUIDE.md) for a detailed explanation of how data flows through the system - from indexing your files to answering queries, and how both pipelines meet in latent space.
+
+### What Happens on First Run
+
+When you start the system for the first time, you'll see detailed logs showing:
+
+```
+================================================================================
+STEP 1: Creating LLM Connector
+================================================================================
+📡 Creating OPENAI connector
+Model: gpt-4o-mini
+→ Sending connector creation request to OpenSearch...
+✓ Connector created with ID: abc123
+
+================================================================================
+STEP 2: Registering Model
+================================================================================
+📝 Registering model with OpenSearch ML
+→ Sending model registration request...
+✓ Model registration initiated
+
+================================================================================
+STEP 3: Deploying Model
+================================================================================
+🚀 Deploying model
+→ Sending deployment request...
+⏳ Waiting for model deployment and readiness...
+   Model state: DEPLOYING
+   Model state: DEPLOYED
+   ✓ Model state is DEPLOYED
+   🧪 Testing model with inference call...
+   ✓ Model responded successfully!
+   ✓ Model is ready for inference!
+
+================================================================================
+STEP 4: Creating RAG Pipeline
+================================================================================
+🔧 Creating RAG search pipeline
+→ Sending pipeline creation request...
+✓ RAG pipeline created successfully
+
+✓ OpenSearch RAG setup completed successfully
+```
+
+The system verifies the model is truly ready by testing it with an actual inference call before proceeding.
+
+## 🤖 Supported LLM Providers
+
+All providers use official OpenSearch ML Commons connector blueprints for maximum compatibility.
+
+| Provider              | Models                        | Auth Type       | Status   | Blueprint                                                                                                                                        |
+| --------------------- | ----------------------------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **OpenAI**            | gpt-4, gpt-4o, gpt-3.5-turbo  | API Key         | ✅ Ready | [Official](https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/openai_connector_chat_blueprint.md)       |
+| **DeepSeek**          | deepseek-chat, deepseek-coder | API Key         | ✅ Ready | [Official](https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/deepseek_connector_chat_blueprint.md)     |
+| **Cohere**            | command, command-light        | API Key         | ✅ Ready | [Official](https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/cohere_connector_chat_blueprint.md)       |
+| **Azure OpenAI**      | gpt-4, gpt-35-turbo           | API Key         | ✅ Ready | [Official](https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/azure_openai_connector_chat_blueprint.md) |
+| **Amazon Bedrock**    | Claude v2/v3, Jurassic-2      | AWS Credentials | ✅ Ready | [Official](https://opensearch.org/docs/latest/ml-commons-plugin/remote-models/blueprints/)                                                       |
+| **Google VertexAI**   | chat-bison, gemini-pro        | GCP Token       | ✅ Ready | [Official](https://opensearch.org/docs/latest/ml-commons-plugin/remote-models/blueprints/)                                                       |
+| **Amazon SageMaker**  | Custom models                 | AWS Credentials | ✅ Ready | [Official](https://opensearch.org/docs/latest/ml-commons-plugin/remote-models/blueprints/)                                                       |
+| **Amazon Comprehend** | Language detection, NLP       | AWS Credentials | ✅ Ready | [Official](https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/amazon_comprehend_connector_blueprint.md) |
+|                       |
+
+**Switching Providers**: Just update `config/.env`, delete `.opensearch_rag_config`, and restart - no code changes needed!
+
+**📖 Complete Provider Guide:** See [MODEL_PROVIDER_GUIDE.md](MODEL_PROVIDER_GUIDE.md) for detailed configuration examples for each provider.
 
 ## ⚙️ Configuration
 
-All configuration is done via the `.env` file. Key settings:
+### LLM Configuration
+
+Edit `config/.env` to configure your LLM provider:
 
 ```bash
-# Required
-OPENAI_API_KEY=your_key_here
+# ============================================
+# LLM Configuration (OpenSearch Connector)
+# ============================================
+# Supported providers: openai, bedrock, cohere, azure_openai, vertexai, sagemaker, deepseek, custom
 
-# OpenSearch (defaults work with docker-compose)
-OPENSEARCH_HOST=opensearch-node1
-OPENSEARCH_PORT=9200
-
-# Embedding Model
-EMBEDDING_MODEL=sentence-transformers/all-mpnet-base-v2
-EMBEDDING_DIMENSION=768
-
-# LLM Configuration
+# Common settings (all providers)
+LLM_PROVIDER=openai
 LLM_MODEL=gpt-4o-mini
+LLM_API_KEY=sk-...your-key...
 LLM_TEMPERATURE=0.3
 LLM_MAX_TOKENS=500
 
-# Retrieval
-RELEVANCE_THRESHOLD=0.5  # Lower = more results (0.3-0.7 recommended for k-NN scoring)
-MAX_RESULTS=5
-
-# Auto-indexing
-AUTO_INDEX_ON_STARTUP=true
+# Provider-specific settings (see LLM_PROVIDERS.md for details)
 ```
 
-### Changing Configuration
+**📖 Detailed Configuration:** See [LLM_PROVIDERS.md](LLM_PROVIDERS.md) for:
 
-**No rebuild needed!** Just edit `.env` and restart:
+- Complete configuration examples for each provider
+- Required credentials and endpoints
+- Model recommendations
+- Troubleshooting tips
 
-```bash
-# Edit configuration
-nano .env
-
-# Restart to apply changes
-docker-compose restart
-```
-
-Changes take effect immediately on restart.
-
-### Changing Embedding Models
-
-You can now change embedding models without rebuilding Docker:
+### Embedding Configuration
 
 ```bash
-# 1. Edit .env file
-EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
-EMBEDDING_DIMENSION=384
-
-# 2. Restart container (no rebuild!)
-docker-compose restart
-
-# 3. Reindex with new model
-docker-compose exec rag-backend-cli python main.py index --force-rebuild
+# ============================================
+# Embedding Configuration
+# ============================================
+EMBEDDING_PROVIDER=local
+EMBEDDING_MODEL=sentence-transformers/all-mpnet-base-v2
+EMBEDDING_DIMENSION=768
 ```
 
 **Popular Models:**
@@ -281,126 +185,182 @@ docker-compose exec rag-backend-cli python main.py index --force-rebuild
 - `all-mpnet-base-v2` (768-dim) - **Default**, balanced quality/speed
 - `all-roberta-large-v1` (1024-dim) - Highest quality, slower
 
-**📖 Detailed Guides:**
+**📖 Complete Model List:** See [MODEL_OPTIONS.md](MODEL_OPTIONS.md) for all available embedding models.
 
-- [MODEL_OPTIONS.md](MODEL_OPTIONS.md) - Complete list of available models
-
-### Changing Data Paths
-
-**New!** You can now use custom data directories without editing docker-compose.yml:
+### Other Settings
 
 ```bash
-# 1. Create your custom directories
-mkdir -p my_data/pdfs my_data/transcripts
+# OpenSearch
+OPENSEARCH_HOST=localhost
+OPENSEARCH_PORT=9200
 
-# 2. Copy your files
-cp data/pdfs/* my_data/pdfs/
-cp data/transcripts/* my_data/transcripts/
+# Retrieval
+RELEVANCE_THRESHOLD=0.5
+MAX_RESULTS=5
 
-# 3. Edit .env file
-PDF_DIR=my_data/pdfs
-TRANSCRIPT_DIR=my_data/transcripts
+# System
+AUTO_INDEX_ON_STARTUP=true
+LOG_LEVEL=INFO
+```
 
-# 4. Restart container (no rebuild!)
+### Changing Configuration
+
+**No rebuild needed!** Just edit `config/.env` and restart:
+
+```bash
+# Edit configuration
+nano config/.env
+
+# Restart to apply changes
 docker-compose restart
-
-# 5. Reindex with new data
-docker-compose exec rag-backend-cli python main.py index --force-rebuild
 ```
 
-## 🔧 Advanced Usage
+## 🔄 Switching LLM Providers
 
-### Selective Reindexing
-
-When you update only videos or only PDFs, you can reindex just that content type:
-
-**Scenario 1: Updated Video Transcripts**
+To switch to a different LLM provider:
 
 ```bash
-# 1. Update video JSON files in data/transcripts/
-cp updated_video.json data/transcripts/
+# 1. Update config/.env
+LLM_PROVIDER=bedrock
+LLM_MODEL=anthropic.claude-v2
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
 
-# 2. Reindex only videos (faster than full rebuild)
-docker-compose exec rag-backend python main.py index --force-rebuild --videos-only
+# 2. Delete old configuration
+rm .opensearch_rag_config
 
-# 3. Query to test
-docker-compose exec rag-backend python main.py query -q "Question about updated video"
+# 3. Restart (setup runs automatically)
+docker-compose restart rag-backend-cli
+
+# 4. Query as normal
+docker-compose exec rag-backend-cli python main.py query -q "Your question"
 ```
 
-**Scenario 2: Updated PDF Documents**
+The system will automatically:
 
-```bash
-# 1. Update PDF files in data/pdfs/
-cp updated_document.pdf data/pdfs/
+- Delete old connector, model, and pipeline
+- Create new connector for the new provider
+- Register and deploy the new model
+- Create new RAG pipeline
+- Verify the model is ready
 
-# 2. Reindex only PDFs (faster than full rebuild)
-docker-compose exec rag-backend python main.py index --force-rebuild --pdfs-only
+## 🏗️ Architecture
 
-# 3. Query to test
-docker-compose exec rag-backend python main.py query -q "Question about updated PDF"
+### System Overview
+
+```
+User Query
+    ↓
+Python Application
+    ├── Centralized LLM Service (single initialization)
+    │   ├── Response Generator
+    │   └── Knowledge Summary Generator
+    ↓
+OpenSearch
+├── Vector Search (finds relevant documents)
+├── RAG Pipeline (combines context + query)
+├── ML Connector (provider-specific)
+└── ML Inference (calls LLM)
+    ↓
+LLM Provider API (OpenAI/DeepSeek/Cohere/Azure/etc.)
+    ↓
+Generated Answer
 ```
 
-**Scenario 3: Adding New Content**
+### Enhanced Fallback Strategy
 
-```bash
-# Add new videos only (incremental - doesn't rebuild existing)
-docker-compose exec rag-backend python main.py index --videos-only
+The system implements a **three-tier fallback strategy** for maximum answer coverage:
 
-# Add new PDFs only (incremental - doesn't rebuild existing)
-docker-compose exec rag-backend python main.py index --pdfs-only
+```
+Tier 1: Video Search
+├─ Search video transcripts
+├─ If found → Ask LLM
+├─ If LLM answers → Return VideoResponse ✅
+└─ If LLM refuses → Proceed to Tier 2 🔄
+
+Tier 2: PDF Search (Automatic Fallback)
+├─ Search PDF documents
+├─ If found → Ask LLM
+├─ If LLM answers → Return PDFResponse ✅
+└─ If LLM refuses → Proceed to Tier 3 🔄
+
+Tier 3: No Answer (With Knowledge Summary)
+└─ Return NoAnswerResponse with knowledge summary ❌
 ```
 
-**Performance Comparison:**
+**Benefits:**
 
-| Command                               | Time (example) | Use Case                   |
-| ------------------------------------- | -------------- | -------------------------- |
-| `index`                               | ~30s           | Add new files (both types) |
-| `index --videos-only`                 | ~10s           | Add/update videos only     |
-| `index --pdfs-only`                   | ~20s           | Add/update PDFs only       |
-| `index --force-rebuild`               | ~60s           | Rebuild everything         |
-| `index --force-rebuild --videos-only` | ~15s           | Rebuild videos only        |
-| `index --force-rebuild --pdfs-only`   | ~35s           | Rebuild PDFs only          |
+- ✅ Higher answer rate by trying multiple sources
+- ✅ Intelligent fallback only when needed
+- ✅ Knowledge summary only shown after all sources tried
+- ✅ Transparent logging shows which source provided answer
 
-### CLI Commands
+**📖 Detailed Fallback Logic:** See [ENHANCED_FALLBACK_LOGIC.md](ENHANCED_FALLBACK_LOGIC.md)
+
+### Key Architecture Features
+
+- **Centralized LLM Service**: Single initialization point for all LLM operations
+- **Smart Verification**: Tests model with actual inference before proceeding
+- **Automatic Setup**: Connector, model, and pipeline created on first run
+- **Provider Agnostic**: All LLM communication through OpenSearch ML connectors
+- **Modular Design**: Clean separation of concerns for easy maintenance
+
+**📖 Architecture Details:** See [SYSTEM_ARCHITECTURE.md](SYSTEM_ARCHITECTURE.md) and [CENTRALIZED_LLM_SERVICE.md](CENTRALIZED_LLM_SERVICE.md) for complete technical documentation.
+
+## 📋 CLI Commands
+
+### Query Commands
 
 ```bash
 # Query the system
-docker-compose exec rag-backend-cli python main.py query --question "Your question"
+docker-compose exec rag-backend-cli python main.py query -q "Your question"
 
+# Query with specific source preference
+docker-compose exec rag-backend-cli python main.py query -q "Your question" --source video
+docker-compose exec rag-backend-cli python main.py query -q "Your question" --source pdf
+```
+
+### Index Management
+
+```bash
 # Build/rebuild index
 docker-compose exec rag-backend-cli python main.py index
-docker-compose exec rag-backend-cli python main.py index --rebuild
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
 
+# Selective reindexing
+docker-compose exec rag-backend-cli python main.py index --videos-only
+docker-compose exec rag-backend-cli python main.py index --pdfs-only
+```
+
+### System Management
+
+```bash
 # Check system status
 docker-compose exec rag-backend-cli python main.py status
 
-# Generate knowledge summary
-docker-compose exec rag-backend-cli python main.py summarize
+# Verify OpenSearch ML setup
+docker-compose exec rag-backend-cli python -m config.opensearch_ml.verify
+
+# Re-run OpenSearch ML setup
+docker-compose exec rag-backend-cli python -m config.opensearch_ml.setup
 ```
 
-**Selective Reindexing:**
+### Testing
 
 ```bash
-# Reindex only videos (useful when updating video transcripts)
-docker-compose exec rag-backend-cli python main.py index --force-rebuild --videos-only
+# Run all tests
+docker-compose exec rag-backend-cli pytest -v
 
-# Reindex only PDFs (useful when updating PDF documents)
-docker-compose exec rag-backend-cli python main.py index --force-rebuild --pdfs-only
+# Run specific test file
+docker-compose exec rag-backend-cli pytest tests/test_chunking.py -v
 
-# Incremental indexing for specific type
-docker-compose exec rag-backend-cli python main.py index --videos-only  # Only new videos
-docker-compose exec rag-backend-cli python main.py index --pdfs-only    # Only new PDFs
+# Run with coverage
+docker-compose exec rag-backend-cli pytest --cov=src --cov=config --cov-report=html
 ```
 
-**Why use selective reindexing?**
+## 🔧 API Mode
 
-- ⚡ **Faster** - Only processes one content type
-- 🎯 **Targeted** - Update specific content without affecting the other
-- 💾 **Efficient** - Saves time when you only changed videos or PDFs
-
-### API Server
-
-The API mode runs a REST API server on port 8000:
+For REST API access:
 
 ```bash
 # Start API mode
@@ -409,190 +369,129 @@ docker-compose --profile api up -d
 # Query via API
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
-  -d '{"question": "What is a database?"}'
+  -d '{"question": "What is machine learning?"}'
 
 # Check index status
 curl http://localhost:8000/index/status
-
-# Build index via API
-curl -X POST http://localhost:8000/index/build \
-  -H "Content-Type: application/json" \
-  -d '{"force_rebuild": true}'
 
 # Get knowledge summary
 curl http://localhost:8000/knowledge/summary
 ```
 
-**API Endpoints:**
+## 📊 Data Management
 
-- `GET /health` - Health check
-- `POST /query` - Ask a question
-- `GET /index/status` - Check index status
-- `POST /index/build` - Build/rebuild index
-- `GET /knowledge/summary` - Get knowledge summary and suggested questions
+### Selective Reindexing
 
-### Local Development (Without Docker)
+After adding data, you can reindex specific sources:
 
 ```bash
-# Install dependencies
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# Reindex only videos
+docker-compose exec rag-backend-cli python main.py index --videos-only
 
-# Download NLTK data
-python -c "import nltk; nltk.download('stopwords')"
-
-# Start OpenSearch separately
-docker run -d -p 9200:9200 \
-  -e "discovery.type=single-node" \
-  -e "DISABLE_SECURITY_PLUGIN=true" \
-  opensearchproject/opensearch:latest
-
-# Set environment
-export OPENSEARCH_HOST=localhost
-export OPENAI_API_KEY=your_key_here
-
-# Run commands
-python main.py index
-python main.py query --question "What is a database?"
+# Reindex only PDFs
+docker-compose exec rag-backend-cli python main.py index --pdfs-only
 ```
+
+**📖 Data Flow Details:** For a comprehensive understanding of how data flows through the system, see [DATA_FLOW_GUIDE.md](DATA_FLOW_GUIDE.md) which explains:
+
+- **Indexing Pipeline**: How your files are processed and stored in vector space
+- **Query Pipeline**: How user questions are matched against indexed data
+- **Latent Space**: How both pipelines meet in 768-dimensional vector space
+- **Similarity Matching**: How cosine similarity finds the best answers
 
 ## 🐛 Troubleshooting
 
-### Indexing Not Complete / "No answer found" Errors
+### Setup Issues
 
-If you get "No answer found" responses immediately after starting:
-
-```bash
-# 1. Check if indexing is still in progress
-docker-compose logs rag-backend-cli | tail -50
-# or for API mode:
-docker-compose logs rag-backend-api | tail -50
-
-# 2. Look for completion messages:
-# ✓ "Index building completed successfully"
-# ✓ "rag-pdf-index refreshed and ready for search"
-# ✓ "rag-video-index refreshed and ready for search"
-
-# 3. Check index status
-docker-compose exec rag-backend-cli python main.py status
-
-# 4. Verify indices have documents
-curl http://localhost:9200/rag-pdf-index/_count
-curl http://localhost:9200/rag-video-index/_count
-
-# Expected output: {"count": <number>, ...}
-# If count is 0, indexing hasn't completed yet
-
-# 5. Wait for indexing to complete (usually 2-3 minutes on first run)
-# Then try your query again
-```
-
-### Docker Build Fails
+If setup fails or times out:
 
 ```bash
-# Clean Docker cache and rebuild
-docker system prune -a --volumes -f
-docker-compose build --no-cache
-docker-compose up
+# 1. Check logs for detailed error messages
+docker-compose logs rag-backend-cli | grep "❌"
+
+# 2. Verify LLM credentials in config/.env
+cat config/.env | grep LLM_
+
+# 3. Delete config and retry
+rm .opensearch_rag_config
+docker-compose restart rag-backend-cli
+
+# 4. Verify setup manually
+docker-compose exec rag-backend-cli python verify_setup.py
 ```
 
-### No Results Found (After Indexing Complete)
+### Model Not Ready
+
+If you see "Model not ready" errors:
+
+```bash
+# The system automatically waits up to 120 seconds for the model
+# If it still fails, check:
+
+# 1. OpenSearch ML plugin logs
+docker-compose logs opensearch-node1 | grep -i "ml"
+
+# 2. Model status
+curl http://localhost:9200/_plugins/_ml/models/<model_id>
+
+# 3. Try increasing timeout in config/opensearch_ml/setup.py
+# Change: max_wait=120 to max_wait=300
+```
+
+### No Results Found
 
 ```bash
 # Check indices exist and have data
 curl http://localhost:9200/rag-pdf-index/_count
 curl http://localhost:9200/rag-video-index/_count
 
-# Lower relevance threshold in .env
+# Lower relevance threshold in config/.env
 RELEVANCE_THRESHOLD=0.3
 
 # Rebuild index
-docker-compose exec rag-backend-cli python main.py index --rebuild
-```
-
-### OpenSearch Connection Issues
-
-```bash
-# Check OpenSearch is healthy
-curl http://localhost:9200/_cluster/health
-
-# View OpenSearch logs
-docker-compose logs opensearch-node1
-
-# Restart services
-docker-compose restart
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
 ```
 
 ## 📦 Tech Stack
 
 - **Vector Database**: OpenSearch 2.11+ with k-NN plugin
+- **LLM Management**: OpenSearch ML Commons plugin
 - **Embeddings**: sentence-transformers/all-mpnet-base-v2 (768-dim)
-- **LLM**: OpenAI GPT-4o-mini
+- **LLM**: Configurable (OpenAI, Bedrock, Cohere, etc.)
 - **PDF Processing**: PyMuPDF
 - **Search**: HNSW algorithm (cosine similarity)
 - **Backend**: Python 3.11+
 - **Deployment**: Docker + Docker Compose
 
-## 📝 Data Format Details
+## 🎯 Key Features
 
-### Video Transcript Schema
+### LLM Integration
 
-```json
-{
-  "video_id": "string (required, unique)",
-  "pdf_reference": "string (required, matches PDF filename)",
-  "video_transcripts": [
-    {
-      "id": "integer (sequential, starting from 1)",
-      "timestamp": "float (seconds, non-decreasing)",
-      "word": "string (single word/token)"
-    }
-  ]
-}
-```
-
-### PDF Requirements
-
-- ✅ Extractable text (not scanned images)
-- ✅ Multi-page documents supported
-- ✅ Tables and lists extracted as text
-- ❌ Password-protected PDFs not supported
-- ❌ Image-only PDFs not supported
-
-## 🔍 How It Works
-
-### Chunking Strategy
-
-**PDFs**: Paragraph-level chunks (512 tokens target, 128 token overlap)
-
-- Preserves semantic coherence
-- Maintains title hierarchy
-- Dual embeddings (content + title)
-
-**Videos**: Sentence-based chunks (30-50 words)
-
-- Natural sentence boundaries
-- Precise timestamp ranges
-- Token IDs for highlighting
+- **Centralized LLM Service**: Single initialization point for all LLM operations
+- **Smart Model Verification**: Tests model with actual inference before proceeding
+- **Official Blueprints**: All connectors match OpenSearch ML Commons specifications
+- **9+ Provider Support**: OpenAI, DeepSeek, Cohere, Azure OpenAI, Bedrock, VertexAI, SageMaker, Comprehend, Custom
 
 ### Retrieval Strategy
 
-1. **Query Processing**: Stop words are removed from the query before embedding (same as during indexing)
-2. **Tier 1 - Videos**: k-NN search on video index
-   - If score ≥ threshold → return video results
-3. **Tier 2 - PDFs**: k-NN search on PDF index
-   - If score ≥ threshold → return PDF results
-4. **No Results**: Return "No answer found" message
+- **Three-Tier Fallback**: Videos → PDFs → Knowledge Summary
+- **Intelligent Fallback**: Only tries next source when LLM can't answer
+- **Dual Indices**: Separate `rag-pdf-index` and `rag-video-index`
+- **Precise Citations**: Exact timestamps for videos, page/paragraph for PDFs
 
-Both tiers use pure k-NN vector similarity search for consistent scoring (0.0 to 1.0).
+### Configuration & Deployment
 
-### Response Generation
+- **Flexible Configuration**: Change providers, models, and settings via `.env`
+- **Zero Code Changes**: Switch providers without modifying code
+- **Auto-Indexing**: Data indexed automatically on startup
+- **Resume Capability**: Only processes new files on re-indexing
 
-- Assembles top-k retrieved chunks
-- Includes source metadata (timestamps/pages)
-- Generates natural language answer via GPT-4o-mini
-- Preserves citations in response
+### Quality & Reliability
+
+- **100% Test Coverage**: All 41 tests passing
+- **Comprehensive Logging**: Detailed logs for debugging
+- **Error Handling**: Graceful fallbacks and clear error messages
+- **Production Ready**: Battle-tested architecture
 
 ## 📈 Performance
 
@@ -601,163 +500,116 @@ Both tiers use pure k-NN vector similarity search for consistent scoring (0.0 to
 - **Embedding Generation**: ~90 embeddings/sec (CPU)
 - **Model Size**: 420MB (MPNet)
 - **Memory Usage**: ~2GB (with model loaded)
+- **Test Coverage**: 100% (41/41 tests passing)
+
+## 🆕 Recent Improvements
+
+### Architecture Reorganization (December 2024)
+
+- ✅ Moved all OpenSearch ML code to `config/opensearch_ml/` module
+- ✅ Better organization and scalability
+- ✅ Clearer separation of concerns
+- 📖 See [ARCHITECTURE_REORGANIZATION.md](ARCHITECTURE_REORGANIZATION.md)
+
+### Enhanced Fallback Logic
+
+- ✅ Three-tier fallback strategy (Videos → PDFs → Knowledge Summary)
+- ✅ Automatic PDF fallback when LLM can't answer from videos
+- ✅ Knowledge summary only shown after all sources tried
+- 📖 See [ENHANCED_FALLBACK_LOGIC.md](ENHANCED_FALLBACK_LOGIC.md)
+
+### Connector Blueprint Updates
+
+- ✅ All connectors updated to match official OpenSearch ML Commons blueprints
+- ✅ Fixed DeepSeek credential field (`deepSeek_key`)
+- ✅ Fixed Cohere message format (singular `message`)
+- ✅ Fixed Azure OpenAI header format (`api-key`)
+- ✅ Added Amazon Comprehend support
+- 📖 See [CONNECTOR_UPDATES.md](CONNECTOR_UPDATES.md)
+
+### Test Suite Improvements
+
+- ✅ All 41 tests passing (100% success rate)
+- ✅ Updated test fixtures for new LLM parameters
+- ✅ Fixed circular import issues
+- ✅ Comprehensive test coverage
+- 📖 See [TEST_RESULTS.md](TEST_RESULTS.md)
 
 ## 📁 Project Structure
 
 ```
-Explaino_RAG_AIFounding/
-├── data/                           # Sample data for testing
-│   ├── pdfs/                       # PDF documents (6 files)
-│   │   ├── database_systems_textbook.pdf
-│   │   ├── machine_learning_fundamentals.pdf
-│   │   ├── python_programming_guide.pdf
-│   │   ├── cloud_infrastructure_guide.pdf
-│   │   ├── modern_web_development.pdf
-│   │   └── Principles-of-Data-Science-WEB.pdf
-│   ├── transcripts/                # Video transcripts (8 files)
-│   │   ├── database_fundamentals.json
-│   │   ├── machine_learning_intro.json
-│   │   ├── python_programming_basics.json
-│   │   ├── cloud_computing_overview.json
-│   │   ├── web_development_trends.json
-│   │   ├── deep_learning_tutorial_15min.json
-│   │   ├── data_science_tutorial_20min.json
-│   │   └── python_advanced_tutorial_30min.json
-│   └── knowledge_summary.json      # Auto-generated knowledge summary
+Explaino_RAG-based-chatbot/
+├── config/                         # Configuration modules
+│   ├── opensearch_ml/              # OpenSearch ML infrastructure
+│   │   ├── __init__.py             # Package initialization
+│   │   ├── setup.py                # LLM setup script
+│   │   ├── verify.py               # Setup verification
+│   │   ├── connector_manager.py    # Connector management
+│   │   ├── pipeline_manager.py     # Pipeline management
+│   │   └── README.md               # Module documentation
+│   ├── config.py                   # Main configuration
+│   ├── knowledge_summary.py        # Knowledge summary generator
+│   ├── cli.py                      # CLI interface
+│   ├── api.py                      # REST API
+│   └── .env                        # Environment variables
 │
 ├── src/                            # Source code
-│   ├── __main__.py                 # CLI entry point
-│   ├── api.py                      # FastAPI REST API
-│   ├── cli.py                      # CLI command handlers
-│   ├── config.py                   # Configuration management
-│   ├── models.py                   # Data models (Pydantic)
+│   ├── llm_inference.py            # Centralized LLM service
 │   ├── rag_system.py               # Main RAG orchestrator
+│   ├── models.py                   # Data models
 │   │
-│   ├── ingestion/                  # Data ingestion modules
-│   │   ├── transcript_ingester.py  # Video transcript parser
-│   │   └── pdf_ingester.py         # PDF document parser
+│   ├── ingestion/                  # Data ingestion
+│   │   ├── transcript_ingester.py  # Video transcript ingestion
+│   │   └── pdf_ingester.py         # PDF document ingestion
 │   │
-│   ├── processing/                 # Data processing modules
+│   ├── processing/                 # Data processing
 │   │   ├── chunking.py             # Text chunking strategies
 │   │   ├── embedding.py            # Embedding generation
 │   │   └── indexing.py             # OpenSearch indexing
 │   │
 │   └── retrieval/                  # Retrieval modules
-│       ├── query_processor.py      # Query embedding
-│       ├── retrieval_engine.py     # Vector search
+│       ├── query_processor.py      # Query processing
+│       ├── retrieval_engine.py     # Vector search & fallback
 │       └── response_generator.py   # LLM response generation
 │
-├── tests/                          # Test suite (41 tests)
-│   ├── test_chunking.py
-│   ├── test_indexing.py
-│   ├── test_models.py
-│   ├── test_rag_system.py
-│   └── test_token_timestamp.py
+├── tests/                          # Test suite (41 tests, 100% passing)
+│   ├── test_chunking.py            # Chunking tests
+│   ├── test_indexing.py            # Indexing tests
+│   ├── test_models.py              # Data model tests
+│   ├── test_rag_system.py          # RAG system tests
+│   └── test_token_timestamp.py     # Token mapping tests
 │
-├── .env.example                    # Environment variables template
+├── data/                           # Sample data
+│   ├── pdfs/                       # PDF documents
+│   └── transcripts/                # Video transcripts
+│
+├── docs/                           # Documentation
+│   ├── MODEL_PROVIDER_GUIDE.md     # Provider configuration guide
+│   ├── ENHANCED_FALLBACK_LOGIC.md  # Fallback strategy docs
+│   ├── ARCHITECTURE_REORGANIZATION.md # Architecture changes
+│   └── TEST_RESULTS.md             # Test coverage report
+│
+├── main.py                         # CLI entry point
 ├── docker-compose.yml              # Docker orchestration
-├── Dockerfile                      # Container definition
-├── entrypoint.sh                   # Container startup script
-├── requirements.txt                # Python dependencies
 ├── pytest.ini                      # Test configuration
 └── README.md                       # This file
 ```
 
-## 🔄 Indexing Pipeline
+## 🔄 How It Works
 
-When you add files to the `data/` directory, here's what happens:
+### Setup Phase (First Run)
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    1. FILE DETECTION                            │
-│  System scans data/pdfs/ and data/transcripts/ directories     │
-│  Identifies new/modified files not yet indexed                  │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    2. INGESTION                                 │
-│  ┌──────────────────────┐      ┌──────────────────────┐        │
-│  │  PDF Ingestion       │      │  Video Ingestion     │        │
-│  │  • Parse PDF text    │      │  • Parse JSON        │        │
-│  │  • Extract pages     │      │  • Extract tokens    │        │
-│  │  • Detect paragraphs │      │  • Map timestamps    │        │
-│  │  • Extract titles    │      │  • Validate format   │        │
-│  └──────────────────────┘      └──────────────────────┘        │
-└────────────────────┬────────────────────┬───────────────────────┘
-                     │                    │
-                     ▼                    ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    3. CHUNKING                                  │
-│  ┌──────────────────────┐      ┌──────────────────────┐        │
-│  │  PDF Chunks          │      │  Video Chunks        │        │
-│  │  • Paragraph-level   │      │  • Sentence-based    │        │
-│  │  • 512 tokens target │      │  • 30-50 words       │        │
-│  │  • 128 token overlap │      │  • Adaptive sizing   │        │
-│  │  • Title extraction  │      │  • Token ID ranges   │        │
-│  └──────────────────────┘      └──────────────────────┘        │
-└────────────────────┬────────────────────┬───────────────────────┘
-                     │                    │
-                     ▼                    ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    4. EMBEDDING GENERATION                      │
-│  Uses: sentence-transformers/all-mpnet-base-v2 (768-dim)       │
-│  Stop words removed before embedding for better semantic focus  │
-│  ┌──────────────────────┐      ┌──────────────────────┐        │
-│  │  PDF Embeddings      │      │  Video Embeddings    │        │
-│  │  • Content embedding │      │  • Text embedding    │        │
-│  │  • Title embedding   │      │  • Single vector     │        │
-│  │  • Dual vectors      │      │  • ~90 emb/sec       │        │
-│  └──────────────────────┘      └──────────────────────┘        │
-└────────────────────┬────────────────────┬───────────────────────┘
-                     │                    │
-                     ▼                    ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    5. INDEXING                                  │
-│  ┌──────────────────────┐      ┌──────────────────────┐        │
-│  │  rag-pdf-index       │      │  rag-video-index     │        │
-│  │  • k-NN enabled      │      │  • k-NN enabled      │        │
-│  │  • HNSW algorithm    │      │  • HNSW algorithm    │        │
-│  │  • Cosine similarity │      │  • Cosine similarity │        │
-│  │  • Page metadata     │      │  • Timestamp ranges  │        │
-│  └──────────────────────┘      └──────────────────────┘        │
-└────────────────────┬────────────────────┬───────────────────────┘
-                     │                    │
-                     ▼                    ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    6. READY FOR SEARCH                          │
-│  System can now answer questions using indexed content          │
-│  • Video-first retrieval (Tier 1)                              │
-│  • PDF fallback retrieval (Tier 2)                             │
-│  • GPT-4o-mini response generation                             │
-└─────────────────────────────────────────────────────────────────┘
-```
+1. **Connector Creation**: Creates provider-specific ML connector in OpenSearch
+2. **Model Registration**: Registers the LLM model with OpenSearch ML
+3. **Model Deployment**: Deploys the model and waits for it to be ready
+4. **Inference Verification**: Tests the model with actual inference call
+5. **Pipeline Creation**: Creates RAG search pipeline
+6. **Configuration Save**: Saves connector/model/pipeline IDs to `.opensearch_rag_config`
 
-### Adding New Files
+### Query Phase
 
-To add your own content:
-
-1. **Add PDFs**: Place PDF files in `data/pdfs/`
-2. **Add Videos**: Place transcript JSON files in `data/transcripts/`
-3. **Reindex**: Run `docker-compose exec rag-backend-cli python main.py index`
-4. **Query**: System automatically includes new content
-
-**Video Transcript Format:**
-
-```json
-{
-  "video_id": "unique_video_id",
-  "pdf_reference": "related_document.pdf",
-  "video_transcripts": [
-    { "id": 1, "timestamp": 0.0, "word": "Hello" },
-    { "id": 2, "timestamp": 0.5, "word": "world" }
-  ]
-}
-```
-
-**Indexing Time Estimates:**
-
-- Small files (< 10 pages): ~5-10 seconds
-- Medium files (10-50 pages): ~20-30 seconds
-- Large files (> 50 pages): ~1-2 minutes
-- Full sample dataset (6 PDFs + 8 videos): ~2-3 minutes
+1. **Query Processing**: Embeds user query using MPNet
+2. **Vector Search**: Searches video and PDF indices
+3. **Context Retrieval**: Retrieves top-k relevant chunks
+4. **LLM Generation**: Generates answer using centralized LLM service
+5. **Response Formatting**: Returns structured response with citations

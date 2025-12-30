@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List, Optional, Dict, Any
 
 from ..models import VideoTranscript, TranscriptToken
-from ..config import Config
+from config.config import Config
 
 
 class TranscriptIngester:

@@ -9,7 +9,7 @@ import openai
 import nltk
 from nltk.corpus import stopwords
 
-from ..config import Config
+from config.config import Config
 
 # Download stopwords on first import (will be cached)
 try:

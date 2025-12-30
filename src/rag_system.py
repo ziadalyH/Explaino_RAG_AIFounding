@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Union, Optional
 from opensearchpy import OpenSearch
 
-from .config import Config
+from config.config import Config
 from .models import VideoResponse, PDFResponse, NoAnswerResponse
 from .ingestion.transcript_ingester import TranscriptIngester
 from .ingestion.pdf_ingester import PDFIngester
@@ -19,7 +19,8 @@ from .processing.indexing import VectorIndexBuilder
 from .retrieval.query_processor import QueryProcessor
 from .retrieval.retrieval_engine import RetrievalEngine
 from .retrieval.response_generator import ResponseGenerator
-from .knowledge_summary import KnowledgeSummaryGenerator
+from .llm_inference import LLMInferenceService
+from config.knowledge_summary import KnowledgeSummaryGenerator
 
 
 class RAGSystem:
@@ -49,13 +50,31 @@ class RAGSystem:
         self.config = config
         self.logger = self._setup_logger()
         
+        self.logger.info("=" * 80)
         self.logger.info("Initializing RAG System")
-        self.logger.info(f"Configuration: {config.opensearch_host}:{config.opensearch_port}")
+        self.logger.info("=" * 80)
+        self.logger.info(f"OpenSearch: {config.opensearch_host}:{config.opensearch_port}")
+        
+        # Log LLM configuration
+        self.logger.info("")
+        self.logger.info("🤖 LLM Configuration:")
+        self.logger.info(f"  Provider: {config.llm_provider.upper()}")
+        self.logger.info(f"  Model: {config.llm_model}")
+        self.logger.info(f"  Temperature: {config.llm_temperature}")
+        self.logger.info(f"  Max Tokens: {config.llm_max_tokens}")
+        self.logger.info("")
         
         # Initialize core components
         self.embedding_engine = EmbeddingEngine(config, self.logger)
         self.vector_index_builder = VectorIndexBuilder(config, self.logger)
         self.opensearch_client = self.vector_index_builder.opensearch_client
+        
+        # Initialize centralized LLM inference service
+        self.llm_service = LLMInferenceService(
+            config=config,
+            opensearch_client=self.opensearch_client,
+            logger=self.logger
+        )
         
         # Initialize ingestion components
         self.transcript_ingester = TranscriptIngester(config, self.logger)
@@ -69,10 +88,18 @@ class RAGSystem:
             config,
             self.logger
         )
-        self.response_generator = ResponseGenerator(config, self.logger)
+        self.response_generator = ResponseGenerator(
+            config=config,
+            logger=self.logger,
+            llm_service=self.llm_service
+        )
         
         # Initialize knowledge summary generator
-        self.knowledge_summary_generator = KnowledgeSummaryGenerator(config, self.logger)
+        self.knowledge_summary_generator = KnowledgeSummaryGenerator(
+            config=config,
+            logger=self.logger,
+            llm_service=self.llm_service
+        )
         
         self.logger.info("RAG System initialized successfully")
     
@@ -108,19 +135,20 @@ class RAGSystem:
         """
         Main entry point for answering questions.
         
-        This method implements the complete query pipeline:
+        This method implements the complete query pipeline with enhanced fallback:
         1. Process and embed the query
         2. Retrieve relevant content using two-tier strategy
         3. Generate natural language answer with LLM
-        4. Return structured response with citations
+        4. If LLM refuses to answer from videos, try PDFs
+        5. Return structured response with citations
         
         Args:
             question: User's question as a string
             
         Returns:
-            VideoResponse if video content found above threshold
-            PDFResponse if PDF content found above threshold
-            NoAnswerResponse if no relevant content found
+            VideoResponse if video content found and LLM can answer
+            PDFResponse if PDF content found and LLM can answer
+            NoAnswerResponse if no relevant content found or LLM cannot answer
             
         Raises:
             ValueError: If question is empty
@@ -143,6 +171,31 @@ class RAGSystem:
                 query=question,
                 result=retrieval_result
             )
+            
+            # Step 4: Enhanced fallback - if LLM refused to answer from videos, try PDFs
+            if isinstance(response, NoAnswerResponse) and retrieval_result is not None:
+                # Check if we got a NoAnswer from video results
+                if isinstance(retrieval_result, list) and len(retrieval_result) > 0:
+                    from .models import VideoResult
+                    if isinstance(retrieval_result[0], VideoResult):
+                        self.logger.info("LLM refused to answer from video results, trying PDF fallback")
+                        
+                        # Search PDFs directly
+                        pdf_results = self.retrieval_engine.search_pdfs(query_embedding, question)
+                        
+                        if pdf_results:
+                            self.logger.info(f"Found {len(pdf_results)} PDF results, generating response")
+                            response = self.response_generator.generate_response(
+                                query=question,
+                                result=pdf_results
+                            )
+                            
+                            if not isinstance(response, NoAnswerResponse):
+                                self.logger.info("Successfully generated answer from PDF fallback")
+                            else:
+                                self.logger.info("LLM also refused to answer from PDFs, returning NoAnswer with knowledge summary")
+                        else:
+                            self.logger.info("No PDF results found in fallback, returning NoAnswer with knowledge summary")
             
             self.logger.info(f"Successfully generated {response.answer_type} response")
             return response
@@ -288,15 +341,22 @@ class RAGSystem:
             # Generate knowledge summary
             self.logger.info("Generating knowledge summary...")
             try:
-                # Get sample chunks for summary generation
-                sample_chunks = self._get_sample_chunks(pdf_chunks, transcript_chunks)
-                
-                # Generate summary
-                self.knowledge_summary_generator.generate_summary(
-                    pdf_files=list(final_indexed_pdfs),
-                    video_ids=list(final_indexed_videos),
-                    sample_chunks=sample_chunks
-                )
+                # Check if LLM service is available
+                if not self.llm_service.is_available():
+                    self.logger.warning(
+                        "LLM service not available yet. Skipping knowledge summary generation. "
+                        "Knowledge summary will be generated on next indexing after LLM setup is complete."
+                    )
+                else:
+                    # Get sample chunks for summary generation
+                    sample_chunks = self._get_sample_chunks(pdf_chunks, transcript_chunks)
+                    
+                    # Generate summary
+                    self.knowledge_summary_generator.generate_summary(
+                        pdf_files=list(final_indexed_pdfs),
+                        video_ids=list(final_indexed_videos),
+                        sample_chunks=sample_chunks
+                    )
             except Exception as e:
                 self.logger.warning(f"Failed to generate knowledge summary: {e}")
             

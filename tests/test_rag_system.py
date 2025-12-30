@@ -3,7 +3,7 @@
 import pytest
 from unittest.mock import Mock, MagicMock, patch
 from src.rag_system import RAGSystem
-from src.config import Config
+from config.config import Config
 from src.models import VideoResponse, PDFResponse, NoAnswerResponse
 
 

@@ -9,14 +9,14 @@ import logging
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from config/.env file
+load_dotenv("config/.env")
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from src.config import Config
-from src.cli import CLI, create_parser
+from config.config import Config
+from config.cli import CLI, create_parser
 
 
 def main() -> int:

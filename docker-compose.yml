@@ -10,6 +10,10 @@ services:
       - bootstrap.memory_lock=true
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
       - DISABLE_SECURITY_PLUGIN=true
+      # Enable ML Commons plugin features for RAG
+      - plugins.ml_commons.only_run_on_ml_node=false
+      - plugins.ml_commons.native_memory_threshold=99
+      - plugins.ml_commons.rag_pipeline_feature_enabled=true
     ulimits:
       memlock:
         soft: -1
@@ -52,7 +56,7 @@ services:
       dockerfile: Dockerfile
     container_name: rag-backend-cli
     env_file:
-      - .env
+      - config/.env
     environment:
       - OPENSEARCH_HOST=opensearch-node1
       - OPENSEARCH_PORT=9200
@@ -61,6 +65,7 @@ services:
       - SENTENCE_TRANSFORMERS_HOME=/app/models
       - RUN_MODE=cli
       - PYTHONPATH=/app/workspace  # Use workspace for Python imports
+      - AUTO_INDEX_ON_STARTUP=true  # Enable auto-indexing
     volumes:
       - .:/app/workspace  # Mount entire workspace for flexible paths
       - models-cache:/app/models  # Persist downloaded models
@@ -81,7 +86,7 @@ services:
       dockerfile: Dockerfile
     container_name: rag-backend-api
     env_file:
-      - .env
+      - config/.env
     environment:
       - OPENSEARCH_HOST=opensearch-node1
       - OPENSEARCH_PORT=9200
@@ -106,6 +111,34 @@ services:
       - "8000:8000"
     profiles:
       - api
+
+  # OpenSearch RAG Setup Service (run once to configure LLM connector)
+  rag-setup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-setup
+    env_file:
+      - config/.env
+    environment:
+      - OPENSEARCH_HOST=opensearch-node1
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_USE_SSL=false
+      - OPENSEARCH_VERIFY_CERTS=false
+      - PYTHONPATH=/app/workspace
+      - AUTO_INDEX_ON_STARTUP=false  # Disable auto-indexing for setup
+    volumes:
+      - .:/app/workspace
+    working_dir: /app/workspace
+    depends_on:
+      opensearch-node1:
+        condition: service_healthy
+    networks:
+      - opensearch-net
+    entrypoint: ["python"]
+    command: ["setup_opensearch_rag.py"]
+    profiles:
+      - setup
 
 volumes:
   opensearch-data1:

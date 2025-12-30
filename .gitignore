@@ -35,6 +35,10 @@ ENV/
 
 # Environment variables
 .env
+config/.env
+
+# OpenSearch RAG configuration
+.opensearch_rag_config
 
 # Data directories - sample data is committed for reference
 # Add your own data files here if you don't want to commit them

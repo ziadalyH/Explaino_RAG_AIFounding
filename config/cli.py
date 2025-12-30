@@ -11,8 +11,8 @@ import json
 from typing import Optional, Union
 
 from .config import Config
-from .rag_system import RAGSystem
-from .models import VideoResponse, PDFResponse, NoAnswerResponse
+from src.rag_system import RAGSystem
+from src.models import VideoResponse, PDFResponse, NoAnswerResponse
 
 
 class CLI:

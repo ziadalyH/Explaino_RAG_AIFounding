@@ -1,34 +1,39 @@
-"""Knowledge summary generator for RAG system."""
+"""Knowledge summary generator for RAG system using centralized LLM service."""
 
 import logging
 import json
 from pathlib import Path
-from typing import List, Dict
-import openai
+from typing import List, Dict, TYPE_CHECKING
 
 from .config import Config
+
+if TYPE_CHECKING:
+    from src.llm_inference import LLMInferenceService
 
 
 class KnowledgeSummaryGenerator:
     """
-    Generates summaries of indexed content and suggested questions.
+    Generates summaries of indexed content and suggested questions using centralized LLM service.
     """
     
-    def __init__(self, config: Config, logger: logging.Logger):
+    def __init__(
+        self,
+        config: Config,
+        logger: logging.Logger,
+        llm_service: 'LLMInferenceService'
+    ):
         """
         Initialize the knowledge summary generator.
         
         Args:
             config: Configuration object
             logger: Logger instance
+            llm_service: Centralized LLM inference service
         """
         self.config = config
         self.logger = logger
+        self.llm_service = llm_service
         self.summary_file = Path("data/knowledge_summary.json")
-        
-        # Initialize OpenAI
-        if config.openai_api_key:
-            openai.api_key = config.openai_api_key
     
     def generate_summary(
         self,
@@ -100,7 +105,7 @@ class KnowledgeSummaryGenerator:
         return "\n".join(context_parts)
     
     def _generate_with_llm(self, context: str) -> Dict:
-        """Generate summary using LLM."""
+        """Generate summary using centralized LLM service."""
         prompt = f"""Based on the following indexed content, generate a comprehensive knowledge summary and suggested questions.
 
 {context}
@@ -122,37 +127,21 @@ Format your response as JSON:
 }}"""
         
         try:
-            response = openai.ChatCompletion.create(
-                model=self.config.llm_model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a helpful assistant that analyzes document collections and generates summaries. Always respond with valid JSON."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
+            self.logger.info("🤖 Generating knowledge summary with LLM...")
+            
+            # Use centralized LLM service
+            summary_data = self.llm_service.generate_json(
+                prompt=prompt,
+                system_prompt="You are a helpful assistant that analyzes document collections and generates summaries. Always respond with valid JSON.",
                 temperature=0.7,
                 max_tokens=1000
             )
-            
-            # Parse JSON response
-            content = response['choices'][0]['message']['content'].strip()
-            
-            # Extract JSON from markdown code blocks if present
-            if "```json" in content:
-                content = content.split("```json")[1].split("```")[0].strip()
-            elif "```" in content:
-                content = content.split("```")[1].split("```")[0].strip()
-            
-            summary_data = json.loads(content)
             
             # Validate structure
             if not all(key in summary_data for key in ['overview', 'topics', 'suggested_questions']):
                 raise ValueError("Invalid summary structure")
             
+            self.logger.info("✓ Knowledge summary generated successfully")
             return summary_data
             
         except Exception as e:

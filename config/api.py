@@ -4,7 +4,7 @@ import logging
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from .rag_system import RAGSystem
+from src.rag_system import RAGSystem
 from .config import Config
 
 # Setup logging

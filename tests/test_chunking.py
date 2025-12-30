@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.models import VideoTranscript, TranscriptToken, PDFParagraph
 from src.processing.chunking import ChunkingModule
-from src.config import Config
+from config.config import Config
 
 
 @pytest.fixture

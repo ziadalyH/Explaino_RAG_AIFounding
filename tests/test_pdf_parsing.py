@@ -7,7 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from src.ingestion.pdf_ingester import PDFIngester
-from src.config import Config
+from config.config import Config
 import logging
 
 # Setup logging

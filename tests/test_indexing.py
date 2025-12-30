@@ -8,7 +8,7 @@ import numpy as np
 from src.processing.indexing import VectorIndexBuilder
 from src.processing.embedding import EmbeddingEngine
 from src.models import TranscriptChunk, PDFChunk
-from src.config import Config
+from config.config import Config
 
 
 @pytest.fixture

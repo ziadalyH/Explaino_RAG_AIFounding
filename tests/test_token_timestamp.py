@@ -3,7 +3,7 @@
 import pytest
 from src.models import VideoTranscript, TranscriptToken
 from src.processing.chunking import ChunkingModule
-from src.config import Config
+from config.config import Config
 
 
 class TestTokenTimestampLookup:

@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from src.models import VideoTranscript, TranscriptToken
 from src.processing.chunking import ChunkingModule
-from src.config import Config
+from config.config import Config
 import logging
 
 # Setup logging

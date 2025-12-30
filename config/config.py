@@ -26,14 +26,48 @@ class Config:
     opensearch_pdf_index: str   # Separate index for PDFs
     opensearch_video_index: str # Separate index for videos
     
-    # OpenAI configuration
-    openai_api_key: str
-    embedding_model: str
-    embedding_dimension: int
-    embedding_provider: str  # "openai" or "local"
+    # LLM configuration (OpenSearch connector)
+    llm_provider: str  # openai, bedrock, cohere, azure_openai, vertexai, sagemaker, deepseek, custom
+    llm_endpoint: Optional[str]  # Full endpoint URL (for OpenAI/custom)
+    llm_api_key: Optional[str]
     llm_model: str
     llm_temperature: float
     llm_max_tokens: int
+    
+    # AWS Bedrock/SageMaker specific
+    aws_region: Optional[str]
+    aws_access_key_id: Optional[str]
+    aws_secret_access_key: Optional[str]
+    sagemaker_endpoint: Optional[str]
+    
+    # Azure OpenAI specific
+    azure_api_key: Optional[str]
+    azure_api_base: Optional[str]
+    azure_api_version: Optional[str]
+    azure_deployment_name: Optional[str]
+    
+    # Cohere specific
+    cohere_api_key: Optional[str]
+    
+    # Google VertexAI specific
+    vertexai_project: Optional[str]
+    vertexai_location: Optional[str]
+    vertexai_access_token: Optional[str]
+    
+    # DeepSeek specific
+    deepseek_api_key: Optional[str]
+    
+    # Custom headers and templates
+    llm_headers: Optional[str]  # JSON string
+    llm_request_template: Optional[str]  # JSON string
+    
+    # Legacy OpenAI configuration (for backward compatibility)
+    openai_api_key: str
+    
+    # Embedding configuration
+    embedding_model: str
+    embedding_dimension: int
+    embedding_provider: str  # "openai" or "local"
     
     # Retrieval configuration
     relevance_threshold: float
@@ -101,14 +135,48 @@ class Config:
             opensearch_pdf_index=os.getenv("OPENSEARCH_PDF_INDEX", config_data.get("opensearch", {}).get("pdf_index", "rag-pdf-index")),
             opensearch_video_index=os.getenv("OPENSEARCH_VIDEO_INDEX", config_data.get("opensearch", {}).get("video_index", "rag-video-index")),
             
-            # OpenAI configuration
+            # LLM configuration (OpenSearch connector)
+            llm_provider=os.getenv("LLM_PROVIDER", config_data.get("llm", {}).get("provider", "openai")),
+            llm_endpoint=os.getenv("LLM_ENDPOINT", config_data.get("llm", {}).get("endpoint")),
+            llm_api_key=os.getenv("LLM_API_KEY", os.getenv("OPENAI_API_KEY", config_data.get("llm", {}).get("api_key"))),
+            llm_model=os.getenv("LLM_MODEL", config_data.get("llm", {}).get("model", "gpt-4o-mini")),
+            llm_temperature=float(os.getenv("LLM_TEMPERATURE", config_data.get("llm", {}).get("temperature", 0.3))),
+            llm_max_tokens=int(os.getenv("LLM_MAX_TOKENS", config_data.get("llm", {}).get("max_tokens", 500))),
+            
+            # AWS Bedrock/SageMaker
+            aws_region=os.getenv("AWS_REGION", config_data.get("aws", {}).get("region")),
+            aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID", config_data.get("aws", {}).get("access_key_id")),
+            aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY", config_data.get("aws", {}).get("secret_access_key")),
+            sagemaker_endpoint=os.getenv("SAGEMAKER_ENDPOINT", config_data.get("aws", {}).get("sagemaker_endpoint")),
+            
+            # Azure OpenAI
+            azure_api_key=os.getenv("AZURE_API_KEY", config_data.get("azure", {}).get("api_key")),
+            azure_api_base=os.getenv("AZURE_API_BASE", config_data.get("azure", {}).get("api_base")),
+            azure_api_version=os.getenv("AZURE_API_VERSION", config_data.get("azure", {}).get("api_version", "2023-05-15")),
+            azure_deployment_name=os.getenv("AZURE_DEPLOYMENT_NAME", config_data.get("azure", {}).get("deployment_name")),
+            
+            # Cohere
+            cohere_api_key=os.getenv("COHERE_API_KEY", config_data.get("cohere", {}).get("api_key")),
+            
+            # Google VertexAI
+            vertexai_project=os.getenv("VERTEXAI_PROJECT", config_data.get("vertexai", {}).get("project")),
+            vertexai_location=os.getenv("VERTEXAI_LOCATION", config_data.get("vertexai", {}).get("location", "us-central1")),
+            vertexai_access_token=os.getenv("VERTEXAI_ACCESS_TOKEN", config_data.get("vertexai", {}).get("access_token")),
+            
+            # DeepSeek
+            deepseek_api_key=os.getenv("DEEPSEEK_API_KEY", config_data.get("deepseek", {}).get("api_key")),
+            
+            # Custom headers and templates
+            llm_headers=os.getenv("LLM_HEADERS", config_data.get("llm", {}).get("headers")),
+            llm_request_template=os.getenv("LLM_REQUEST_TEMPLATE", config_data.get("llm", {}).get("request_template")),
+            
+            # Legacy OpenAI configuration (backward compatibility)
             openai_api_key=os.getenv("OPENAI_API_KEY", config_data.get("openai", {}).get("api_key", "")),
-            embedding_model=os.getenv("EMBEDDING_MODEL", config_data.get("openai", {}).get("embedding_model", "sentence-transformers/all-MiniLM-L6-v2")),
-            embedding_dimension=int(os.getenv("EMBEDDING_DIMENSION", config_data.get("openai", {}).get("embedding_dimension", 384))),
-            embedding_provider=os.getenv("EMBEDDING_PROVIDER", config_data.get("openai", {}).get("embedding_provider", "local")),
-            llm_model=os.getenv("LLM_MODEL", config_data.get("openai", {}).get("llm_model", "gpt-4o-mini")),
-            llm_temperature=float(os.getenv("LLM_TEMPERATURE", config_data.get("openai", {}).get("llm_temperature", 0.3))),
-            llm_max_tokens=int(os.getenv("LLM_MAX_TOKENS", config_data.get("openai", {}).get("llm_max_tokens", 500))),
+            
+            # Embedding configuration
+            embedding_model=os.getenv("EMBEDDING_MODEL", config_data.get("embedding", {}).get("model", "sentence-transformers/all-MiniLM-L6-v2")),
+            embedding_dimension=int(os.getenv("EMBEDDING_DIMENSION", config_data.get("embedding", {}).get("dimension", 384))),
+            embedding_provider=os.getenv("EMBEDDING_PROVIDER", config_data.get("embedding", {}).get("provider", "local")),
             
             # Retrieval configuration
             relevance_threshold=float(os.getenv("RELEVANCE_THRESHOLD", config_data.get("retrieval", {}).get("relevance_threshold", 0.5))),
@@ -127,6 +195,45 @@ class Config:
     
     def validate(self) -> None:
         """Validate configuration values."""
+        # Validate LLM provider
+        valid_providers = ["openai", "bedrock", "cohere", "azure_openai", "vertexai", "sagemaker", "deepseek", "custom"]
+        if self.llm_provider not in valid_providers:
+            raise ValueError(f"llm_provider must be one of: {valid_providers}")
+        
+        # Provider-specific validation
+        if self.llm_provider == "openai":
+            if not self.llm_api_key:
+                raise ValueError("LLM_API_KEY required for OpenAI provider")
+        
+        elif self.llm_provider == "bedrock":
+            if not all([self.aws_access_key_id, self.aws_secret_access_key, self.aws_region]):
+                raise ValueError("AWS credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) required for Bedrock")
+        
+        elif self.llm_provider == "cohere":
+            if not self.cohere_api_key:
+                raise ValueError("COHERE_API_KEY required for Cohere provider")
+        
+        elif self.llm_provider == "azure_openai":
+            if not all([self.azure_api_key, self.azure_api_base]):
+                raise ValueError("Azure credentials (AZURE_API_KEY, AZURE_API_BASE) required for Azure OpenAI")
+        
+        elif self.llm_provider == "vertexai":
+            if not all([self.vertexai_project, self.vertexai_access_token]):
+                raise ValueError("VertexAI credentials (VERTEXAI_PROJECT, VERTEXAI_ACCESS_TOKEN) required")
+        
+        elif self.llm_provider == "sagemaker":
+            if not all([self.sagemaker_endpoint, self.aws_access_key_id, self.aws_secret_access_key, self.aws_region]):
+                raise ValueError("SageMaker credentials (SAGEMAKER_ENDPOINT, AWS credentials) required")
+        
+        elif self.llm_provider == "deepseek":
+            if not self.deepseek_api_key:
+                raise ValueError("DEEPSEEK_API_KEY required for DeepSeek provider")
+        
+        elif self.llm_provider == "custom":
+            if not all([self.llm_endpoint, self.llm_api_key]):
+                raise ValueError("LLM_ENDPOINT and LLM_API_KEY required for custom provider")
+        
+        # Validate embedding configuration
         if self.embedding_provider == "openai" and not self.openai_api_key:
             raise ValueError("OPENAI_API_KEY must be set when using OpenAI embeddings")
         

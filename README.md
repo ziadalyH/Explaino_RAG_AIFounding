@@ -613,15 +613,3 @@ Explaino_RAG-based-chatbot/
 3. **Context Retrieval**: Retrieves top-k relevant chunks
 4. **LLM Generation**: Generates answer using centralized LLM service
 5. **Response Formatting**: Returns structured response with citations
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📧 Support
-
-For issues and questions, please open an issue on GitHub.

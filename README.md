@@ -80,6 +80,14 @@ When you start the system for the first time, you'll see detailed logs showing:
 
 ```
 ================================================================================
+STEP 0: Downloading Embedding Model (First Time Only)
+================================================================================
+📥 Downloading sentence-transformers/all-mpnet-base-v2 from Hugging Face
+→ Model size: ~420MB
+→ Downloading to cache: ~/.cache/huggingface/
+✓ Model downloaded and cached
+
+================================================================================
 STEP 1: Creating LLM Connector
 ================================================================================
 📡 Creating OPENAI connector
@@ -117,7 +125,7 @@ STEP 4: Creating RAG Pipeline
 ✓ OpenSearch RAG setup completed successfully
 ```
 
-The system verifies the model is truly ready by testing it with an actual inference call before proceeding.
+**Note:** The embedding model is downloaded from Hugging Face on first run and cached locally (~420MB for default model). Subsequent runs use the cached model.
 
 ## 🤖 Supported LLM Providers
 

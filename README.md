@@ -170,6 +170,8 @@ LLM_MAX_TOKENS=500
 
 ### Embedding Configuration
 
+You can use **any embedding model from Hugging Face** that's compatible with sentence-transformers:
+
 ```bash
 # ============================================
 # Embedding Configuration
@@ -184,8 +186,17 @@ EMBEDDING_DIMENSION=768
 - `all-MiniLM-L6-v2` (384-dim) - Fast, good for development
 - `all-mpnet-base-v2` (768-dim) - **Default**, balanced quality/speed
 - `all-roberta-large-v1` (1024-dim) - Highest quality, slower
+- `paraphrase-multilingual-mpnet-base-v2` (768-dim) - Multilingual support
+- `multi-qa-mpnet-base-dot-v1` (768-dim) - Optimized for Q&A
 
-**📖 Complete Model List:** See [MODEL_OPTIONS.md](MODEL_OPTIONS.md) for all available embedding models.
+**Using Custom Hugging Face Models:**
+
+1. Find any sentence-transformers model on [Hugging Face](https://huggingface.co/models?library=sentence-transformers)
+2. Update `EMBEDDING_MODEL` with the model name (e.g., `sentence-transformers/your-model-name`)
+3. Set `EMBEDDING_DIMENSION` to match the model's output dimension
+4. Restart and rebuild index: `docker-compose restart && docker-compose exec rag-backend-cli python main.py index --force-rebuild`
+
+**Note:** When changing embedding models, you must rebuild the index since vectors from different models are not compatible.
 
 ### Other Settings
 
@@ -215,9 +226,11 @@ nano config/.env
 docker-compose restart
 ```
 
-## 🔄 Switching LLM Providers
+## 🔄 Switching Models
 
-To switch to a different LLM provider:
+### Switching LLM Providers
+
+To switch to a different LLM provider (no index rebuild needed):
 
 ```bash
 # 1. Update config/.env
@@ -243,6 +256,27 @@ The system will automatically:
 - Register and deploy the new model
 - Create new RAG pipeline
 - Verify the model is ready
+
+### Switching Embedding Models
+
+To switch to a different embedding model from Hugging Face (requires index rebuild):
+
+```bash
+# 1. Update config/.env
+EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+EMBEDDING_DIMENSION=768  # Match the model's output dimension
+
+# 2. Restart services
+docker-compose restart
+
+# 3. Rebuild index (required - vectors are not compatible across models)
+docker-compose exec rag-backend-cli python main.py index --force-rebuild
+
+# 4. Query as normal
+docker-compose exec rag-backend-cli python main.py query -q "Your question"
+```
+
+**Important:** Changing embedding models requires rebuilding the index because vector representations from different models are incompatible.
 
 ## 🏗️ Architecture
 

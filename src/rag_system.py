@@ -135,19 +135,20 @@ class RAGSystem:
         """
         Main entry point for answering questions.
         
-        This method implements the complete query pipeline:
+        This method implements the complete query pipeline with enhanced fallback:
         1. Process and embed the query
         2. Retrieve relevant content using two-tier strategy
         3. Generate natural language answer with LLM
-        4. Return structured response with citations
+        4. If LLM refuses to answer from videos, try PDFs
+        5. Return structured response with citations
         
         Args:
             question: User's question as a string
             
         Returns:
-            VideoResponse if video content found above threshold
-            PDFResponse if PDF content found above threshold
-            NoAnswerResponse if no relevant content found
+            VideoResponse if video content found and LLM can answer
+            PDFResponse if PDF content found and LLM can answer
+            NoAnswerResponse if no relevant content found or LLM cannot answer
             
         Raises:
             ValueError: If question is empty
@@ -170,6 +171,31 @@ class RAGSystem:
                 query=question,
                 result=retrieval_result
             )
+            
+            # Step 4: Enhanced fallback - if LLM refused to answer from videos, try PDFs
+            if isinstance(response, NoAnswerResponse) and retrieval_result is not None:
+                # Check if we got a NoAnswer from video results
+                if isinstance(retrieval_result, list) and len(retrieval_result) > 0:
+                    from .models import VideoResult
+                    if isinstance(retrieval_result[0], VideoResult):
+                        self.logger.info("LLM refused to answer from video results, trying PDF fallback")
+                        
+                        # Search PDFs directly
+                        pdf_results = self.retrieval_engine.search_pdfs(query_embedding, question)
+                        
+                        if pdf_results:
+                            self.logger.info(f"Found {len(pdf_results)} PDF results, generating response")
+                            response = self.response_generator.generate_response(
+                                query=question,
+                                result=pdf_results
+                            )
+                            
+                            if not isinstance(response, NoAnswerResponse):
+                                self.logger.info("Successfully generated answer from PDF fallback")
+                            else:
+                                self.logger.info("LLM also refused to answer from PDFs, returning NoAnswer with knowledge summary")
+                        else:
+                            self.logger.info("No PDF results found in fallback, returning NoAnswer with knowledge summary")
             
             self.logger.info(f"Successfully generated {response.answer_type} response")
             return response

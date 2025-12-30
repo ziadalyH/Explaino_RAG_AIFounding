@@ -136,7 +136,7 @@ services:
     networks:
       - opensearch-net
     entrypoint: ["python"]
-    command: ["setup_opensearch_rag.py"]
+    command: ["-m", "config.opensearch_ml.setup"]
     profiles:
       - setup
 

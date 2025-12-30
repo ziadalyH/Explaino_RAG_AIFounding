@@ -25,8 +25,8 @@ load_dotenv("config/.env")
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config.config import Config
-from config.connector_manager import OpenSearchConnectorManager
-from config.pipeline_manager import RAGPipelineManager
+from config.opensearch_ml.connector_manager import OpenSearchConnectorManager
+from config.opensearch_ml.pipeline_manager import RAGPipelineManager
 
 # Setup logging
 logging.basicConfig(
@@ -99,6 +99,16 @@ def get_provider_kwargs(config: Config) -> dict:
         return {
             "api_key": config.deepseek_api_key
         }
+    
+    elif provider == "comprehend":
+        kwargs = {
+            "aws_access_key_id": config.aws_access_key_id,
+            "aws_secret_access_key": config.aws_secret_access_key,
+            "aws_region": config.aws_region or "us-east-1"
+        }
+        if config.aws_session_token:
+            kwargs["session_token"] = config.aws_session_token
+        return kwargs
     
     elif provider == "custom":
         kwargs = {

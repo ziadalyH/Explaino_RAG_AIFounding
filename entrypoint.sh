@@ -111,7 +111,7 @@ if [ "$NEED_SETUP" = true ]; then
     # Remove old config if it exists
     rm -f .opensearch_rag_config
     
-    if python setup_opensearch_rag.py; then
+    if python -m config.opensearch_ml.setup; then
         echo ""
         echo "✓ OpenSearch RAG setup completed successfully"
     else

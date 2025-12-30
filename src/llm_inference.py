@@ -60,7 +60,7 @@ class LLMInferenceService:
         config_file = Path(".opensearch_rag_config")
         if not config_file.exists():
             raise FileNotFoundError(
-                "OpenSearch RAG config not found. Run setup_opensearch_rag.py first."
+                "OpenSearch RAG config not found. Run 'python -m config.opensearch_ml.setup' first."
             )
         
         with open(config_file, "r") as f:

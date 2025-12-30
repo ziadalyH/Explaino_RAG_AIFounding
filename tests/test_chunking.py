@@ -24,20 +24,51 @@ def config():
         opensearch_index_name="test-index",
         opensearch_pdf_index="test-pdf-index",
         opensearch_video_index="test-video-index",
-        openai_api_key="test-key",
-        embedding_model="text-embedding-3-small",
-        embedding_dimension=1536,
-        embedding_provider="local",
+        # LLM configuration
+        llm_provider="openai",
+        llm_endpoint=None,
+        llm_api_key="test-key",
         llm_model="gpt-4o-mini",
         llm_temperature=0.3,
         llm_max_tokens=500,
+        # AWS credentials
+        aws_region=None,
+        aws_access_key_id=None,
+        aws_secret_access_key=None,
+        aws_session_token=None,
+        sagemaker_endpoint=None,
+        # Azure OpenAI
+        azure_api_key=None,
+        azure_api_base=None,
+        azure_api_version=None,
+        azure_deployment_name=None,
+        # Cohere
+        cohere_api_key=None,
+        # VertexAI
+        vertexai_project=None,
+        vertexai_location=None,
+        vertexai_access_token=None,
+        # DeepSeek
+        deepseek_api_key=None,
+        # Custom
+        llm_headers=None,
+        llm_request_template=None,
+        # Legacy
+        openai_api_key="test-key",
+        # Embedding
+        embedding_model="text-embedding-3-small",
+        embedding_dimension=1536,
+        embedding_provider="local",
+        # Retrieval
         relevance_threshold=0.5,
         max_results=5,
+        # Chunking
         chunk_size=100,
         chunk_overlap=20,
         chunking_strategy="sliding_window",
         max_chunk_window=30,
         min_pdf_paragraphs_per_page=4,
+        # Logging
         log_level="INFO"
     )
 

@@ -188,7 +188,7 @@ class ResponseGenerator:
         """
         Generate VideoResponse from multiple VideoResults.
         Let LLM choose the best context and generate answer.
-        Returns NoAnswerResponse if LLM refuses to answer.
+        Returns NoAnswerResponse if LLM refuses to answer (WITHOUT knowledge summary for fallback).
         """
         # Combine contexts with metadata
         combined_context = self._combine_contexts_for_llm(
@@ -206,9 +206,10 @@ class ResponseGenerator:
         
         # Check if LLM refused to answer
         if generated_answer is None:
-            self.logger.info("LLM refused to answer, returning NoAnswerResponse")
-            return self._generate_no_answer_response(
-                message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
+            self.logger.info("LLM refused to answer from videos, returning NoAnswerResponse WITHOUT knowledge summary (for fallback)")
+            # Don't include knowledge summary here - we'll try PDFs first
+            return NoAnswerResponse(
+                message="I couldn't find relevant information to answer your question in the video transcripts."
             )
         
         # Return response with the best result's metadata
@@ -235,7 +236,7 @@ class ResponseGenerator:
         """
         Generate PDFResponse from multiple PDFResults.
         Let LLM choose the best context and generate answer.
-        Returns NoAnswerResponse if LLM refuses to answer.
+        Returns NoAnswerResponse WITH knowledge summary if LLM refuses (final fallback).
         """
         # Log the results being processed
         self.logger.info("="*80)
@@ -270,7 +271,8 @@ class ResponseGenerator:
         
         # Check if LLM refused to answer
         if generated_answer is None:
-            self.logger.info("LLM refused to answer, returning NoAnswerResponse")
+            self.logger.info("LLM refused to answer from PDFs (final fallback), returning NoAnswerResponse WITH knowledge summary")
+            # This is the final fallback - include knowledge summary
             return self._generate_no_answer_response(
                 message="I couldn't find relevant information to answer your question. Please try rephrasing or asking a different question."
             )

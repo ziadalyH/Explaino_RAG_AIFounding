@@ -60,6 +60,7 @@ class OpenSearchConnectorManager:
             "vertexai": self._create_vertexai_connector,
             "sagemaker": self._create_sagemaker_connector,
             "deepseek": self._create_deepseek_connector,
+            "comprehend": self._create_comprehend_connector,
             "custom": self._create_custom_connector,
         }
         
@@ -178,16 +179,18 @@ class OpenSearchConnectorManager:
         api_key: str,
         **kwargs
     ) -> str:
-        """Create Cohere connector."""
+        """Create Cohere connector.
+        
+        Cohere Chat API uses 'message' (string) not 'messages' (array).
+        Official blueprint: https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/cohere_connector_chat_blueprint.md
+        """
         connector_config = {
             "name": f"Cohere {model} Connector",
             "description": f"Connector for Cohere {model}",
-            "version": 2,
+            "version": 1,
             "protocol": "http",
             "parameters": {
-                "model": model,
-                "temperature": temperature,
-                "max_tokens": max_tokens
+                "model": model
             },
             "credential": {
                 "cohere_key": api_key
@@ -199,14 +202,9 @@ class OpenSearchConnectorManager:
                     "url": "https://api.cohere.ai/v1/chat",
                     "headers": {
                         "Authorization": "Bearer ${credential.cohere_key}",
-                        "Content-Type": "application/json"
+                        "Request-Source": "unspecified:opensearch"
                     },
-                    "request_body": json.dumps({
-                        "model": "${parameters.model}",
-                        "message": "${parameters.message}",
-                        "temperature": "${parameters.temperature}",
-                        "max_tokens": "${parameters.max_tokens}"
-                    })
+                    "request_body": "{ \"message\": \"${parameters.message}\", \"model\": \"${parameters.model}\" }"
                 }
             ]
         }
@@ -224,37 +222,39 @@ class OpenSearchConnectorManager:
         deployment_name: Optional[str] = None,
         **kwargs
     ) -> str:
-        """Create Azure OpenAI connector."""
+        """Create Azure OpenAI connector.
+        
+        Azure OpenAI uses deployment names in the URL path and 'api-key' header (not 'Authorization').
+        Official blueprint: https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/azure_openai_connector_chat_blueprint.md
+        """
         deployment = deployment_name or model
-        endpoint = f"{api_base}/openai/deployments/{deployment}/chat/completions?api-version={api_version}"
+        # Extract endpoint from api_base (remove https:// and trailing /)
+        endpoint = api_base.replace("https://", "").replace("http://", "").rstrip("/")
         
         connector_config = {
             "name": f"Azure OpenAI {model} Connector",
             "description": f"Connector for Azure OpenAI {model}",
-            "version": 2,
+            "version": 1,
             "protocol": "http",
             "parameters": {
+                "endpoint": endpoint,
+                "deploy-name": deployment,
                 "model": model,
-                "temperature": temperature,
-                "max_tokens": max_tokens
+                "api-version": api_version,
+                "temperature": temperature
             },
             "credential": {
-                "api_key": api_key
+                "openAI_key": api_key
             },
             "actions": [
                 {
                     "action_type": "predict",
                     "method": "POST",
-                    "url": endpoint,
+                    "url": "https://${parameters.endpoint}/openai/deployments/${parameters.deploy-name}/chat/completions?api-version=${parameters.api-version}",
                     "headers": {
-                        "api-key": "${credential.api_key}",
-                        "Content-Type": "application/json"
+                        "api-key": "${credential.openAI_key}"
                     },
-                    "request_body": json.dumps({
-                        "messages": "${parameters.messages}",
-                        "temperature": "${parameters.temperature}",
-                        "max_tokens": "${parameters.max_tokens}"
-                    })
+                    "request_body": "{ \"messages\": ${parameters.messages}, \"temperature\": ${parameters.temperature} }"
                 }
             ]
         }
@@ -366,35 +366,87 @@ class OpenSearchConnectorManager:
         api_key: str,
         **kwargs
     ) -> str:
-        """Create DeepSeek connector."""
+        """Create DeepSeek connector.
+        
+        DeepSeek uses OpenAI-compatible API format.
+        """
         connector_config = {
             "name": f"DeepSeek {model} Connector",
             "description": f"Connector for DeepSeek {model}",
-            "version": 2,
+            "version": 1,
             "protocol": "http",
             "parameters": {
+                "endpoint": "api.deepseek.com",
                 "model": model,
                 "temperature": temperature,
                 "max_tokens": max_tokens
             },
             "credential": {
-                "api_key": api_key
+                "deepSeek_key": api_key
             },
             "actions": [
                 {
                     "action_type": "predict",
                     "method": "POST",
-                    "url": "https://api.deepseek.com/v1/chat/completions",
+                    "url": "https://${parameters.endpoint}/v1/chat/completions",
                     "headers": {
-                        "Authorization": "Bearer ${credential.api_key}",
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer ${credential.deepSeek_key}"
                     },
-                    "request_body": json.dumps({
-                        "model": "${parameters.model}",
-                        "messages": "${parameters.messages}",
-                        "temperature": "${parameters.temperature}",
-                        "max_tokens": "${parameters.max_tokens}"
-                    })
+                    "request_body": "{ \"model\": \"${parameters.model}\", \"messages\": ${parameters.messages}, \"temperature\": ${parameters.temperature}, \"max_tokens\": ${parameters.max_tokens} }"
+                }
+            ]
+        }
+        
+        return self._create_connector_from_config(connector_config)
+    
+    def _create_comprehend_connector(
+        self,
+        model: str,
+        temperature: float,
+        max_tokens: int,
+        aws_access_key_id: str,
+        aws_secret_access_key: str,
+        aws_region: str = "us-east-1",
+        session_token: Optional[str] = None,
+        **kwargs
+    ) -> str:
+        """Create Amazon Comprehend connector.
+        
+        Note: Comprehend is not a chat model - it's for language detection and NLP tasks.
+        Official blueprint: https://github.com/opensearch-project/ml-commons/blob/main/docs/remote_inference_blueprints/amazon_comprehend_connector_blueprint.md
+        """
+        credential = {
+            "access_key": aws_access_key_id,
+            "secret_key": aws_secret_access_key
+        }
+        if session_token:
+            credential["session_token"] = session_token
+        
+        connector_config = {
+            "name": f"Amazon Comprehend Connector",
+            "description": f"Connector for Amazon Comprehend",
+            "version": 1,
+            "protocol": "aws_sigv4",
+            "credential": credential,
+            "parameters": {
+                "service_name": "comprehend",
+                "region": aws_region,
+                "api_version": "20171127",
+                "api_name": "DetectDominantLanguage",
+                "api": "Comprehend_${parameters.api_version}.${parameters.api_name}",
+                "response_filter": "$"
+            },
+            "actions": [
+                {
+                    "action_type": "predict",
+                    "method": "POST",
+                    "url": "https://${parameters.service_name}.${parameters.region}.amazonaws.com",
+                    "headers": {
+                        "X-Amz-Target": "${parameters.api}",
+                        "content-type": "application/x-amz-json-1.1"
+                    },
+                    "request_body": "{ \"Text\": \"${parameters.Text}\"}"
                 }
             ]
         }

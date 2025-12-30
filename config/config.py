@@ -27,7 +27,7 @@ class Config:
     opensearch_video_index: str # Separate index for videos
     
     # LLM configuration (OpenSearch connector)
-    llm_provider: str  # openai, bedrock, cohere, azure_openai, vertexai, sagemaker, deepseek, custom
+    llm_provider: str  # openai, bedrock, cohere, azure_openai, vertexai, sagemaker, deepseek, comprehend, custom
     llm_endpoint: Optional[str]  # Full endpoint URL (for OpenAI/custom)
     llm_api_key: Optional[str]
     llm_model: str
@@ -38,6 +38,7 @@ class Config:
     aws_region: Optional[str]
     aws_access_key_id: Optional[str]
     aws_secret_access_key: Optional[str]
+    aws_session_token: Optional[str]
     sagemaker_endpoint: Optional[str]
     
     # Azure OpenAI specific
@@ -147,6 +148,7 @@ class Config:
             aws_region=os.getenv("AWS_REGION", config_data.get("aws", {}).get("region")),
             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID", config_data.get("aws", {}).get("access_key_id")),
             aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY", config_data.get("aws", {}).get("secret_access_key")),
+            aws_session_token=os.getenv("AWS_SESSION_TOKEN", config_data.get("aws", {}).get("session_token")),
             sagemaker_endpoint=os.getenv("SAGEMAKER_ENDPOINT", config_data.get("aws", {}).get("sagemaker_endpoint")),
             
             # Azure OpenAI
@@ -196,7 +198,7 @@ class Config:
     def validate(self) -> None:
         """Validate configuration values."""
         # Validate LLM provider
-        valid_providers = ["openai", "bedrock", "cohere", "azure_openai", "vertexai", "sagemaker", "deepseek", "custom"]
+        valid_providers = ["openai", "bedrock", "cohere", "azure_openai", "vertexai", "sagemaker", "deepseek", "comprehend", "custom"]
         if self.llm_provider not in valid_providers:
             raise ValueError(f"llm_provider must be one of: {valid_providers}")
         
@@ -228,6 +230,10 @@ class Config:
         elif self.llm_provider == "deepseek":
             if not self.deepseek_api_key:
                 raise ValueError("DEEPSEEK_API_KEY required for DeepSeek provider")
+        
+        elif self.llm_provider == "comprehend":
+            if not all([self.aws_access_key_id, self.aws_secret_access_key, self.aws_region]):
+                raise ValueError("AWS credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) required for Comprehend")
         
         elif self.llm_provider == "custom":
             if not all([self.llm_endpoint, self.llm_api_key]):

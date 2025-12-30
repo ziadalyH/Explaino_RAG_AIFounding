@@ -6,8 +6,8 @@ import logging
 from pathlib import Path
 
 from config.config import Config
-from config.connector_manager import OpenSearchConnectorManager
-from config.pipeline_manager import RAGPipelineManager
+from config.opensearch_ml.connector_manager import OpenSearchConnectorManager
+from config.opensearch_ml.pipeline_manager import RAGPipelineManager
 from opensearchpy import OpenSearch
 
 # Setup logging
@@ -43,7 +43,7 @@ def verify_setup():
     config_file = Path(".opensearch_rag_config")
     if not config_file.exists():
         logger.error("❌ .opensearch_rag_config not found")
-        logger.info("Run setup_opensearch_rag.py to create configuration")
+        logger.info("Run 'python -m config.opensearch_ml.setup' to create configuration")
         return False
     
     # Load config

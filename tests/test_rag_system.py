@@ -22,20 +22,51 @@ def mock_config():
     config.opensearch_index_name = "test-index"
     config.opensearch_pdf_index = "test-pdf-index"
     config.opensearch_video_index = "test-video-index"
-    config.openai_api_key = "test-key"
-    config.embedding_model = "text-embedding-3-small"
-    config.embedding_dimension = 1536
-    config.embedding_provider = "local"
+    # LLM configuration
+    config.llm_provider = "openai"
+    config.llm_endpoint = None
+    config.llm_api_key = "test-key"
     config.llm_model = "gpt-4o-mini"
     config.llm_temperature = 0.3
     config.llm_max_tokens = 500
+    # AWS credentials
+    config.aws_region = None
+    config.aws_access_key_id = None
+    config.aws_secret_access_key = None
+    config.aws_session_token = None
+    config.sagemaker_endpoint = None
+    # Azure OpenAI
+    config.azure_api_key = None
+    config.azure_api_base = None
+    config.azure_api_version = None
+    config.azure_deployment_name = None
+    # Cohere
+    config.cohere_api_key = None
+    # VertexAI
+    config.vertexai_project = None
+    config.vertexai_location = None
+    config.vertexai_access_token = None
+    # DeepSeek
+    config.deepseek_api_key = None
+    # Custom
+    config.llm_headers = None
+    config.llm_request_template = None
+    # Legacy
+    config.openai_api_key = "test-key"
+    # Embedding
+    config.embedding_model = "text-embedding-3-small"
+    config.embedding_dimension = 1536
+    config.embedding_provider = "local"
+    # Retrieval
     config.relevance_threshold = 0.5
     config.max_results = 5
+    # Chunking
     config.chunk_size = 100
     config.chunk_overlap = 20
     config.chunking_strategy = "sliding_window"
     config.max_chunk_window = 30
     config.min_pdf_paragraphs_per_page = 4
+    # Logging
     config.log_level = "INFO"
     return config
 
